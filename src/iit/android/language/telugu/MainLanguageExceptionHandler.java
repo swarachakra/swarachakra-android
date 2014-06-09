@@ -1,6 +1,7 @@
-package iit.android.languages;
+package iit.android.language.telugu;
 
-import iit.android.swarachakra.ExceptionHandler;
+import iit.android.language.ExceptionHandler;
+import iit.android.language.Language;
 import iit.android.swarachakra.KeyAttr;
 
 import java.util.ArrayList;
@@ -8,11 +9,11 @@ import java.util.HashMap;
 
 import android.annotation.SuppressLint;
 
-public class HindiExceptionHandler implements ExceptionHandler {
+public class MainLanguageExceptionHandler implements ExceptionHandler {
 	
 	private ArrayList<KeyAttr> keyArray;
 	private HashMap<Integer, KeyAttr> mKeys;
-	private Language hindi;
+	private Language main;
 	
 	private static final String RA = "\u0930";	
 	private static final String HALANT = "\u094D";
@@ -22,8 +23,8 @@ public class HindiExceptionHandler implements ExceptionHandler {
 	private static final int TRAKARCODE = 52;
 	private static final int NUKTACODE = 51;
 	
-	public HindiExceptionHandler(Language lang){
-		hindi = lang;
+	public MainLanguageExceptionHandler(Language lang){
+		main = lang;
 		initializeKeyArray();
 	}
 	
@@ -47,12 +48,12 @@ public class HindiExceptionHandler implements ExceptionHandler {
 	
 	private void initializeKeyArray(){
 		keyArray = new ArrayList<KeyAttr>();
-		int halantEnd = hindi.halantEnd;
+		int halantEnd = main.halantEnd;
 		for(int i = 0; i < halantEnd; i++){
 			KeyAttr key = new KeyAttr();
 			key.code = i+1;
 			keyArray.add(key);
-			mKeys = hindi.hashThis();
+			mKeys = main.hashThis();
 		}
 	}
 

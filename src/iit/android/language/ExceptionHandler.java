@@ -1,4 +1,6 @@
-package iit.android.swarachakra;
+package iit.android.language;
+
+import iit.android.swarachakra.KeyAttr;
 
 import java.util.HashMap;
 

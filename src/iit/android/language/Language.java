@@ -1,4 +1,4 @@
-package iit.android.languages;
+package iit.android.language;
 
 import iit.android.swarachakra.KeyAttr;
 

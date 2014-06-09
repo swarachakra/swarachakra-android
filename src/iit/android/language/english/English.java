@@ -1,7 +1,11 @@
-package iit.android.languages;
+package iit.android.language.english;
+import iit.android.language.Language;
 import iit.android.swarachakra.KeyAttr;
+
 import java.util.HashMap;
+
 import android.annotation.SuppressLint;
+
 import java.util.ArrayList;
 
 public class English extends Language {

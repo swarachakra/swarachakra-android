@@ -1,9 +1,10 @@
 package iit.android.swarachakra;
 
-import iit.android.languages.English;
-import iit.android.languages.MainLanguage;
-import iit.android.languages.MainLanguageExceptionHandler;
-import iit.android.languages.Language;
+import iit.android.language.ExceptionHandler;
+import iit.android.language.Language;
+import iit.android.language.english.English;
+import iit.android.language.hindi.MainLanguage;
+import iit.android.language.hindi.MainLanguageExceptionHandler;
 
 import java.util.HashMap;
 import java.util.List;
@@ -151,8 +152,7 @@ public class SoftKeyboard extends InputMethodService {
 		mActionListener.setInputConnection(mInputConnection);
 
 		if (languageName == "main") {
-			ExceptionHandler exceptionHandler = new MainLanguageExceptionHandler(
-					mainLanguage);
+			ExceptionHandler exceptionHandler = new MainLanguageExceptionHandler(mainLanguage);
 			mActionListener.setExceptionHandler(exceptionHandler);
 		}
 	}

@@ -1,8 +1,11 @@
-package iit.android.languages;
+package iit.android.language.telugu;
+import iit.android.language.Language;
 import iit.android.swarachakra.KeyAttr;
-import java.util.HashMap;
-import android.annotation.SuppressLint;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import android.annotation.SuppressLint;
 
 public class MainLanguage extends Language{
 	

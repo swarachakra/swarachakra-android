@@ -1,12 +1,15 @@
-package iit.android.languages;
+package iit.android.language.hindi;
+import iit.android.language.Language;
 import iit.android.swarachakra.KeyAttr;
-import java.util.HashMap;
-import android.annotation.SuppressLint;
-import java.util.ArrayList;
 
-public class Hindi extends Language{
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import android.annotation.SuppressLint;
+
+public class MainLanguage extends Language{
 	
-	public Hindi() {
+	public MainLanguage() {
 		name = "hindi";
 		nKeys = 106;
 		myKey = new ArrayList<KeyAttr>(nKeys);
@@ -589,8 +592,8 @@ public class Hindi extends Language{
 		myKey47.showChakra = false ;
 		myKey47.showCustomChakra = false ;
 		myKey47.customChakraLayout = new String[] {} ;
-		myKey47.showIcon = false ;
-		myKey47.icon = "";
+		myKey47.showIcon = true ;
+		myKey47.icon = "bindu";
 		myKey47.changeLayout = false ;
 		myKey47.layout = "";
 		myKey.set(47, myKey47);
@@ -601,8 +604,8 @@ public class Hindi extends Language{
 		myKey48.showChakra = false ;
 		myKey48.showCustomChakra = false ;
 		myKey48.customChakraLayout = new String[] {} ;
-		myKey48.showIcon = false ;
-		myKey48.icon = "";
+		myKey48.showIcon = true ;
+		myKey48.icon = "chandra";
 		myKey48.changeLayout = false ;
 		myKey48.layout = "";
 		myKey.set(48, myKey48);
@@ -613,8 +616,8 @@ public class Hindi extends Language{
 		myKey49.showChakra = false ;
 		myKey49.showCustomChakra = false ;
 		myKey49.customChakraLayout = new String[] {} ;
-		myKey49.showIcon = false ;
-		myKey49.icon = "";
+		myKey49.showIcon = true ;
+		myKey49.icon = "visarga";
 		myKey49.changeLayout = false ;
 		myKey49.layout = "";
 		myKey.set(49, myKey49);
@@ -625,8 +628,8 @@ public class Hindi extends Language{
 		myKey50.showChakra = false ;
 		myKey50.showCustomChakra = false ;
 		myKey50.customChakraLayout = new String[] {} ;
-		myKey50.showIcon = false ;
-		myKey50.icon = "";
+		myKey50.showIcon = true ;
+		myKey50.icon = "nukta";
 		myKey50.changeLayout = false ;
 		myKey50.layout = "";
 		myKey50.isException = true;

@@ -1,6 +1,7 @@
-package iit.android.languages;
+package iit.android.language.hindi;
 
-import iit.android.swarachakra.ExceptionHandler;
+import iit.android.language.ExceptionHandler;
+import iit.android.language.Language;
 import iit.android.swarachakra.KeyAttr;
 
 import java.util.ArrayList;
