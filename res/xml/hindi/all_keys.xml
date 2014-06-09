@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?><Keyboard><Key codes="1" >
+<keyLabel> \u0915 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="2" >
+<keyLabel> \u0916 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="3" >
+<keyLabel> \u0917 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="4" >
+<keyLabel> \u0918 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="5" >
+<keyLabel> \u0919 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="6" >
+<keyLabel> \u091A </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="7" >
+<keyLabel> \u091B </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="8" >
+<keyLabel> \u091C </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="9" >
+<keyLabel> \u091D </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="10" >
+<keyLabel> \u091E </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="11" >
+<keyLabel> \u091F </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="12" >
+<keyLabel> \u0920 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="13" >
+<keyLabel> \u0921 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="14" >
+<keyLabel> \u0922 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="15" >
+<keyLabel> \u0923 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="16" >
+<keyLabel> \u0924 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="17" >
+<keyLabel> \u0925 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="18" >
+<keyLabel> \u0926 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="19" >
+<keyLabel> \u0927 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="20" >
+<keyLabel> \u0928 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="21" >
+<keyLabel> \u092A </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="22" >
+<keyLabel> \u092B </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="23" >
+<keyLabel> \u092C </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="24" >
+<keyLabel> \u092D </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="25" >
+<keyLabel> \u092E </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="26" >
+<keyLabel> \u092F </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="27" >
+<keyLabel> \u0930 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="28" >
+<keyLabel> \u0932 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="29" >
+<keyLabel> \u0935 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="30" >
+<keyLabel> \u0936 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="31" >
+<keyLabel> \u0937 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="32" >
+<keyLabel> \u0938 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="33" >
+<keyLabel> \u0939 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="34" >
+<keyLabel> \u0924\u094D\u0930 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="35" >
+<keyLabel> \u0915\u094D\u0937 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="36" >
+<keyLabel> \u091C\u094D\u091E </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="37" >
+<keyLabel> \u0936\u094D\u0930 </keyLabel>
+<showChakra> </showChakra>
+</Key><Key codes="38" >
+<keyLabel> \u093E </keyLabel>
+<showChakra> \u093E \u093F \u0940 \u0941 \u0942 \u0947 \u0948 \u094B \u094C </showChakra>
+</Key><Key codes="39" >
+<keyLabel> \u093D </keyLabel>
+<showChakra> \u0945 \u0943 \u090B \u0944 \u0960 \u0946 \u094A \u0949 \u0906\u0901  </showChakra>
+</Key><Key codes="40" >
+<keyLabel> \u0905 </keyLabel>
+<showChakra> \u0906 \u0907 \u0908 \u0909 \090A \u090F \u0910 \u0913 \u0914 </showChakra>
+</Key><Key codes="41" >
+<keyLabel> \u002E </keyLabel>
+
+</Key><Key codes="42" >
+<keyLabel> \u002C </keyLabel>
+
+</Key><Key codes="43" >
+<keyLabel> \u0021 </keyLabel>
+
+</Key><Key codes="44" >
+<keyLabel> \u003F </keyLabel>
+
+</Key><Key codes="45" >
+<keyLabel> \u007C </keyLabel>
+
+</Key><Key codes="46" >
+<keyLabel> \u0022 </keyLabel>
+
+</Key><Key codes="47" >
+<keyLabel> \u0027 </keyLabel>
+
+</Key><Key codes="48" >
+<keyLabel> \u0902 </keyLabel>
+
+</Key><Key codes="49" >
+<keyLabel> \u0901 </keyLabel>
+
+</Key><Key codes="50" >
+<keyLabel> \u0903 </keyLabel>
+
+</Key><Key codes="51" >
+<keyLabel> \u093C </keyLabel>
+
+</Key></Keyboard>
