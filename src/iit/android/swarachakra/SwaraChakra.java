@@ -80,7 +80,7 @@ public class SwaraChakra extends View {
 		mArcTextPaint.setAntiAlias(true);
 		mArcTextPaint.setTextAlign(Align.CENTER);
 		
-		setLayerType(View.LAYER_TYPE_HARDWARE, null);
+		setLayerType(View.LAYER_TYPE_NONE, null);
 		arc = -1;
 		
 		WindowManager wm = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);

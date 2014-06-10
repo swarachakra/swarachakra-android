@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.PopupWindow;
 
 public class MainKeyboardView extends KeyboardView {
@@ -49,12 +48,12 @@ public class MainKeyboardView extends KeyboardView {
 		//TO BE DONE
 		int mode = 0;//based on device and orientation
 		mSwaraChakra.setMetrics(mode);
+		mSwaraChakra.setVisibility(View.GONE);
 		
 		mChakraPopup = new PopupWindow(context);
 		mChakraPopup.setContentView(v);
 		mChakraPopup.setTouchable(false);
 		mChakraPopup.setClippingEnabled(false);
-		mChakraPopup.setWindowLayoutMode(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		mChakraPopup.setBackgroundDrawable(null);
 		mPopupParent = this;
 	}

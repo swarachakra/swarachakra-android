@@ -9,11 +9,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.inputmethodservice.Keyboard.Key;
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.MeasureSpec;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
@@ -22,14 +25,14 @@ import android.widget.PopupWindow;
 public class MainKeyboardActionListener implements OnKeyboardActionListener,
 		OnTouchListener {
 	private SoftKeyboard mSoftKeyboard;
-	private MainKeyboardView mKeyboardView;
-	private PopupWindow mChakraPopup;
-	private SwaraChakra mSwaraChakra;
+	private static MainKeyboardView mKeyboardView;
+	private static PopupWindow mChakraPopup;
+	private static SwaraChakra mSwaraChakra;
 	private ExceptionHandler mExceptionHandler;
-	private View mPopupParent;
+	private static View mPopupParent;
 	private int touchDownX;
 	private int touchDownY;
-	private boolean isChakraVisible;
+	private static boolean isChakraVisible;
 	private boolean inHalantMode;
 	private boolean isShifted;
 	private boolean inSymbolMode;
@@ -50,9 +53,28 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 	private int MOVE_THRESHOLD = 0;
 	private InputConnection mInputConnection;
 	private int halantEnd;
+	private static final int MSG_SHOW_CHAKRA = 1;
+	private static final int MSG_REMOVE_CHAKRA = 2;
+	private static final int DELAY_BEFORE_SHOW = 70;
+	
+	static Handler mHandler = new Handler(){
+		@SuppressLint("NewApi")
+		@Override
+		public void handleMessage(Message msg){
+			switch(msg.what){
+			case MSG_SHOW_CHAKRA:
+				mSwaraChakra.setVisibility(View.VISIBLE);
+				mKeyboardView.setAlpha(0.75f);
+				break;
+			case MSG_REMOVE_CHAKRA:
+				removeChakra();
+				break;
+			}
+		}
+	};
 
 	public void initialize(MainKeyboardView mKeyboardView) {
-		this.mKeyboardView = mKeyboardView;
+		MainKeyboardActionListener.mKeyboardView = mKeyboardView;
 
 		mChakraPopup = mKeyboardView.mChakraPopup;
 		mSwaraChakra = mKeyboardView.mSwaraChakra;
@@ -101,19 +123,33 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 	
 
 	@SuppressLint("NewApi")
-	private void showChakraAt(int posX, int posY) {
+	private static void showChakraAt(int posX, int posY) {
 		final PopupWindow chakraPopup = mChakraPopup;
+		mSwaraChakra.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
 		float offset = 2*mSwaraChakra.getOuterRadius();
-		chakraPopup.showAtLocation(mPopupParent, Gravity.NO_GRAVITY,
-				(int) (posX - offset), (int) (posY - offset));
+		
+		int w = mSwaraChakra.getMeasuredWidth();
+		int h = mSwaraChakra.getMeasuredHeight();
+		int x = (int) (posX - offset);
+		int y = (int) (posY - offset);
+		
+		if(chakraPopup.isShowing()){
+			chakraPopup.update(x, y, w, h);
+		}
+		else{
+			chakraPopup.setWidth(w);
+			chakraPopup.setHeight(h);
+			chakraPopup.showAtLocation(mPopupParent, Gravity.NO_GRAVITY, x, y);
+		}
+		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_SHOW_CHAKRA), DELAY_BEFORE_SHOW);
 		isChakraVisible = true;
 	}
 
 	@SuppressLint("NewApi")
-	private void dismissChakra() {
-		final PopupWindow chakraPopup = mChakraPopup;
+	private static void removeChakra() {
+		mHandler.removeMessages(MSG_SHOW_CHAKRA);
 		mSwaraChakra.desetArc();
-		chakraPopup.dismiss();
+		mSwaraChakra.setVisibility(View.GONE);
 		isChakraVisible = false;
 		mKeyboardView.setAlpha(1);
 	}
@@ -196,7 +232,7 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 				removeHalantMode();
 				commitText(text);
 			}
-			dismissChakra();
+			removeChakra();
 		} else if (mKeys.containsKey(keyCode)) {
 			KeyAttr key = mKeys.get(keyCode);
 			if (key.isException) {
@@ -462,7 +498,9 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 				mSwaraChakra.setArc(arc);
 				String text = mSwaraChakra.getText();
 				mInputConnection.setComposingText(text, 1);
-				mKeyboardView.setAlpha(0.4f);
+				if(mSwaraChakra.getVisibility() == View.VISIBLE){
+					mKeyboardView.setAlpha(0.35f);
+				}
 			}
 		} else {
 			if(isChakraVisible){
@@ -470,10 +508,12 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 				String text = mSwaraChakra.getText();
 				mInputConnection.setComposingText(text, 1);
 				
-				float a = 0;
-				double k = (-0.4)/MOVE_THRESHOLD;
-				a = (float) (0.8+k*radius);
-				mKeyboardView.setAlpha(a);
+				if(mSwaraChakra.getVisibility() == View.VISIBLE){
+					float a = 0;
+					double k = (-0.4)/MOVE_THRESHOLD;
+					a = (float) (0.75+k*radius);
+					mKeyboardView.setAlpha(a);
+				}
 			}
 		}
 	}
