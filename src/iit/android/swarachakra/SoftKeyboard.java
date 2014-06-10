@@ -3,8 +3,8 @@ package iit.android.swarachakra;
 import iit.android.language.ExceptionHandler;
 import iit.android.language.Language;
 import iit.android.language.english.English;
-import iit.android.language.telugu.MainLanguage;
-import iit.android.language.telugu.MainLanguageExceptionHandler;
+import iit.android.language.hindi.MainLanguage;
+import iit.android.language.hindi.MainLanguageExceptionHandler;
 
 import java.util.HashMap;
 import java.util.List;

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Align;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.AttributeSet;
@@ -35,6 +36,7 @@ public class SwaraChakra extends View {
 	private static boolean halantExists;
 	private KeyAttr currentKey;
 	private String keyLabel;
+	private MainKeyboardView mKeyboardView;
 	
 
 	public SwaraChakra(Context context) {
@@ -62,7 +64,8 @@ public class SwaraChakra extends View {
 		mInnerPaint.setAntiAlias(true);
 		mInnerTextPaint = new Paint();
 		mInnerTextPaint.setColor(Color.BLACK);
-		mInnerTextPaint.setAntiAlias(true);;
+		mInnerTextPaint.setAntiAlias(true);
+		mInnerTextPaint.setTextAlign(Align.CENTER);
 		mArcPaint = new Paint();
 		mArcPaint.setColor(Color.rgb(48, 48, 48));
 		mArcPaint.setAntiAlias(true);
@@ -75,6 +78,7 @@ public class SwaraChakra extends View {
 		mArcTextPaint = new Paint();
 		mArcTextPaint.setColor(Color.rgb(255, 255, 255));
 		mArcTextPaint.setAntiAlias(true);
+		mArcTextPaint.setTextAlign(Align.CENTER);
 		
 		setLayerType(View.LAYER_TYPE_HARDWARE, null);
 		arc = -1;
@@ -93,9 +97,9 @@ public class SwaraChakra extends View {
 		case 0:
 			mOuterRadius = (float) (0.25*Math.min(screen_width, screen_height));
 			mInnerRadius = (float) (0.3*mOuterRadius);
-			mArcTextPaint.setTextSize((float) 0.25*mOuterRadius);
+			mArcTextPaint.setTextSize((float) 0.20*mOuterRadius);
 			mInnerTextPaint.setTextSize((float) 0.25*mOuterRadius);
-			mArcTextRadius = (float) (0.75*mOuterRadius);
+			mArcTextRadius = (float) (0.55*mOuterRadius);
 			break;
 		default:
 			break;
@@ -117,6 +121,10 @@ public class SwaraChakra extends View {
 		return screen_height;
 	}
 
+	
+	public void setKeyboardView(MainKeyboardView kv){
+		mKeyboardView = kv;
+	}
 	
 	public static void setDefaultChakra(String[] swaras){
 		defaultChakra = swaras;
@@ -147,6 +155,7 @@ public class SwaraChakra extends View {
 		invalidate();
 	}
 	
+	@SuppressLint("NewApi")
 	@Override
 	protected void onDraw(Canvas canvas){
 		super.onDraw(canvas);
@@ -171,8 +180,8 @@ public class SwaraChakra extends View {
 	}
 	
 	private void drawLetters(Canvas canvas) {
-		float textOffset = mArcTextPaint.getTextSize()/4;
-		canvas.drawText(getText(), centerX - textOffset , centerY + textOffset, mInnerTextPaint);
+		float textOffset = mInnerTextPaint.getTextSize()/2;
+		canvas.drawText(getText(), centerX, centerY + textOffset, mInnerTextPaint);
 		
 		for(int i = 0; i<nArcs; i++){
 			PointF textPos = getArcTextPoint(i);
@@ -204,10 +213,10 @@ public class SwaraChakra extends View {
 	
 	private PointF getArcTextPoint(int region){
 		PointF textPos = new PointF();
-		float textOffset = mArcTextPaint.getTextSize()/4;
+		RectF textBounds = new RectF();
 		float angleRad = (float) Math.toRadians(getMidAngle(region));
-		textPos.x = centerX + (float) (mArcTextRadius*Math.cos(angleRad)) - textOffset;
-		textPos.y = centerY + (float) (mArcTextRadius*Math.sin(angleRad)) + textOffset;
+		textPos.x = centerX + (float) (mArcTextRadius*Math.cos(angleRad));
+		textPos.y = centerY + (float) (mArcTextRadius*Math.sin(angleRad));
 		return textPos;
 	}
 	

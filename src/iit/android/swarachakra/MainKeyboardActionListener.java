@@ -65,6 +65,8 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 		ENGLISH = mKeyboardView.ENGLISH;
 		SYMBOLS = mKeyboardView.SYMBOLS;
 		SHIFT = mKeyboardView.SHIFT;
+		
+		mSwaraChakra.setKeyboardView(this.mKeyboardView);
 
 		inHalantMode = false;
 		inExceptionMode = false;
@@ -461,7 +463,7 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 				mSwaraChakra.setArc(arc);
 				String text = mSwaraChakra.getText();
 				mInputConnection.setComposingText(text, 1);
-				mKeyboardView.setAlpha(0.5f);
+				mKeyboardView.setAlpha(0.4f);
 			}
 		} else {
 			if(isChakraVisible){
@@ -470,8 +472,8 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 				mInputConnection.setComposingText(text, 1);
 				
 				float a = 0;
-				double k = (-0.5)/MOVE_THRESHOLD;
-				a = (float) (1+k*radius);
+				double k = (-0.4)/MOVE_THRESHOLD;
+				a = (float) (0.8+k*radius);
 				mKeyboardView.setAlpha(a);
 			}
 		}
