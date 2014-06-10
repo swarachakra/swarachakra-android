@@ -138,14 +138,16 @@
             android:keyWidth="16.666%p"
             android:keyEdgeFlags="left"
             android:keyIcon="@drawable/shift" />
+        
+        <Key
+            android:codes="@string/english"
+            android:keyLabel="En"/>
 
 
         <Key
             android:codes="87"/>
         
-        <Key
-            android:codes="@string/english"
-            android:keyLabel="En"/>
+        
         
         <Key
             android:codes="@string/space"

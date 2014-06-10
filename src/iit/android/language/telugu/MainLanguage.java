@@ -576,7 +576,7 @@ KeyAttr myKey45 = new KeyAttr();
 
 KeyAttr myKey46 = new KeyAttr();
 	myKey46.code = 47;
-	myKey46.label = "" ;
+	myKey46.label = "'" ;
 	myKey46.showChakra = false ;
 	myKey46.showCustomChakra = false ;
 	myKey46.customChakraLayout = new String[] {} ;

@@ -134,13 +134,13 @@
             android:keyEdgeFlags="left"
             android:keyIcon="@drawable/shift" />
 
-
+		<Key
+            android:codes="@string/english"
+            android:keyLabel="En"/>
+        
         <Key
             android:codes="45"/>
         
-        <Key
-            android:codes="@string/english"
-            android:keyLabel="En"/>
         
         <Key
             android:codes="@string/space"
