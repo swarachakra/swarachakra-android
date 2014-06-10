@@ -663,8 +663,8 @@ public class English extends Language {
 		KeyAttr myKey53 = new KeyAttr();
 		myKey53.code = 54;
 		myKey53.label = "," ;
-		myKey53.showChakra = true ;
-		myKey53.showCustomChakra = true ;
+		myKey53.showChakra = false ;
+		myKey53.showCustomChakra = false ;
 		myKey53.customChakraLayout = new String[] {} ;
 		myKey53.showIcon = false ;
 		myKey53.icon = "";
