@@ -47,13 +47,11 @@ public class MainActivity extends Activity {
 	
 	@Override
 	protected void onPause() {
-		Log.d("main", "paused");
 		super.onPause();
 	}
 	
 	@Override
     public void onWindowFocusChanged(final boolean hasFocus) {
-		Log.d("main", "focus changed");
 		if(!doneSettingUp) {
 			Log.d("textBox", "from onWindowFocueChanged");
 			setTextBoxes();
