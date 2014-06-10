@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.PointF;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -36,7 +37,6 @@ public class SwaraChakra extends View {
 	private static boolean halantExists;
 	private KeyAttr currentKey;
 	private String keyLabel;
-	private MainKeyboardView mKeyboardView;
 	
 
 	public SwaraChakra(Context context) {
@@ -120,11 +120,6 @@ public class SwaraChakra extends View {
 	public float getScreenHeight(){
 		return screen_height;
 	}
-
-	
-	public void setKeyboardView(MainKeyboardView kv){
-		mKeyboardView = kv;
-	}
 	
 	public static void setDefaultChakra(String[] swaras){
 		defaultChakra = swaras;
@@ -180,8 +175,11 @@ public class SwaraChakra extends View {
 	}
 	
 	private void drawLetters(Canvas canvas) {
-		float textOffset = mInnerTextPaint.getTextSize()/2;
-		canvas.drawText(getText(), centerX, centerY + textOffset, mInnerTextPaint);
+		float offsetY = 0;
+		Rect textBounds = new Rect();
+		mInnerTextPaint.getTextBounds(getText(), 0, getText().length(), textBounds);
+		offsetY = (textBounds.bottom - textBounds.top)/2;
+		canvas.drawText(getText(), centerX, centerY + offsetY, mInnerTextPaint);
 		
 		for(int i = 0; i<nArcs; i++){
 			PointF textPos = getArcTextPoint(i);
@@ -213,10 +211,15 @@ public class SwaraChakra extends View {
 	
 	private PointF getArcTextPoint(int region){
 		PointF textPos = new PointF();
-		RectF textBounds = new RectF();
+		Rect textBounds = new Rect();
+		String text = getTextForArc(region);
+		mArcTextPaint.getTextBounds(text, 0, text.length(), textBounds);
+		float offsetX = 0;
+		float offsetY = 0;
+		offsetY = (textBounds.bottom - textBounds.top)/2;
 		float angleRad = (float) Math.toRadians(getMidAngle(region));
-		textPos.x = centerX + (float) (mArcTextRadius*Math.cos(angleRad));
-		textPos.y = centerY + (float) (mArcTextRadius*Math.sin(angleRad));
+		textPos.x = centerX + (float) (mArcTextRadius*Math.cos(angleRad)) + offsetX;
+		textPos.y = centerY + (float) (mArcTextRadius*Math.sin(angleRad)) + offsetY;
 		return textPos;
 	}
 	

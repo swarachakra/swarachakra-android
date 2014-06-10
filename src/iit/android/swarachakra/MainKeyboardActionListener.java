@@ -66,7 +66,6 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 		SYMBOLS = mKeyboardView.SYMBOLS;
 		SHIFT = mKeyboardView.SHIFT;
 		
-		mSwaraChakra.setKeyboardView(this.mKeyboardView);
 
 		inHalantMode = false;
 		inExceptionMode = false;
