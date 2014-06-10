@@ -670,9 +670,9 @@ KeyAttr myKey53 = new KeyAttr();
 	myKey53.layout = "";
 	myKey.set(53, myKey53);
 
-KeyAttr myKey54 = new KeyAttr();
+	KeyAttr myKey54 = new KeyAttr();
 	myKey54.code = 55;
-	myKey54.label = "" ;
+	myKey54.label = "\u0970" ;
 	myKey54.showChakra = false ;
 	myKey54.showCustomChakra = false ;
 	myKey54.customChakraLayout = new String[] {} ;
@@ -682,7 +682,7 @@ KeyAttr myKey54 = new KeyAttr();
 	myKey54.layout = "";
 	myKey.set(54, myKey54);
 
-KeyAttr myKey55 = new KeyAttr();
+	KeyAttr myKey55 = new KeyAttr();
 	myKey55.code = 56;
 	myKey55.label = "1" ;
 	myKey55.showChakra = false ;
@@ -694,7 +694,7 @@ KeyAttr myKey55 = new KeyAttr();
 	myKey55.layout = "";
 	myKey.set(55, myKey55);
 
-KeyAttr myKey56 = new KeyAttr();
+	KeyAttr myKey56 = new KeyAttr();
 	myKey56.code = 57;
 	myKey56.label = "2" ;
 	myKey56.showChakra = false ;
@@ -706,7 +706,7 @@ KeyAttr myKey56 = new KeyAttr();
 	myKey56.layout = "";
 	myKey.set(56, myKey56);
 
-KeyAttr myKey57 = new KeyAttr();
+	KeyAttr myKey57 = new KeyAttr();
 	myKey57.code = 58;
 	myKey57.label = "3" ;
 	myKey57.showChakra = false ;
@@ -718,9 +718,9 @@ KeyAttr myKey57 = new KeyAttr();
 	myKey57.layout = "";
 	myKey.set(57, myKey57);
 
-KeyAttr myKey58 = new KeyAttr();
+	KeyAttr myKey58 = new KeyAttr();
 	myKey58.code = 59;
-	myKey58.label = "" ;
+	myKey58.label = "\u002B" ;
 	myKey58.showChakra = false ;
 	myKey58.showCustomChakra = false ;
 	myKey58.customChakraLayout = new String[] {} ;
@@ -730,9 +730,9 @@ KeyAttr myKey58 = new KeyAttr();
 	myKey58.layout = "";
 	myKey.set(58, myKey58);
 
-KeyAttr myKey59 = new KeyAttr();
+	KeyAttr myKey59 = new KeyAttr();
 	myKey59.code = 60;
-	myKey59.label = "\u002c" ;
+	myKey59.label = "," ;
 	myKey59.showChakra = false ;
 	myKey59.showCustomChakra = false ;
 	myKey59.customChakraLayout = new String[] {} ;
@@ -742,9 +742,9 @@ KeyAttr myKey59 = new KeyAttr();
 	myKey59.layout = "";
 	myKey.set(59, myKey59);
 
-KeyAttr myKey60 = new KeyAttr();
+	KeyAttr myKey60 = new KeyAttr();
 	myKey60.code = 61;
-	myKey60.label = "" ;
+	myKey60.label = "\u0965" ;
 	myKey60.showChakra = false ;
 	myKey60.showCustomChakra = false ;
 	myKey60.customChakraLayout = new String[] {} ;
@@ -754,7 +754,7 @@ KeyAttr myKey60 = new KeyAttr();
 	myKey60.layout = "";
 	myKey.set(60, myKey60);
 
-KeyAttr myKey61 = new KeyAttr();
+	KeyAttr myKey61 = new KeyAttr();
 	myKey61.code = 62;
 	myKey61.label = "4" ;
 	myKey61.showChakra = false ;
@@ -766,7 +766,7 @@ KeyAttr myKey61 = new KeyAttr();
 	myKey61.layout = "";
 	myKey.set(61, myKey61);
 
-KeyAttr myKey62 = new KeyAttr();
+	KeyAttr myKey62 = new KeyAttr();
 	myKey62.code = 63;
 	myKey62.label = "5" ;
 	myKey62.showChakra = false ;
@@ -778,7 +778,7 @@ KeyAttr myKey62 = new KeyAttr();
 	myKey62.layout = "";
 	myKey.set(62, myKey62);
 
-KeyAttr myKey63 = new KeyAttr();
+	KeyAttr myKey63 = new KeyAttr();
 	myKey63.code = 64;
 	myKey63.label = "6" ;
 	myKey63.showChakra = false ;
@@ -790,9 +790,9 @@ KeyAttr myKey63 = new KeyAttr();
 	myKey63.layout = "";
 	myKey.set(63, myKey63);
 
-KeyAttr myKey64 = new KeyAttr();
+	KeyAttr myKey64 = new KeyAttr();
 	myKey64.code = 65;
-	myKey64.label = "+" ;
+	myKey64.label = "\u002D" ;
 	myKey64.showChakra = false ;
 	myKey64.showCustomChakra = false ;
 	myKey64.customChakraLayout = new String[] {} ;
@@ -802,7 +802,7 @@ KeyAttr myKey64 = new KeyAttr();
 	myKey64.layout = "";
 	myKey.set(64, myKey64);
 
-KeyAttr myKey65 = new KeyAttr();
+	KeyAttr myKey65 = new KeyAttr();
 	myKey65.code = 66;
 	myKey65.label = ";" ;
 	myKey65.showChakra = false ;
@@ -814,7 +814,7 @@ KeyAttr myKey65 = new KeyAttr();
 	myKey65.layout = "";
 	myKey.set(65, myKey65);
 
-KeyAttr myKey66 = new KeyAttr();
+	KeyAttr myKey66 = new KeyAttr();
 	myKey66.code = 67;
 	myKey66.label = "_" ;
 	myKey66.showChakra = false ;
@@ -826,7 +826,7 @@ KeyAttr myKey66 = new KeyAttr();
 	myKey66.layout = "";
 	myKey.set(66, myKey66);
 
-KeyAttr myKey67 = new KeyAttr();
+	KeyAttr myKey67 = new KeyAttr();
 	myKey67.code = 68;
 	myKey67.label = "7" ;
 	myKey67.showChakra = false ;
@@ -838,7 +838,7 @@ KeyAttr myKey67 = new KeyAttr();
 	myKey67.layout = "";
 	myKey.set(67, myKey67);
 
-KeyAttr myKey68 = new KeyAttr();
+	KeyAttr myKey68 = new KeyAttr();
 	myKey68.code = 69;
 	myKey68.label = "8" ;
 	myKey68.showChakra = false ;
@@ -850,7 +850,7 @@ KeyAttr myKey68 = new KeyAttr();
 	myKey68.layout = "";
 	myKey.set(68, myKey68);
 
-KeyAttr myKey69 = new KeyAttr();
+	KeyAttr myKey69 = new KeyAttr();
 	myKey69.code = 70;
 	myKey69.label = "9" ;
 	myKey69.showChakra = false ;
@@ -862,7 +862,7 @@ KeyAttr myKey69 = new KeyAttr();
 	myKey69.layout = "";
 	myKey.set(69, myKey69);
 
-KeyAttr myKey70 = new KeyAttr();
+	KeyAttr myKey70 = new KeyAttr();
 	myKey70.code = 71;
 	myKey70.label = "x" ;
 	myKey70.showChakra = false ;
@@ -874,7 +874,7 @@ KeyAttr myKey70 = new KeyAttr();
 	myKey70.layout = "";
 	myKey.set(70, myKey70);
 
-KeyAttr myKey71 = new KeyAttr();
+	KeyAttr myKey71 = new KeyAttr();
 	myKey71.code = 72;
 	myKey71.label = "=" ;
 	myKey71.showChakra = false ;
@@ -886,7 +886,7 @@ KeyAttr myKey71 = new KeyAttr();
 	myKey71.layout = "";
 	myKey.set(71, myKey71);
 
-KeyAttr myKey72 = new KeyAttr();
+	KeyAttr myKey72 = new KeyAttr();
 	myKey72.code = 73;
 	myKey72.label = ":" ;
 	myKey72.showChakra = false ;
@@ -898,9 +898,9 @@ KeyAttr myKey72 = new KeyAttr();
 	myKey72.layout = "";
 	myKey.set(72, myKey72);
 
-KeyAttr myKey73 = new KeyAttr();
+	KeyAttr myKey73 = new KeyAttr();
 	myKey73.code = 74;
-	myKey73.label = "" ;
+	myKey73.label = "\u2014" ;
 	myKey73.showChakra = false ;
 	myKey73.showCustomChakra = false ;
 	myKey73.customChakraLayout = new String[] {} ;
@@ -910,7 +910,7 @@ KeyAttr myKey73 = new KeyAttr();
 	myKey73.layout = "";
 	myKey.set(73, myKey73);
 
-KeyAttr myKey74 = new KeyAttr();
+	KeyAttr myKey74 = new KeyAttr();
 	myKey74.code = 75;
 	myKey74.label = "*" ;
 	myKey74.showChakra = false ;
@@ -922,7 +922,7 @@ KeyAttr myKey74 = new KeyAttr();
 	myKey74.layout = "";
 	myKey.set(74, myKey74);
 
-KeyAttr myKey75 = new KeyAttr();
+	KeyAttr myKey75 = new KeyAttr();
 	myKey75.code = 76;
 	myKey75.label = "0" ;
 	myKey75.showChakra = false ;
@@ -934,7 +934,7 @@ KeyAttr myKey75 = new KeyAttr();
 	myKey75.layout = "";
 	myKey.set(75, myKey75);
 
-KeyAttr myKey76 = new KeyAttr();
+	KeyAttr myKey76 = new KeyAttr();
 	myKey76.code = 77;
 	myKey76.label = "#" ;
 	myKey76.showChakra = false ;
@@ -946,9 +946,9 @@ KeyAttr myKey76 = new KeyAttr();
 	myKey76.layout = "";
 	myKey.set(76, myKey76);
 
-KeyAttr myKey77 = new KeyAttr();
+	KeyAttr myKey77 = new KeyAttr();
 	myKey77.code = 78;
-	myKey77.label = "" ;
+	myKey77.label = "\u00F7" ;
 	myKey77.showChakra = false ;
 	myKey77.showCustomChakra = false ;
 	myKey77.customChakraLayout = new String[] {} ;
@@ -958,7 +958,7 @@ KeyAttr myKey77 = new KeyAttr();
 	myKey77.layout = "";
 	myKey.set(77, myKey77);
 
-KeyAttr myKey78 = new KeyAttr();
+	KeyAttr myKey78 = new KeyAttr();
 	myKey78.code = 79;
 	myKey78.label = "|" ;
 	myKey78.showChakra = false ;
@@ -970,9 +970,9 @@ KeyAttr myKey78 = new KeyAttr();
 	myKey78.layout = "";
 	myKey.set(78, myKey78);
 
-KeyAttr myKey79 = new KeyAttr();
+	KeyAttr myKey79 = new KeyAttr();
 	myKey79.code = 80;
-	myKey79.label = "" ;
+	myKey79.label = "\u20B9" ;
 	myKey79.showChakra = false ;
 	myKey79.showCustomChakra = false ;
 	myKey79.customChakraLayout = new String[] {} ;
@@ -982,7 +982,7 @@ KeyAttr myKey79 = new KeyAttr();
 	myKey79.layout = "";
 	myKey.set(79, myKey79);
 
-KeyAttr myKey80 = new KeyAttr();
+	KeyAttr myKey80 = new KeyAttr();
 	myKey80.code = 81;
 	myKey80.label = "$" ;
 	myKey80.showChakra = false ;
@@ -994,7 +994,7 @@ KeyAttr myKey80 = new KeyAttr();
 	myKey80.layout = "";
 	myKey.set(80, myKey80);
 
-KeyAttr myKey81 = new KeyAttr();
+	KeyAttr myKey81 = new KeyAttr();
 	myKey81.code = 82;
 	myKey81.label = "%" ;
 	myKey81.showChakra = false ;
@@ -1006,9 +1006,9 @@ KeyAttr myKey81 = new KeyAttr();
 	myKey81.layout = "";
 	myKey.set(81, myKey81);
 
-KeyAttr myKey82 = new KeyAttr();
+	KeyAttr myKey82 = new KeyAttr();
 	myKey82.code = 83;
-	myKey82.label = "" ;
+	myKey82.label = "\u2122" ;
 	myKey82.showChakra = false ;
 	myKey82.showCustomChakra = false ;
 	myKey82.customChakraLayout = new String[] {} ;
@@ -1018,9 +1018,9 @@ KeyAttr myKey82 = new KeyAttr();
 	myKey82.layout = "";
 	myKey.set(82, myKey82);
 
-KeyAttr myKey83 = new KeyAttr();
+	KeyAttr myKey83 = new KeyAttr();
 	myKey83.code = 84;
-	myKey83.label = "" ;
+	myKey83.label = "\u00A9" ;
 	myKey83.showChakra = false ;
 	myKey83.showCustomChakra = false ;
 	myKey83.customChakraLayout = new String[] {} ;
@@ -1030,7 +1030,7 @@ KeyAttr myKey83 = new KeyAttr();
 	myKey83.layout = "";
 	myKey.set(83, myKey83);
 
-KeyAttr myKey84 = new KeyAttr();
+	KeyAttr myKey84 = new KeyAttr();
 	myKey84.code = 85;
 	myKey84.label = "/" ;
 	myKey84.showChakra = false ;
@@ -1042,7 +1042,7 @@ KeyAttr myKey84 = new KeyAttr();
 	myKey84.layout = "";
 	myKey.set(84, myKey84);
 
-KeyAttr myKey85 = new KeyAttr();
+	KeyAttr myKey85 = new KeyAttr();
 	myKey85.code = 86;
 	myKey85.label = "\\" ;
 	myKey85.showChakra = false ;
@@ -1054,7 +1054,7 @@ KeyAttr myKey85 = new KeyAttr();
 	myKey85.layout = "";
 	myKey.set(85, myKey85);
 
-KeyAttr myKey86 = new KeyAttr();
+	KeyAttr myKey86 = new KeyAttr();
 	myKey86.code = 87;
 	myKey86.label = "@" ;
 	myKey86.showChakra = false ;
@@ -1066,7 +1066,7 @@ KeyAttr myKey86 = new KeyAttr();
 	myKey86.layout = "";
 	myKey.set(86, myKey86);
 
-KeyAttr myKey87 = new KeyAttr();
+	KeyAttr myKey87 = new KeyAttr();
 	myKey87.code = 88;
 	myKey87.label = "&" ;
 	myKey87.showChakra = false ;
@@ -1078,9 +1078,9 @@ KeyAttr myKey87 = new KeyAttr();
 	myKey87.layout = "";
 	myKey.set(87, myKey87);
 
-KeyAttr myKey88 = new KeyAttr();
+	KeyAttr myKey88 = new KeyAttr();
 	myKey88.code = 89;
-	myKey88.label = "" ;
+	myKey88.label = "\u0950" ;
 	myKey88.showChakra = false ;
 	myKey88.showCustomChakra = false ;
 	myKey88.customChakraLayout = new String[] {} ;
@@ -1090,9 +1090,9 @@ KeyAttr myKey88 = new KeyAttr();
 	myKey88.layout = "";
 	myKey.set(88, myKey88);
 
-KeyAttr myKey89 = new KeyAttr();
+	KeyAttr myKey89 = new KeyAttr();
 	myKey89.code = 90;
-	myKey89.label = "" ;
+	myKey89.label = "\u00AE" ;
 	myKey89.showChakra = false ;
 	myKey89.showCustomChakra = false ;
 	myKey89.customChakraLayout = new String[] {} ;
@@ -1102,7 +1102,7 @@ KeyAttr myKey89 = new KeyAttr();
 	myKey89.layout = "";
 	myKey.set(89, myKey89);
 
-KeyAttr myKey90 = new KeyAttr();
+	KeyAttr myKey90 = new KeyAttr();
 	myKey90.code = 91;
 	myKey90.label = "~" ;
 	myKey90.showChakra = false ;
@@ -1114,7 +1114,7 @@ KeyAttr myKey90 = new KeyAttr();
 	myKey90.layout = "";
 	myKey.set(90, myKey90);
 
-KeyAttr myKey91 = new KeyAttr();
+	KeyAttr myKey91 = new KeyAttr();
 	myKey91.code = 92;
 	myKey91.label = "<" ;
 	myKey91.showChakra = false ;
@@ -1126,7 +1126,7 @@ KeyAttr myKey91 = new KeyAttr();
 	myKey91.layout = "";
 	myKey.set(91, myKey91);
 
-KeyAttr myKey92 = new KeyAttr();
+	KeyAttr myKey92 = new KeyAttr();
 	myKey92.code = 93;
 	myKey92.label = ">" ;
 	myKey92.showChakra = false ;
@@ -1138,7 +1138,7 @@ KeyAttr myKey92 = new KeyAttr();
 	myKey92.layout = "";
 	myKey.set(92, myKey92);
 
-KeyAttr myKey93 = new KeyAttr();
+	KeyAttr myKey93 = new KeyAttr();
 	myKey93.code = 94;
 	myKey93.label = "^" ;
 	myKey93.showChakra = false ;
@@ -1150,7 +1150,7 @@ KeyAttr myKey93 = new KeyAttr();
 	myKey93.layout = "";
 	myKey.set(93, myKey93);
 
-KeyAttr myKey94 = new KeyAttr();
+	KeyAttr myKey94 = new KeyAttr();
 	myKey94.code = 95;
 	myKey94.label = "" ;
 	myKey94.showChakra = false ;
@@ -1162,7 +1162,7 @@ KeyAttr myKey94 = new KeyAttr();
 	myKey94.layout = "";
 	myKey.set(94, myKey94);
 
-KeyAttr myKey95 = new KeyAttr();
+	KeyAttr myKey95 = new KeyAttr();
 	myKey95.code = 96;
 	myKey95.label = "" ;
 	myKey95.showChakra = false ;
@@ -1174,7 +1174,7 @@ KeyAttr myKey95 = new KeyAttr();
 	myKey95.layout = "";
 	myKey.set(95, myKey95);
 
-KeyAttr myKey96 = new KeyAttr();
+	KeyAttr myKey96 = new KeyAttr();
 	myKey96.code = 97;
 	myKey96.label = "" ;
 	myKey96.showChakra = false ;
@@ -1186,7 +1186,7 @@ KeyAttr myKey96 = new KeyAttr();
 	myKey96.layout = "";
 	myKey.set(96, myKey96);
 
-KeyAttr myKey97 = new KeyAttr();
+	KeyAttr myKey97 = new KeyAttr();
 	myKey97.code = 98;
 	myKey97.label = "" ;
 	myKey97.showChakra = false ;
@@ -1198,7 +1198,7 @@ KeyAttr myKey97 = new KeyAttr();
 	myKey97.layout = "";
 	myKey.set(97, myKey97);
 
-KeyAttr myKey98 = new KeyAttr();
+	KeyAttr myKey98 = new KeyAttr();
 	myKey98.code = 99;
 	myKey98.label = "(" ;
 	myKey98.showChakra = false ;
@@ -1210,7 +1210,7 @@ KeyAttr myKey98 = new KeyAttr();
 	myKey98.layout = "";
 	myKey.set(98, myKey98);
 
-KeyAttr myKey99 = new KeyAttr();
+	KeyAttr myKey99 = new KeyAttr();
 	myKey99.code = 100;
 	myKey99.label = ")" ;
 	myKey99.showChakra = false ;
@@ -1222,7 +1222,7 @@ KeyAttr myKey99 = new KeyAttr();
 	myKey99.layout = "";
 	myKey.set(99, myKey99);
 
-KeyAttr myKey100 = new KeyAttr();
+	KeyAttr myKey100 = new KeyAttr();
 	myKey100.code = 101;
 	myKey100.label = "" ;
 	myKey100.showChakra = false ;
@@ -1234,7 +1234,7 @@ KeyAttr myKey100 = new KeyAttr();
 	myKey100.layout = "";
 	myKey.set(100, myKey100);
 
-KeyAttr myKey101 = new KeyAttr();
+	KeyAttr myKey101 = new KeyAttr();
 	myKey101.code = 102;
 	myKey101.label = "" ;
 	myKey101.showChakra = false ;
@@ -1246,7 +1246,7 @@ KeyAttr myKey101 = new KeyAttr();
 	myKey101.layout = "";
 	myKey.set(101, myKey101);
 
-KeyAttr myKey102 = new KeyAttr();
+	KeyAttr myKey102 = new KeyAttr();
 	myKey102.code = 103;
 	myKey102.label = "" ;
 	myKey102.showChakra = false ;
@@ -1258,7 +1258,7 @@ KeyAttr myKey102 = new KeyAttr();
 	myKey102.layout = "";
 	myKey.set(102, myKey102);
 
-KeyAttr myKey103 = new KeyAttr();
+	KeyAttr myKey103 = new KeyAttr();
 	myKey103.code = 104;
 	myKey103.label = "" ;
 	myKey103.showChakra = false ;
@@ -1270,7 +1270,7 @@ KeyAttr myKey103 = new KeyAttr();
 	myKey103.layout = "";
 	myKey.set(103, myKey103);
 
-KeyAttr myKey104 = new KeyAttr();
+	KeyAttr myKey104 = new KeyAttr();
 	myKey104.code = 105;
 	myKey104.label = "{" ;
 	myKey104.showChakra = false ;
@@ -1282,7 +1282,7 @@ KeyAttr myKey104 = new KeyAttr();
 	myKey104.layout = "";
 	myKey.set(104, myKey104);
 
-KeyAttr myKey105 = new KeyAttr();
+	KeyAttr myKey105 = new KeyAttr();
 	myKey105.code = 106;
 	myKey105.label = "}" ;
 	myKey105.showChakra = false ;
