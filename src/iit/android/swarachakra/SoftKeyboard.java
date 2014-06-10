@@ -3,8 +3,8 @@ package iit.android.swarachakra;
 import iit.android.language.ExceptionHandler;
 import iit.android.language.Language;
 import iit.android.language.english.English;
-import iit.android.language.hindi.MainLanguage;
-import iit.android.language.hindi.MainLanguageExceptionHandler;
+import iit.android.language.telugu.MainLanguage;
+import iit.android.language.telugu.MainLanguageExceptionHandler;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +21,6 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.RelativeLayout;
-
 public class SoftKeyboard extends InputMethodService {
 	private MainKeyboardView mKeyboardView;
 	private Keyboard mKeyboard;

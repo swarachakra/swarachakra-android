@@ -237,14 +237,13 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 	private void setHalant(String text) {
 		if (inHalantMode) {
 			preText = text;
-			mInputConnection.setComposingText(text, 1);
 			updateKeyLabels();
 		} else {
 			preText = text;
 			inHalantMode = true;
 			updateKeyLabels();
 		}
-
+		mInputConnection.setComposingText("", 1);
 	}
 
 	/**
