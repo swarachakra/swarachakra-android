@@ -17,11 +17,11 @@ public class MainLanguageExceptionHandler implements ExceptionHandler {
 	
 	private static final String RA = "\u0930";	
 	private static final String HALANT = "\u094D";
-	private static final String NUKTA = "\u0931";
+	private static final String EYELASHRA = "\u0931";
 	
 	private static final int RAFARCODE = 53;
 	private static final int TRAKARCODE = 52;
-	private static final int NUKTACODE = 51;
+	private static final int EYELASHRACODE = 51;
 	
 	public MainLanguageExceptionHandler(Language lang){
 		main = lang;
@@ -32,8 +32,8 @@ public class MainLanguageExceptionHandler implements ExceptionHandler {
 	public HashMap<Integer, KeyAttr> handleException(int keyCode){
 		HashMap<Integer, KeyAttr> sKeys = new HashMap<Integer, KeyAttr>();
 		switch(keyCode){
-		case NUKTACODE:
-			handleNukta(sKeys);
+		case EYELASHRACODE:
+			handleEyelashRa(sKeys);
 			break;
 		case TRAKARCODE:
 			handleTrakar(sKeys);
@@ -75,9 +75,9 @@ public class MainLanguageExceptionHandler implements ExceptionHandler {
 		}
 	}
 
-	private void handleNukta(HashMap<Integer, KeyAttr> sKeys) {
+	private void handleEyelashRa(HashMap<Integer, KeyAttr> sKeys) {
 		for(KeyAttr key : keyArray){
-			String newLabel = NUKTA + HALANT + mKeys.get(key.code).label;
+			String newLabel = EYELASHRA + HALANT + mKeys.get(key.code).label;
 			key.label = newLabel;
 			key.showChakra = true;
 			sKeys.put(key.code, key);

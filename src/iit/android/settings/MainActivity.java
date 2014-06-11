@@ -11,9 +11,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodInfo;
@@ -69,7 +67,7 @@ public class MainActivity extends FragmentActivity {
 	public void onWindowFocusChanged(final boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
 		if(startSetUp && !endSetUp && hasFocus) {
-			setCorrectView();
+			//setCorrectView();
 		}
 	}
 	
@@ -145,7 +143,7 @@ public class MainActivity extends FragmentActivity {
 		int stageNo = pager.getCurrentItem();
 		switch (stageNo) {
 		case 0:
-			pager.setCurrentItem(1);
+			setCorrectView();;
 			startSetUp = true;
 			break;
 		case 1:
@@ -160,6 +158,19 @@ public class MainActivity extends FragmentActivity {
 		default:
 			break;
 		}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    // Check which request it is that we're responding to
+		Log.d("main", "called onActivityResult");
+		setCorrectView();
+	    if (requestCode == 0) {
+	        Log.d("main","resultCode = " + resultCode);
+	        if (resultCode == RESULT_OK) {
+	        	Log.d("main", "data = " + data);
+	        }
+	    }
 	}
 	
 	public void showInputEnableSettings() {

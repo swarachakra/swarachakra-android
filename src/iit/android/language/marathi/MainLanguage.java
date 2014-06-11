@@ -629,7 +629,7 @@ public class MainLanguage extends Language{
 		myKey50.showCustomChakra = false ;
 		myKey50.customChakraLayout = new String[] {} ;
 		myKey50.showIcon = true ;
-		myKey50.icon = "nukta";
+		myKey50.icon = "eyelashra";
 		myKey50.changeLayout = false ;
 		myKey50.layout = "";
 		myKey50.isException = true;
