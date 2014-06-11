@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 public class CustomFragment extends Fragment {
 
-	public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
-	public static final CustomFragment newInstance(String message)
+	public static final String STAGE_NO = "stageNo";
+	public static final CustomFragment newInstance(int stageNo)
 	{
 		CustomFragment f = new CustomFragment();
 		Bundle bdl = new Bundle(1);
-		bdl.putString(EXTRA_MESSAGE, message);
+		bdl.putInt(STAGE_NO, stageNo);
 		f.setArguments(bdl);
 		return f;
 	}
@@ -23,10 +23,27 @@ public class CustomFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	Bundle savedInstanceState) {
-		String message = getArguments().getString(EXTRA_MESSAGE);
+		int stageNo = getArguments().getInt(STAGE_NO);
 		View v = inflater.inflate(R.layout.fragment_layout, container, false);
 		TextView messageTextView = (TextView) v.findViewById(R.id.textView);
-		messageTextView.setText(message);
+		switch (stageNo) {
+		case 0:	
+			messageTextView.setText("Welcome Fragment");
+			break;
+		case 1:
+			messageTextView.setText("Enable Fragment");
+			break;
+		case 2:
+			messageTextView.setText("Default Fragment");
+			break;
+		case 3:
+			messageTextView.setText("Congrats Fragment");
+			break;
+		default:
+			messageTextView.setText("Something went wrong");
+			break;
+				
+		}
 		return v;
 	}
 }
