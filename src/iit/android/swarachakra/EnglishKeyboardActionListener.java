@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.Context;
 import android.inputmethodservice.Keyboard.Key;
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,11 +28,13 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	private HashMap<Integer, KeyAttr> mKeys;
 	private InputConnection mInputConnection;
 	
+	
 	private boolean isShifted;
 	private boolean inSymbolMode;
 	private boolean isPersistent;
 	private boolean spaceHandled;
 	private boolean shiftHandled;
+	private boolean inQuickSymbolMode;
 	
 	public void initialize(EnglishKeyboardView kv){
 		mKeyboardView = kv;
@@ -46,6 +49,7 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 		isShifted = false;
 		inSymbolMode = false;
 		isPersistent = false;
+		inQuickSymbolMode = false;
 	}
 	
 	public void setSoftKeyboard(SoftKeyboard sk) {
@@ -61,8 +65,8 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	}
 
 	@Override
-	public boolean onTouch(View arg0, MotionEvent arg1) {
-		// TODO Auto-generated method stub
+	public boolean onTouch(View v, MotionEvent me) {
+		
 		return false;
 	}
 
@@ -77,21 +81,32 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 		// TODO Auto-generated method stub
 		spaceHandled = false;
 		shiftHandled = false;
+		if(keyCode == SYMBOLS){
+			inQuickSymbolMode = true;
+			handleSpecialInput(SYMBOLS);
+			Log.d("testing", "on press shift");
+		}
 	}
 
 	@Override
 	public void onRelease(int keyCode) {
+		String label = getLabel(keyCode);
 		if(mKeys.containsKey(keyCode)){
 			if (isShifted && !(isPersistent)) {
-				changeLayout("default");
 				isShifted = false;
+				changeLayout();
 			}
-			commitText(mKeys.get(keyCode).label);
+			commitText(label);
+			if(inQuickSymbolMode){
+				handleSpecialInput(SYMBOLS);
+			}
 		}
 		else{
-			handleSpecialInput(keyCode);
+			if(keyCode != SYMBOLS){
+				handleSpecialInput(keyCode);
+			}
 		}
-		
+		inQuickSymbolMode = false;
 	}
 
 	@Override
@@ -127,13 +142,13 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	public void onLongPress(Key key) {
 		if (key.codes[0] == SHIFT) {
 			if (isShifted && isPersistent) {
-				changeLayout("default");
 				isPersistent = false;
 				isShifted = false;
+				changeLayout();
 			} else {
-				changeLayout("shift");
 				isPersistent = true;
 				isShifted = true;
+				changeLayout();
 			}
 			shiftHandled = true;
 			
@@ -146,16 +161,19 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	}
 	
 	private String getLabel(int keyCode){
-		if(isShifted){
-			return mKeys.get(keyCode + 26).label;
-		}
-		else if(inSymbolMode){
-			if(keyCode == 53){
-				return "'";
+		if(mKeys.containsKey(keyCode)){
+			if(isShifted){
+				return mKeys.get(keyCode + 26).label;
 			}
-			return mKeys.get(keyCode + 54).label;
+			else if(inSymbolMode){
+				if(keyCode == 53){
+					return ",";
+				}
+				return mKeys.get(keyCode + 54).label;
+			}
+			return mKeys.get(keyCode).label;
 		}
-		return mKeys.get(keyCode).label;
+		return "";
 	}
 	
 	/**
@@ -164,11 +182,11 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	 * @param layout
 	 *            name string of the layout resource
 	 */
-	private void changeLayout(int keyCode) {
+	private void changeLayout() {
 		List<Key> keys = mKeyboardView.getKeyboard().getKeys();
 		for(Key key: keys){
-			if(mKeys.containsKey(keyCode)){
-				key.label = getLabel(keyCode);
+			if(mKeys.containsKey(key.codes[0])){
+				key.label = getLabel(key.codes[0]);
 			}
 		}
 		mKeyboardView.invalidateAllKeys();
@@ -197,10 +215,10 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 				if (isShifted) {
 					isShifted = false;
 					isPersistent = false;
-					changeLayout("default");
+					changeLayout();
 				} else {
 					isShifted = true;
-					changeLayout("shift");
+					changeLayout();
 				}
 			}
 		}
@@ -225,13 +243,13 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 			if (inSymbolMode) {
 				inSymbolMode = !(inSymbolMode);
 				if (isPersistent && isShifted) {
-					changeLayout("shift");
+					changeLayout();
 				} else {
-					changeLayout("default");
+					changeLayout();
 				}
 			} else {
 				inSymbolMode = !(inSymbolMode);
-				changeLayout("symbols");
+				changeLayout();
 			}
 		}
 

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import android.content.Context;
 import android.inputmethodservice.Keyboard.Key;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.inputmethod.InputConnection;
 
 public class EnglishKeyboardView extends CustomKeyboardView {
@@ -47,5 +48,10 @@ public class EnglishKeyboardView extends CustomKeyboardView {
 	@Override
 	public void resetInputConnection(InputConnection ic){
 		mActionListener.setInputConnection(ic);
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent me){
+		return super.onTouchEvent(me);
 	}
 }
