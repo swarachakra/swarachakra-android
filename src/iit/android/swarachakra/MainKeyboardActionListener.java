@@ -51,6 +51,7 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 	private int SYMBOLS;
 	private int SHIFT;
 	private int MOVE_THRESHOLD = 0;
+	private int DIM_THRESHOLD = 0;
 	private InputConnection mInputConnection;
 	private int halantEnd;
 	private static final int MSG_SHOW_CHAKRA = 1;
@@ -94,6 +95,7 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 		exceptionCode = 0;
 		preText = "";
 		MOVE_THRESHOLD = (int) mSwaraChakra.getInnerRadius();
+		DIM_THRESHOLD = (int) (mSwaraChakra.getOuterRadius()*0.6);
 	}
 
 	public void setInputConnection(InputConnection ic) {
@@ -498,22 +500,26 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 				mSwaraChakra.setArc(arc);
 				String text = mSwaraChakra.getText();
 				mInputConnection.setComposingText(text, 1);
-				if(mSwaraChakra.getVisibility() == View.VISIBLE){
-					mKeyboardView.setAlpha(0.35f);
-				}
 			}
 		} else {
 			if(isChakraVisible){
 				mSwaraChakra.desetArc();
 				String text = mSwaraChakra.getText();
 				mInputConnection.setComposingText(text, 1);
-				
-				if(mSwaraChakra.getVisibility() == View.VISIBLE){
-					float a = 0;
-					double k = (-0.4)/MOVE_THRESHOLD;
-					a = (float) (0.75+k*radius);
-					mKeyboardView.setAlpha(a);
-				}
+			}
+		}
+		
+		if(radius > DIM_THRESHOLD){
+			if(mSwaraChakra.getVisibility() == View.VISIBLE){
+				mKeyboardView.setAlpha(0.35f);
+			}
+		}
+		else{
+			if(mSwaraChakra.getVisibility() == View.VISIBLE){
+				float a = 0;
+				double k = (-0.45)/DIM_THRESHOLD;
+				a = (float) (0.80+k*radius);
+				mKeyboardView.setAlpha(a);
 			}
 		}
 	}
