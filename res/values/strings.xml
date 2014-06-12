@@ -1,6 +1,8 @@
 <resources>
 
     <string name="app_name">Swarachakra</string>
+    
+    <!-- Special characters -->
     <string name="backspace">400</string>
     <string name="symbols">401</string>
     <string name="english">402</string>
@@ -8,4 +10,7 @@
     <string name="enter">404</string>
     <string name="shift">405</string>
 
+    <!-- Settings -->
+    <!-- Fragments -->
+    <string name="backgroundImage">Background Image</string>
 </resources>

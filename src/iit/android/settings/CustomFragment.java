@@ -25,7 +25,7 @@ public class CustomFragment extends Fragment {
 	Bundle savedInstanceState) {
 		int stageNo = getArguments().getInt(STAGE_NO);
 		View v = inflater.inflate(R.layout.fragment_layout, container, false);
-		TextView messageTextView = (TextView) v.findViewById(R.id.textView);
+		TextView messageTextView = (TextView) v.findViewById(R.id.english);
 		switch (stageNo) {
 		case 0:	
 			messageTextView.setText("Welcome Fragment");

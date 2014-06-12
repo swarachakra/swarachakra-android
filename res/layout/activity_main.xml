@@ -17,13 +17,13 @@
             android:layout_width="50sp"
             android:layout_height="50sp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="19dp"
-            android:layout_marginRight="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="18dp"
             android:background="@drawable/button"
             android:gravity="center_vertical|center_horizontal"
             android:onClick="buttonClick"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
     </RelativeLayout>
 
 </FrameLayout>
