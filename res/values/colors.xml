@@ -2,4 +2,5 @@
 <resources>
    <color name="normal">#00000000</color>
    <color name="pressed">#777777</color>
+   <color name="english_bg">#151515</color>
 </resources>

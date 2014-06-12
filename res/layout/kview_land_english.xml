@@ -4,10 +4,12 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 
-    <iit.android.swarachakra.MainKeyboardView
+    <iit.android.swarachakra.EnglishKeyboardView
         android:id="@+id/keyboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:keyTextSize="24sp" />
+        android:keyTextSize="24sp"
+        android:keyBackground="@drawable/english_key_bg"
+        android:background="@color/english_bg" />
 
 </RelativeLayout>
