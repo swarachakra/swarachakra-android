@@ -1,27 +1,27 @@
 package iit.android.swarachakra;
 
+import iit.android.language.ExceptionHandler;
+import iit.android.language.Language;
+import iit.android.language.telugu.MainLanguageExceptionHandler;
+
+import java.util.HashMap;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.inputmethodservice.Keyboard.Key;
-import android.inputmethodservice.KeyboardView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputConnection;
 import android.widget.PopupWindow;
 
-public class MainKeyboardView extends KeyboardView {
+public class MainKeyboardView extends CustomKeyboardView {
 	public PopupWindow mChakraPopup;
 	public View mPopupParent;
 	public SwaraChakra mSwaraChakra;
 	private MainKeyboardActionListener mActionListener;
 	
-	public final int BACKSPACE = Integer.parseInt(getResources().getString(R.string.backspace));
-	public final int SYMBOLS = Integer.parseInt(getResources().getString(R.string.symbols));
-	public final int ENGLISH = Integer.parseInt(getResources().getString(R.string.english));
-	public final int SPACE = Integer.parseInt(getResources().getString(R.string.space));
-	public final int ENTER = Integer.parseInt(getResources().getString(R.string.enter));
-	public final int SHIFT = Integer.parseInt(getResources().getString(R.string.shift));
 	
 	public MainKeyboardView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -58,11 +58,34 @@ public class MainKeyboardView extends KeyboardView {
 		mPopupParent = this;
 	}
 	
-	public void initListener(){
-		mActionListener = (MainKeyboardActionListener) this.getOnKeyboardActionListener();
+	@Override
+	public void init(SoftKeyboard sk, Language lang, HashMap<Integer, KeyAttr> keys){
+		mActionListener = new MainKeyboardActionListener();
+		this.setOnKeyboardActionListener(mActionListener);
 		mActionListener.initialize(this);
 		this.setOnTouchListener(mActionListener);
+		mActionListener.setKeysMap(keys);
+		mActionListener.setHalantEnd(lang.halantEnd);
+		mActionListener.setSoftKeyboard(sk);
+		InputConnection mInputConnection = sk.getCurrentInputConnection();
+		mActionListener.setInputConnection(mInputConnection);
+		
+		String[] swaras = lang.defaultChakra;
+		boolean halantExists = lang.halantExists;
+		SwaraChakra.setHalantExists(halantExists);
+		SwaraChakra.setDefaultChakra(swaras);
+
+		
+		ExceptionHandler exceptionHandler = new MainLanguageExceptionHandler(lang);
+		mActionListener.setExceptionHandler(exceptionHandler);
+	
 	}
+	
+	@Override
+	public void resetInputConnection(InputConnection ic){
+		mActionListener.setInputConnection(ic);
+	}
+	
 	
 	@Override
 	protected boolean onLongPress(Key key) {
@@ -70,7 +93,8 @@ public class MainKeyboardView extends KeyboardView {
 		return super.onLongPress(key);
 	}
 
-	public void dismissChakra() {
+	@Override
+	public void configChanged() {
 		// TODO Auto-generated method stub
 		mChakraPopup.dismiss();
 	}

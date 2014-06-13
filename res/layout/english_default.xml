@@ -160,18 +160,19 @@
             android:codes="@string/english"
             android:horizontalGap="1.5%p"
             android:keyLabel="Hn"
-            android:keyWidth="8.25%p" />
+            android:keyWidth="9.25%p" />
 
         <Key
             android:codes="@string/space"
             android:horizontalGap="1.75%p"
-            android:keyWidth="48.25%p" />
+            android:keyWidth="46.25%p"
+            android:keyLabel="" />
 
         <Key
             android:codes="53"
             android:horizontalGap="1.75%p"
             android:keyLabel="."
-            android:keyWidth="8.25%p" />
+            android:keyWidth="9.25%p" />
 
         <Key
             android:codes="@string/enter"

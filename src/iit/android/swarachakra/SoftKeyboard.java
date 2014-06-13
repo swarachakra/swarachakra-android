@@ -1,10 +1,8 @@
 package iit.android.swarachakra;
 
-import iit.android.language.ExceptionHandler;
 import iit.android.language.Language;
 import iit.android.language.english.English;
-import iit.android.language.marathi.MainLanguage;
-import iit.android.language.marathi.MainLanguageExceptionHandler;
+import iit.android.language.telugu.MainLanguage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,12 +20,11 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.RelativeLayout;
 public class SoftKeyboard extends InputMethodService {
-	private MainKeyboardView mKeyboardView;
+	private CustomKeyboardView mKeyboardView;
 	private Keyboard mKeyboard;
 	private HashMap<Integer, KeyAttr> mKeys;
 	private HashMap<Integer, KeyAttr> mainKeys;
 	private HashMap<Integer, KeyAttr> englishKeys;
-	private MainKeyboardActionListener mActionListener;
 	private MainLanguage mainLanguage;
 	private English english;
 	private Language language;
@@ -66,24 +63,25 @@ public class SoftKeyboard extends InputMethodService {
 
 		final RelativeLayout layout = (RelativeLayout) getLayoutInflater()
 				.inflate(keyboardViewResourceId, null);
-		mKeyboardView = (MainKeyboardView) layout.findViewById(R.id.keyboard);
+		
+		if(languageName == "main"){
+			mKeyboardView = (MainKeyboardView) layout.findViewById(R.id.keyboard);
+		}
+		else{
+			mKeyboardView = (EnglishKeyboardView) layout.findViewById(R.id.keyboard);
+		}
 
 		int resourceId = getResourceId("default");
 		mKeyboard = new Keyboard(this, resourceId);
 		mKeyboardView.setKeyboard(mKeyboard);
 
-		mActionListener = new MainKeyboardActionListener();
-		mKeyboardView.setOnKeyboardActionListener(mActionListener);
-		initActionListener();
+		mKeyboardView.init(this, language, mKeys);
 
 		updateFullscreenMode();
 
 		setKeys();
 		mKeyboardView.invalidateAllKeys();
 
-		initSwaraChakra();
-
-		printHash();
 
 		return layout;
 	}
@@ -101,7 +99,7 @@ public class SoftKeyboard extends InputMethodService {
 	@Override
 	public void onStartInputView(EditorInfo info, boolean restarting) {
 		mInputConnection = getCurrentInputConnection();
-		mActionListener.setInputConnection(mInputConnection);
+		mKeyboardView.resetInputConnection(mInputConnection);
 		mKeyboardView.setAlpha(1);
 		setImeOptions();
 	}
@@ -116,12 +114,6 @@ public class SoftKeyboard extends InputMethodService {
 	// setExtractViewShown(false);
 	// }
 
-	private void initSwaraChakra() {
-		String[] swaras = language.defaultChakra;
-		boolean halantExists = language.halantExists;
-		SwaraChakra.setHalantExists(halantExists);
-		SwaraChakra.setDefaultChakra(swaras);
-	}
 
 	private void setKeys() {
 		List<Key> keys = mKeyboard.getKeys();
@@ -142,19 +134,6 @@ public class SoftKeyboard extends InputMethodService {
 		setImeOptions();
 	}
 
-	private void initActionListener() {
-		mKeyboardView.initListener();
-		mActionListener.setKeysMap(mKeys);
-		mActionListener.setHalantEnd(language.halantEnd);
-		mActionListener.setSoftKeyboard(this);
-		mInputConnection = getCurrentInputConnection();
-		mActionListener.setInputConnection(mInputConnection);
-
-		if (languageName == "main") {
-			ExceptionHandler exceptionHandler = new MainLanguageExceptionHandler(mainLanguage);
-			mActionListener.setExceptionHandler(exceptionHandler);
-		}
-	}
 
 	public void changeKeyboard(String layoutFile) {
 		int resourceId = getResourceId(layoutFile);
@@ -196,11 +175,10 @@ public class SoftKeyboard extends InputMethodService {
 		mKeyboard = new Keyboard(this, resourceId);
 		mKeyboardView.setKeyboard(mKeyboard);
 
-		initActionListener();
+		mKeyboardView.init(this, language, mKeys);
 
 		setKeys();
 		mKeyboardView.invalidateAllKeys();
-		initSwaraChakra();
 	}
 
 	public void detectDisplayMode() {
@@ -234,7 +212,7 @@ public class SoftKeyboard extends InputMethodService {
 		if (mInputConnection != null) {
 			mInputConnection.setComposingText("", 1);
 			mInputConnection.finishComposingText();
-			mKeyboardView.dismissChakra();
+			mKeyboardView.configChanged();;
 		}
 		super.onConfigurationChanged(newConfig);
 	}
@@ -244,7 +222,7 @@ public class SoftKeyboard extends InputMethodService {
 		EditorInfo ei = getCurrentInputEditorInfo();
 		int options = ei.imeOptions;
 		for(Key k: mKeyboard.getKeys()) {
-			if(k.codes[0]==mKeyboardView.ENTER){
+			if(k.codes[0]==mKeyboardView.getEnterKeyCode()){
 				mEnterKey = k;
 			}		
 		}
@@ -292,10 +270,10 @@ public class SoftKeyboard extends InputMethodService {
 		mKeyboardView.invalidateAllKeys();
 	}
 
-	private void printHash() {
-		for (KeyAttr key : mKeys.values()) {
-			int code = key.code;
-			Log.d("Parser", Integer.toString(code) + " " + key.isException);
-		}
-	}
+//	private void printHash() {
+//		for (KeyAttr key : mKeys.values()) {
+//			int code = key.code;
+//			Log.d("Parser", Integer.toString(code) + " " + key.isException);
+//		}
+//	}
 }
