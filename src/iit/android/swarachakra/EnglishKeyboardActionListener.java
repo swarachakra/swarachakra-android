@@ -1,18 +1,26 @@
 package iit.android.swarachakra;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.inputmethodservice.Keyboard.Key;
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 		OnTouchListener {
@@ -23,10 +31,20 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	private int ENGLISH;
 	private int SYMBOLS;
 	private int SHIFT;
-	private EnglishKeyboardView mKeyboardView;
+	private static EnglishKeyboardView mKeyboardView;
 	private SoftKeyboard mSoftKeyboard;
 	private HashMap<Integer, KeyAttr> mKeys;
 	private InputConnection mInputConnection;
+	private List<Integer> mSpecialKeys;
+	private static HashMap<Integer, Key> mKeyboardKeys;
+	
+	private static final int MSG_SHOW_PREVIEW = 1;
+	private static final int MSG_REMOVE_PREVIEW = 2;
+	private static final int DELAY_BEFORE_PREVIEW = 0;
+	private static final int DELAY_AFTER_PREVIEW = 70;
+	
+	private static PopupWindow mPreviewPopup;
+	private static TextView mPreviewTextView;
 	
 	
 	private boolean isShifted;
@@ -35,6 +53,22 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	private boolean spaceHandled;
 	private boolean shiftHandled;
 	private boolean inQuickSymbolMode;
+	
+	@SuppressLint("HandlerLeak")
+	Handler mHandler = new Handler(){
+		@SuppressLint("NewApi")
+		@Override
+		public void handleMessage(Message msg){
+			switch(msg.what){
+			case MSG_SHOW_PREVIEW:
+				showPreview(msg.arg1);
+				break;
+			case MSG_REMOVE_PREVIEW:
+				removePreview();
+				break;
+			}
+		}
+	};
 	
 	public void initialize(EnglishKeyboardView kv){
 		mKeyboardView = kv;
@@ -45,11 +79,26 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 		ENGLISH = mKeyboardView.ENGLISH;
 		SYMBOLS = mKeyboardView.SYMBOLS;
 		SHIFT = mKeyboardView.SHIFT;
+		mSpecialKeys = new ArrayList<Integer>();
+		mSpecialKeys = Arrays.asList(BACKSPACE, ENTER, SPACE, ENGLISH, SYMBOLS, SHIFT);
+		buildKeyboardKeys();
+		
+		mPreviewPopup = mKeyboardView.mPreviewPopup;
+		mPreviewTextView = mKeyboardView.mPreviewTextView;
 		
 		isShifted = false;
 		inSymbolMode = false;
 		isPersistent = false;
 		inQuickSymbolMode = false;
+	}
+	
+	@SuppressLint("UseSparseArrays")
+	private static void buildKeyboardKeys(){
+		mKeyboardKeys = new HashMap<Integer, Key>();
+		List<Key> keys = mKeyboardView.getKeyboard().getKeys();
+		for(Key key:keys){
+			mKeyboardKeys.put(key.codes[0], key);
+		}
 	}
 	
 	public void setSoftKeyboard(SoftKeyboard sk) {
@@ -66,8 +115,11 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 
 	@Override
 	public boolean onTouch(View v, MotionEvent me) {
-		
-		return false;
+		int action = me.getAction();
+		if(action == MotionEvent.ACTION_UP){
+			mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_REMOVE_PREVIEW), DELAY_AFTER_PREVIEW);
+		}
+		return mKeyboardView.onTouchEvent(me);
 	}
 
 	@Override
@@ -78,13 +130,15 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 
 	@Override
 	public void onPress(int keyCode) {
-		// TODO Auto-generated method stub
 		spaceHandled = false;
 		shiftHandled = false;
 		if(keyCode == SYMBOLS){
 			inQuickSymbolMode = true;
 			handleSpecialInput(SYMBOLS);
 			Log.d("testing", "on press shift");
+		}
+		if(!(mSpecialKeys.contains(keyCode))){
+			mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_SHOW_PREVIEW, keyCode, 0), DELAY_BEFORE_PREVIEW);
 		}
 	}
 
@@ -107,6 +161,39 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 			}
 		}
 		inQuickSymbolMode = false;
+		
+	}
+	
+	private void showPreview(int keyCode){
+		if(keyCode != 0){
+			mHandler.removeMessages(MSG_REMOVE_PREVIEW);
+			
+			Key key = mKeyboardKeys.get(keyCode);
+			int w = 0;
+			int h = 0;
+			int x = 0;
+			int y = 0;
+			w = key.width*2;
+			h = key.height*2;
+			x = key.x - w/4;
+			y = key.y - h;
+			
+			mPreviewTextView.setText(getLabel(keyCode));
+			
+			if(mPreviewPopup.isShowing()){
+				mPreviewPopup.update(x, y, w, h);
+			}
+			else{
+				mPreviewPopup.setWidth(w);
+				mPreviewPopup.setHeight(h);
+				mPreviewPopup.showAtLocation(mKeyboardView, Gravity.NO_GRAVITY, x, y);
+			}
+			mPreviewTextView.setVisibility(View.VISIBLE);
+		}
+	}
+	
+	private static void removePreview(){
+		mPreviewTextView.setVisibility(View.GONE);
 	}
 
 	@Override
@@ -162,14 +249,17 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	
 	private String getLabel(int keyCode){
 		if(mKeys.containsKey(keyCode)){
-			if(isShifted){
-				return mKeys.get(keyCode + 26).label;
-			}
-			else if(inSymbolMode){
+			if(inSymbolMode){
 				if(keyCode == 53){
 					return ",";
 				}
 				return mKeys.get(keyCode + 54).label;
+			}
+			else if(isShifted){
+				if(keyCode == 53){
+					return ".";
+				}
+				return mKeys.get(keyCode + 26).label;
 			}
 			return mKeys.get(keyCode).label;
 		}

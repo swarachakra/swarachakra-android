@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-<iit.android.swarachakra.SwaraChakra 
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
-</LinearLayout>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textColor="@android:color/white"
+    android:background="@android:color/black"
+    android:id="@+id/preview_text_view"
+    android:textSize="24sp"
+    android:textAlignment="center"
+    android:gravity="center|top"
+    android:paddingTop="10dp"
+    />
