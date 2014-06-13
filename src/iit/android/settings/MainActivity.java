@@ -46,7 +46,7 @@ public class MainActivity extends FragmentActivity {
         });
 		
 		b = (Button) findViewById(R.id.Button);
-		b.setText("Start");
+		b.setText(R.string.welcome_button);
 	}
 
 	@Override
@@ -129,15 +129,15 @@ public class MainActivity extends FragmentActivity {
 		int stageNo = pager.getCurrentItem();
 		switch(stageNo) {
 		case 0:
-			b.setText("Start");
+			b.setText(R.string.welcome_button);
 			b.setVisibility(View.VISIBLE);
 			break;
 		case 1:
-			b.setText("Enable");
+			b.setText(R.string.enable_button);
 			b.setVisibility(View.VISIBLE);
 			break;
 		case 2:
-			b.setText("Default");
+			b.setText(R.string.default_button);
 			b.setVisibility(View.VISIBLE);
 			break;
 		case 3:

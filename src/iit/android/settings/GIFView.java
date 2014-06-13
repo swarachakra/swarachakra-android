@@ -2,18 +2,33 @@ package iit.android.settings;
 
 import java.io.IOException;
 import java.io.InputStream;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Movie;
+import android.graphics.Point;
 import android.util.AttributeSet;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 
 public class GIFView extends View{
 
     Movie movie;
     long moviestart;
 
+    WindowManager wm;
+    Display display;
+    Point size = new Point();
+    int screenwidth;
+    int screenheight;
+    int gifheight = 858;
+    int gifwidth = 482;
+    float scaleFactor = (float) 0.7;
+    float scaleWidth;
+    float scaleHeight;
+    
     public GIFView(Context context) throws IOException { 
         super(context);
     }
@@ -24,9 +39,16 @@ public class GIFView extends View{
         super(context, attrs, defStyle);
     }
 
-    @SuppressLint("NewApi") public void loadGIFResource(Context context, int id)
+    @SuppressLint("NewApi") public void loadGIFResource(Context context, int id, int containHeight, int containWidth)
     {
-        //turn off hardware acceleration
+    	wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+    	display = wm.getDefaultDisplay();
+    	display.getSize(size);
+    	screenwidth = size.x;
+    	screenheight = size.y;
+        scaleWidth = (float) ((scaleFactor*screenwidth / (1f*gifwidth)));
+        scaleHeight = (float) ((scaleFactor*screenheight / (1f*gifheight)));
+    	
         this.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         InputStream is=context.getResources().openRawResource(id);
         movie = Movie.decodeStream(is);
@@ -39,7 +61,6 @@ public class GIFView extends View{
             is = context.getResources().getAssets().open(filename);
             movie = Movie.decodeStream(is);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -58,7 +79,8 @@ public class GIFView extends View{
         int relTime;
         relTime = (int)((now - moviestart) % movie.duration());
         movie.setTime(relTime);
-        movie.draw(canvas,10,10);
+        canvas.scale(scaleWidth, scaleHeight);
+        movie.draw(canvas, 0, 0);
         this.invalidate();
     }
 }
