@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <ImageView
-        android:id="@+id/background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/backgroundImage"
-        android:src="@drawable/indian_portrait_background" />
+    android:layout_height="match_parent"
+    android:background="@drawable/grey" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,20 +10,45 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/english"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_marginTop="118dp"
+            android:text="Title"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="75sp" />
 
         <TextView
-            android:id="@+id/hindi"
+            android:id="@+id/instruction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_marginTop="18dp"
+            android:paddingBottom="7sp"
+            android:paddingLeft="30sp"
+            android:paddingRight="30sp"
+            android:paddingTop="7sp"
+            android:text="Instruction"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="25sp" />
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent" >
+        <iit.android.settings.GIFView
+            android:id="@+id/gif"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/backgroundImage"
+            android:scaleX="1"
+            android:visibility="gone" />
+    </LinearLayout>
 
 </FrameLayout>

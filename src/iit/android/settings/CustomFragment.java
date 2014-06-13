@@ -25,22 +25,35 @@ public class CustomFragment extends Fragment {
 	Bundle savedInstanceState) {
 		int stageNo = getArguments().getInt(STAGE_NO);
 		View v = inflater.inflate(R.layout.fragment_layout, container, false);
-		TextView messageTextView = (TextView) v.findViewById(R.id.english);
+		TextView title = (TextView) v.findViewById(R.id.title);
+		TextView instruction = (TextView) v.findViewById(R.id.instruction);
+		GIFView gif = (GIFView) v.findViewById(R.id.gif);
 		switch (stageNo) {
 		case 0:	
-			messageTextView.setText("Welcome Fragment");
+			instruction.setText(R.string.welcome_instruction);
+			title.setText(R.string.welcome_title);
+			gif.setVisibility(View.GONE);
 			break;
 		case 1:
-			messageTextView.setText("Enable Fragment");
+			instruction.setVisibility(View.GONE);
+			title.setVisibility(View.GONE);
+			gif.loadGIFResource(getActivity(),R.drawable.enable);;
+			gif.setVisibility(View.VISIBLE);
 			break;
 		case 2:
-			messageTextView.setText("Default Fragment");
+			instruction.setVisibility(View.GONE);
+			title.setVisibility(View.GONE);
+			gif.loadGIFResource(getActivity(), R.drawable.defaults);;
+			gif.setVisibility(View.VISIBLE);
 			break;
 		case 3:
-			messageTextView.setText("Congrats Fragment");
+			instruction.setVisibility(View.GONE);
+			title.setText("Congrats Fragment");
+			title.setVisibility(View.VISIBLE);
+			gif.setVisibility(View.GONE);
 			break;
 		default:
-			messageTextView.setText("Something went wrong");
+			title.setText("Something went wrong");
 			break;
 				
 		}

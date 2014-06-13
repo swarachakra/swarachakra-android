@@ -8,6 +8,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -67,7 +68,13 @@ public class MainActivity extends FragmentActivity {
 	public void onWindowFocusChanged(final boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
 		if(startSetUp && !endSetUp && hasFocus) {
-			//setCorrectView();
+			final Handler handler = new Handler();
+			handler.postDelayed(new Runnable() {
+			    @Override
+			    public void run() {
+			        setCorrectView();
+			    }
+			}, 500);
 		}
 	}
 	
@@ -164,7 +171,13 @@ public class MainActivity extends FragmentActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    // Check which request it is that we're responding to
 		Log.d("main", "called onActivityResult");
-		setCorrectView();
+		final Handler handler = new Handler();
+		handler.postDelayed(new Runnable() {
+		    @Override
+		    public void run() {
+		        setCorrectView();
+		    }
+		}, 500);
 	    if (requestCode == 0) {
 	        Log.d("main","resultCode = " + resultCode);
 	        if (resultCode == RESULT_OK) {
@@ -186,19 +199,32 @@ public class MainActivity extends FragmentActivity {
 		int stageNumber = getStageNumber();
 		switch(stageNumber) {
 		case 0:
-			pager.setCurrentItem(1, true);
+			moveTo(1);
 			break;
 		case 1:
-			pager.setCurrentItem(2, true);
+			moveTo(2);
 			break;
 		case 2:
-			pager.setCurrentItem(3, true);
+			moveTo(3);
 			break;
 		case 3:
-			pager.setCurrentItem(4, true);
+			moveTo(4);
 		default:
 			Log.d("main", "I'm defaulting");
 			pager.setCurrentItem(0);
+		}
+	}
+	
+	public void moveTo (int destFragment) {
+		int curFragment = pager.getCurrentItem();
+		while (destFragment != curFragment) {
+			if(destFragment > curFragment) {
+				pager.setCurrentItem(curFragment+1, true);
+			}
+			else {
+				pager.setCurrentItem(curFragment-1, true);
+			}
+			curFragment = pager.getCurrentItem();
 		}
 	}
 
