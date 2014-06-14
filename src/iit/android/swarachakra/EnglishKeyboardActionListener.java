@@ -41,7 +41,7 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	private static final int MSG_SHOW_PREVIEW = 1;
 	private static final int MSG_REMOVE_PREVIEW = 2;
 	private static final int DELAY_BEFORE_PREVIEW = 0;
-	private static final int DELAY_AFTER_PREVIEW = 70;
+	private static final int DELAY_AFTER_PREVIEW = 140;
 	
 	private static PopupWindow mPreviewPopup;
 	private static TextView mPreviewTextView;
@@ -115,17 +115,28 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 
 	@Override
 	public boolean onTouch(View v, MotionEvent me) {
-		int action = me.getAction();
-		if(action == MotionEvent.ACTION_UP){
+		int action = me.getActionMasked();
+		if(action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_POINTER_UP){
 			mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_REMOVE_PREVIEW), DELAY_AFTER_PREVIEW);
+		}
+		else if(action == MotionEvent.ACTION_MOVE){
+			List<Key> keys = mKeyboardView.getKeyboard().getKeys();
+			for(Key key:keys){
+				if(key.pressed == true && !(mSpecialKeys.contains(key.codes[0]))){
+					mHandler.removeMessages(MSG_REMOVE_PREVIEW);
+					mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_SHOW_PREVIEW, key.codes[0], 0), DELAY_BEFORE_PREVIEW);
+				}
+				else if(key.pressed == true && (mSpecialKeys.contains(key.codes[0]))){
+					mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_REMOVE_PREVIEW), DELAY_AFTER_PREVIEW);
+				}
+			}
 		}
 		return mKeyboardView.onTouchEvent(me);
 	}
 
 	@Override
 	public void onKey(int arg0, int[] arg1) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -138,6 +149,7 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 			Log.d("testing", "on press shift");
 		}
 		if(!(mSpecialKeys.contains(keyCode))){
+			mHandler.removeMessages(MSG_REMOVE_PREVIEW);
 			mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_SHOW_PREVIEW, keyCode, 0), DELAY_BEFORE_PREVIEW);
 		}
 	}
@@ -166,7 +178,6 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	
 	private void showPreview(int keyCode){
 		if(keyCode != 0){
-			mHandler.removeMessages(MSG_REMOVE_PREVIEW);
 			
 			Key key = mKeyboardKeys.get(keyCode);
 			int w = 0;
@@ -174,9 +185,9 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 			int x = 0;
 			int y = 0;
 			w = key.width*2;
-			h = key.height*2;
+			h = key.height*18/10;
 			x = key.x - w/4;
-			y = key.y - h;
+			y = key.y - h + (int)0.1*key.y;
 			
 			mPreviewTextView.setText(getLabel(keyCode));
 			
@@ -192,7 +203,7 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 		}
 	}
 	
-	private static void removePreview(){
+	private void removePreview(){
 		mPreviewTextView.setVisibility(View.GONE);
 	}
 
@@ -204,25 +215,25 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 
 	@Override
 	public void swipeDown() {
-		// TODO Auto-generated method stub
+		removePreview();
 
 	}
 
 	@Override
 	public void swipeLeft() {
-		// TODO Auto-generated method stub
+		removePreview();
 
 	}
 
 	@Override
 	public void swipeRight() {
-		// TODO Auto-generated method stub
+		removePreview();
 
 	}
 
 	@Override
 	public void swipeUp() {
-		// TODO Auto-generated method stub
+		removePreview();
 
 	}
 	

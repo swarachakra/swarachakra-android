@@ -51,7 +51,6 @@ public class EnglishKeyboardView extends CustomKeyboardView {
 	public void init(SoftKeyboard sk, Language lang, HashMap<Integer, KeyAttr> keys){
 		mKeys = keys;
 		
-		
 		mActionListener = new EnglishKeyboardActionListener();
 		this.setOnKeyboardActionListener(mActionListener);
 		this.setOnTouchListener(mActionListener);
