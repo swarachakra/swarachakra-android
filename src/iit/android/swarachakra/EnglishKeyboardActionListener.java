@@ -184,9 +184,9 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 			int h = 0;
 			int x = 0;
 			int y = 0;
-			w = key.width*2;
-			h = key.height*18/10;
-			x = key.x - w/4;
+			w = key.width*5/3;
+			h = key.height*5/3;
+			x = key.x - w/5;
 			y = key.y - h + (int)0.1*key.y;
 			
 			mPreviewTextView.setText(getLabel(keyCode));

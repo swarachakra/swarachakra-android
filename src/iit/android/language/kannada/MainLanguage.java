@@ -1,4 +1,4 @@
-package iit.android.language.telugu;
+package iit.android.language.kannada;
 
 import iit.android.language.Language;
 import iit.android.swarachakra.KeyAttr;
@@ -11,13 +11,13 @@ import android.annotation.SuppressLint;
 public class MainLanguage extends Language {
 
 	public MainLanguage() {
-		name = "telugu";
+		name = "kannada";
 		nKeys = 106;
 		myKey = new ArrayList<KeyAttr>(nKeys);
-		defaultChakra = new String[] { "\u0c4d", "\u0c3e", "\u0c3f", "\u0c40",
-				"\u0c41", "\u0c42", "\u0c46", "\u0c47", "\u0c4a", "\u0c4b" };
+		defaultChakra = new String[] { "\u0CCD", "\u0CBE", "\u0CBF", "\u0CC0",
+				"\u0CC1", "\u0CC2", "\u0CC5", "\u0CC6", "\u0CCA", "\u0CCB" };
 		halantExists = true;
-		halantEnd = 35;
+		halantEnd = 37;
 
 		KeyAttr tempKey = new KeyAttr();
 		for (int i = 0; i < nKeys; i++) {
@@ -26,7 +26,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey0 = new KeyAttr();
 		myKey0.code = 1;
-		myKey0.label = "\u0c15";
+		myKey0.label = "\u0C95";
 		myKey0.showChakra = true;
 		myKey0.showCustomChakra = false;
 		myKey0.customChakraLayout = new String[] {};
@@ -38,7 +38,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey1 = new KeyAttr();
 		myKey1.code = 2;
-		myKey1.label = "\u0c16";
+		myKey1.label = "\u0C96";
 		myKey1.showChakra = true;
 		myKey1.showCustomChakra = false;
 		myKey1.customChakraLayout = new String[] {};
@@ -50,7 +50,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey2 = new KeyAttr();
 		myKey2.code = 3;
-		myKey2.label = "\u0c17";
+		myKey2.label = "\u0C97";
 		myKey2.showChakra = true;
 		myKey2.showCustomChakra = false;
 		myKey2.customChakraLayout = new String[] {};
@@ -62,7 +62,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey3 = new KeyAttr();
 		myKey3.code = 4;
-		myKey3.label = "\u0c18";
+		myKey3.label = "\u0C98";
 		myKey3.showChakra = true;
 		myKey3.showCustomChakra = false;
 		myKey3.customChakraLayout = new String[] {};
@@ -74,7 +74,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey4 = new KeyAttr();
 		myKey4.code = 5;
-		myKey4.label = "\u0c19";
+		myKey4.label = "\u0C99";
 		myKey4.showChakra = true;
 		myKey4.showCustomChakra = false;
 		myKey4.customChakraLayout = new String[] {};
@@ -86,7 +86,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey5 = new KeyAttr();
 		myKey5.code = 6;
-		myKey5.label = "\u0c1a";
+		myKey5.label = "\u0C9A";
 		myKey5.showChakra = true;
 		myKey5.showCustomChakra = false;
 		myKey5.customChakraLayout = new String[] {};
@@ -98,7 +98,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey6 = new KeyAttr();
 		myKey6.code = 7;
-		myKey6.label = "\u0c1b";
+		myKey6.label = "\u0C9B";
 		myKey6.showChakra = true;
 		myKey6.showCustomChakra = false;
 		myKey6.customChakraLayout = new String[] {};
@@ -110,7 +110,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey7 = new KeyAttr();
 		myKey7.code = 8;
-		myKey7.label = "\u0c1c";
+		myKey7.label = "\u0C9C";
 		myKey7.showChakra = true;
 		myKey7.showCustomChakra = false;
 		myKey7.customChakraLayout = new String[] {};
@@ -122,7 +122,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey8 = new KeyAttr();
 		myKey8.code = 9;
-		myKey8.label = "\u0c1d";
+		myKey8.label = "\u0C9D";
 		myKey8.showChakra = true;
 		myKey8.showCustomChakra = false;
 		myKey8.customChakraLayout = new String[] {};
@@ -134,7 +134,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey9 = new KeyAttr();
 		myKey9.code = 10;
-		myKey9.label = "\u0c1e";
+		myKey9.label = "\u0C9E";
 		myKey9.showChakra = true;
 		myKey9.showCustomChakra = false;
 		myKey9.customChakraLayout = new String[] {};
@@ -146,7 +146,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey10 = new KeyAttr();
 		myKey10.code = 11;
-		myKey10.label = "\u0c1f";
+		myKey10.label = "\u0C9F";
 		myKey10.showChakra = true;
 		myKey10.showCustomChakra = false;
 		myKey10.customChakraLayout = new String[] {};
@@ -158,7 +158,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey11 = new KeyAttr();
 		myKey11.code = 12;
-		myKey11.label = "\u0c20";
+		myKey11.label = "\u0CA0";
 		myKey11.showChakra = true;
 		myKey11.showCustomChakra = false;
 		myKey11.customChakraLayout = new String[] {};
@@ -170,7 +170,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey12 = new KeyAttr();
 		myKey12.code = 13;
-		myKey12.label = "\u0c21";
+		myKey12.label = "\u0CA1";
 		myKey12.showChakra = true;
 		myKey12.showCustomChakra = false;
 		myKey12.customChakraLayout = new String[] {};
@@ -182,7 +182,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey13 = new KeyAttr();
 		myKey13.code = 14;
-		myKey13.label = "\u0c22";
+		myKey13.label = "\u0CA2";
 		myKey13.showChakra = true;
 		myKey13.showCustomChakra = false;
 		myKey13.customChakraLayout = new String[] {};
@@ -194,7 +194,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey14 = new KeyAttr();
 		myKey14.code = 15;
-		myKey14.label = "\u0c23";
+		myKey14.label = "\u0CA3";
 		myKey14.showChakra = true;
 		myKey14.showCustomChakra = false;
 		myKey14.customChakraLayout = new String[] {};
@@ -206,7 +206,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey15 = new KeyAttr();
 		myKey15.code = 16;
-		myKey15.label = "\u0c24";
+		myKey15.label = "\u0CA4";
 		myKey15.showChakra = true;
 		myKey15.showCustomChakra = false;
 		myKey15.customChakraLayout = new String[] {};
@@ -218,7 +218,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey16 = new KeyAttr();
 		myKey16.code = 17;
-		myKey16.label = "\u0c25";
+		myKey16.label = "\u0CA5";
 		myKey16.showChakra = true;
 		myKey16.showCustomChakra = false;
 		myKey16.customChakraLayout = new String[] {};
@@ -230,7 +230,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey17 = new KeyAttr();
 		myKey17.code = 18;
-		myKey17.label = "\u0c26";
+		myKey17.label = "\u0CA6";
 		myKey17.showChakra = true;
 		myKey17.showCustomChakra = false;
 		myKey17.customChakraLayout = new String[] {};
@@ -242,7 +242,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey18 = new KeyAttr();
 		myKey18.code = 19;
-		myKey18.label = "\u0c27";
+		myKey18.label = "\u0CA7";
 		myKey18.showChakra = true;
 		myKey18.showCustomChakra = false;
 		myKey18.customChakraLayout = new String[] {};
@@ -254,7 +254,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey19 = new KeyAttr();
 		myKey19.code = 20;
-		myKey19.label = "\u0c28";
+		myKey19.label = "\u0CA8";
 		myKey19.showChakra = true;
 		myKey19.showCustomChakra = false;
 		myKey19.customChakraLayout = new String[] {};
@@ -266,7 +266,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey20 = new KeyAttr();
 		myKey20.code = 21;
-		myKey20.label = "\u0c2a";
+		myKey20.label = "\u0CAA";
 		myKey20.showChakra = true;
 		myKey20.showCustomChakra = false;
 		myKey20.customChakraLayout = new String[] {};
@@ -278,7 +278,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey21 = new KeyAttr();
 		myKey21.code = 22;
-		myKey21.label = "\u0c2b";
+		myKey21.label = "\u0CAB";
 		myKey21.showChakra = true;
 		myKey21.showCustomChakra = false;
 		myKey21.customChakraLayout = new String[] {};
@@ -290,7 +290,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey22 = new KeyAttr();
 		myKey22.code = 23;
-		myKey22.label = "\u0c2c";
+		myKey22.label = "\u0CAC";
 		myKey22.showChakra = true;
 		myKey22.showCustomChakra = false;
 		myKey22.customChakraLayout = new String[] {};
@@ -302,7 +302,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey23 = new KeyAttr();
 		myKey23.code = 24;
-		myKey23.label = "\u0c2d";
+		myKey23.label = "\u0CAD";
 		myKey23.showChakra = true;
 		myKey23.showCustomChakra = false;
 		myKey23.customChakraLayout = new String[] {};
@@ -314,7 +314,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey24 = new KeyAttr();
 		myKey24.code = 25;
-		myKey24.label = "\u0c2e";
+		myKey24.label = "\u0CAE";
 		myKey24.showChakra = true;
 		myKey24.showCustomChakra = false;
 		myKey24.customChakraLayout = new String[] {};
@@ -326,7 +326,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey25 = new KeyAttr();
 		myKey25.code = 26;
-		myKey25.label = "\u0c2f";
+		myKey25.label = "\u0CAF";
 		myKey25.showChakra = true;
 		myKey25.showCustomChakra = false;
 		myKey25.customChakraLayout = new String[] {};
@@ -338,7 +338,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey26 = new KeyAttr();
 		myKey26.code = 27;
-		myKey26.label = "\u0c30";
+		myKey26.label = "\u0CB0";
 		myKey26.showChakra = true;
 		myKey26.showCustomChakra = false;
 		myKey26.customChakraLayout = new String[] {};
@@ -350,7 +350,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey27 = new KeyAttr();
 		myKey27.code = 28;
-		myKey27.label = "\u0c32";
+		myKey27.label = "\u0CB2";
 		myKey27.showChakra = true;
 		myKey27.showCustomChakra = false;
 		myKey27.customChakraLayout = new String[] {};
@@ -362,7 +362,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey28 = new KeyAttr();
 		myKey28.code = 29;
-		myKey28.label = "\u0c35";
+		myKey28.label = "\u0CB5";
 		myKey28.showChakra = true;
 		myKey28.showCustomChakra = false;
 		myKey28.customChakraLayout = new String[] {};
@@ -374,7 +374,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey29 = new KeyAttr();
 		myKey29.code = 30;
-		myKey29.label = "\u0c36";
+		myKey29.label = "\u0CB6";
 		myKey29.showChakra = true;
 		myKey29.showCustomChakra = false;
 		myKey29.customChakraLayout = new String[] {};
@@ -386,7 +386,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey30 = new KeyAttr();
 		myKey30.code = 31;
-		myKey30.label = "\u0c37";
+		myKey30.label = "\u0CB7";
 		myKey30.showChakra = true;
 		myKey30.showCustomChakra = false;
 		myKey30.customChakraLayout = new String[] {};
@@ -398,7 +398,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey31 = new KeyAttr();
 		myKey31.code = 32;
-		myKey31.label = "\u0c38";
+		myKey31.label = "\u0CB8";
 		myKey31.showChakra = true;
 		myKey31.showCustomChakra = false;
 		myKey31.customChakraLayout = new String[] {};
@@ -410,7 +410,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey32 = new KeyAttr();
 		myKey32.code = 33;
-		myKey32.label = "\u0c39";
+		myKey32.label = "\u0CB9";
 		myKey32.showChakra = true;
 		myKey32.showCustomChakra = false;
 		myKey32.customChakraLayout = new String[] {};
@@ -422,7 +422,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey33 = new KeyAttr();
 		myKey33.code = 34;
-		myKey33.label = "\u0c33";
+		myKey33.label = "\u0CB3";
 		myKey33.showChakra = true;
 		myKey33.showCustomChakra = false;
 		myKey33.customChakraLayout = new String[] {};
@@ -434,7 +434,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey34 = new KeyAttr();
 		myKey34.code = 35;
-		myKey34.label = "\u0c31";
+		myKey34.label = "\u0C95\u0CCD\u0CB7";
 		myKey34.showChakra = true;
 		myKey34.showCustomChakra = false;
 		myKey34.customChakraLayout = new String[] {};
@@ -446,12 +446,10 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey35 = new KeyAttr();
 		myKey35.code = 36;
-		myKey35.label = "\u0c05";
+		myKey35.label = "\u0C9C\u0CCD\u0C9E";
 		myKey35.showChakra = true;
-		myKey35.showCustomChakra = true;
-		myKey35.customChakraLayout = new String[] { "", "\u0c06", "\u0c07",
-				"\u0c08", "\u0c09", "\u0c0a", "\u0c0e", "\u0c0f", "\u0c12",
-				"\u0c13" };
+		myKey35.showCustomChakra = false;
+		myKey35.customChakraLayout = new String[] {};
 		myKey35.showIcon = false;
 		myKey35.icon = "";
 		myKey35.changeLayout = false;
@@ -460,12 +458,10 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey36 = new KeyAttr();
 		myKey36.code = 37;
-		myKey36.label = "\u0c3e";
+		myKey36.label = "\u0CB1";
 		myKey36.showChakra = true;
-		myKey36.showCustomChakra = true;
-		myKey36.customChakraLayout = new String[] { "\u0c4d", "\u0c3e",
-				"\u0c3f", "\u0c40", "\u0c41", "\u0c42", "\u0c46", "\u0c47",
-				"\u0c4a", "\u0c4b" };
+		myKey36.showCustomChakra = false;
+		myKey36.customChakraLayout = new String[] {};
 		myKey36.showIcon = false;
 		myKey36.icon = "";
 		myKey36.changeLayout = false;
@@ -474,8 +470,8 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey37 = new KeyAttr();
 		myKey37.code = 38;
-		myKey37.label = "\u0c0b";
-		myKey37.showChakra = false;
+		myKey37.label = "\u0CBE";
+		myKey37.showChakra = true;
 		myKey37.showCustomChakra = false;
 		myKey37.customChakraLayout = new String[] {};
 		myKey37.showIcon = false;
@@ -486,10 +482,12 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey38 = new KeyAttr();
 		myKey38.code = 39;
-		myKey38.label = "\u0c10";
-		myKey38.showChakra = false;
-		myKey38.showCustomChakra = false;
-		myKey38.customChakraLayout = new String[] {};
+		myKey38.label = "\u0C90";
+		myKey38.showChakra = true;
+		myKey38.showCustomChakra = true;
+		myKey38.customChakraLayout = new String[] {"", "\u0C94", "\u0C8B",
+				"\u0CC3", "\u0CE0", "\u0CC4", "\u0C8C", "\u0CE1", "\u0CBD",
+				"\u0CBC" };
 		myKey38.showIcon = false;
 		myKey38.icon = "";
 		myKey38.changeLayout = false;
@@ -498,10 +496,12 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey39 = new KeyAttr();
 		myKey39.code = 40;
-		myKey39.label = "\u0c14";
-		myKey39.showChakra = false;
-		myKey39.showCustomChakra = false;
-		myKey39.customChakraLayout = new String[] {};
+		myKey39.label = "\u0C85";
+		myKey39.showChakra = true;
+		myKey39.showCustomChakra = true;
+		myKey39.customChakraLayout = new String[] { "","\u0C86", "\u0C87",
+				"\u0C88", "\u0C89", "\u0C8A", "\u0C8E", "\u0C8F", "\u0C92",
+				"\u0C93" };
 		myKey39.showIcon = false;
 		myKey39.icon = "";
 		myKey39.changeLayout = false;
@@ -522,7 +522,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey41 = new KeyAttr();
 		myKey41.code = 42;
-		myKey41.label = "\u002c";
+		myKey41.label = "\u02cc";
 		myKey41.showChakra = false;
 		myKey41.showCustomChakra = false;
 		myKey41.customChakraLayout = new String[] {};
@@ -558,7 +558,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey44 = new KeyAttr();
 		myKey44.code = 45;
-		myKey44.label = "\u002d";
+		myKey44.label = "|";
 		myKey44.showChakra = false;
 		myKey44.showCustomChakra = false;
 		myKey44.customChakraLayout = new String[] {};
@@ -582,7 +582,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey46 = new KeyAttr();
 		myKey46.code = 47;
-		myKey46.label = "'";
+		myKey46.label = "\'";
 		myKey46.showChakra = false;
 		myKey46.showCustomChakra = false;
 		myKey46.customChakraLayout = new String[] {};
@@ -594,7 +594,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey47 = new KeyAttr();
 		myKey47.code = 48;
-		myKey47.label = "\u0c02";
+		myKey47.label = "\u0C82";
 		myKey47.showChakra = false;
 		myKey47.showCustomChakra = false;
 		myKey47.customChakraLayout = new String[] {};
@@ -606,7 +606,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey48 = new KeyAttr();
 		myKey48.code = 49;
-		myKey48.label = "\u0c03";
+		myKey48.label = "\u0C83";
 		myKey48.showChakra = false;
 		myKey48.showCustomChakra = false;
 		myKey48.customChakraLayout = new String[] {};
@@ -618,7 +618,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey49 = new KeyAttr();
 		myKey49.code = 50;
-		myKey49.label = "\u0c48";
+		myKey49.label = "\u0CC8";
 		myKey49.showChakra = false;
 		myKey49.showCustomChakra = false;
 		myKey49.customChakraLayout = new String[] {};
@@ -630,7 +630,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey50 = new KeyAttr();
 		myKey50.code = 51;
-		myKey50.label = "\u0c4c";
+		myKey50.label = "\u0CCC";
 		myKey50.showChakra = false;
 		myKey50.showCustomChakra = false;
 		myKey50.customChakraLayout = new String[] {};
@@ -642,7 +642,7 @@ public class MainLanguage extends Language {
 
 		KeyAttr myKey51 = new KeyAttr();
 		myKey51.code = 52;
-		myKey51.label = "\u0c43";
+		myKey51.label = "\u0CB0\u0CCD\u0C95";
 		myKey51.showChakra = false;
 		myKey51.showCustomChakra = false;
 		myKey51.customChakraLayout = new String[] {};
@@ -650,11 +650,12 @@ public class MainLanguage extends Language {
 		myKey51.icon = "";
 		myKey51.changeLayout = false;
 		myKey51.layout = "";
+		myKey51.isException = true;
 		myKey.set(51, myKey51);
 
 		KeyAttr myKey52 = new KeyAttr();
 		myKey52.code = 53;
-		myKey52.label = "\u0c44";
+		myKey52.label = "\u0C9F\u0CCD\u0CB0";
 		myKey52.showChakra = false;
 		myKey52.showCustomChakra = false;
 		myKey52.customChakraLayout = new String[] {};
@@ -662,6 +663,7 @@ public class MainLanguage extends Language {
 		myKey52.icon = "";
 		myKey52.changeLayout = false;
 		myKey52.layout = "";
+		myKey52.isException = true;
 		myKey.set(52, myKey52);
 
 		KeyAttr myKey53 = new KeyAttr();
@@ -1299,7 +1301,6 @@ public class MainLanguage extends Language {
 		myKey105.changeLayout = false;
 		myKey105.layout = "";
 		myKey.set(105, myKey105);
-
 	}
 
 	@Override
