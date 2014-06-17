@@ -41,8 +41,10 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 
 	private static final int MSG_SHOW_PREVIEW = 1;
 	private static final int MSG_REMOVE_PREVIEW = 2;
+	private static final int MSG_STOP_DOUBLE_TAP = 3;
 	private static final int DELAY_BEFORE_PREVIEW = 0;
 	private static final int DELAY_AFTER_PREVIEW = 140;
+	private static final int DELAY_SHIFT_DOUBLE_TAP = 200;
 
 	private static PopupWindow mPreviewPopup;
 	private static TextView mPreviewTextView;
@@ -54,6 +56,7 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	private boolean spaceHandled;
 	private boolean shiftHandled;
 	private boolean inQuickSymbolMode;
+	private boolean isDoubleTapReady;
 
 	@SuppressLint("HandlerLeak")
 	Handler mHandler = new Handler() {
@@ -66,6 +69,9 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 				break;
 			case MSG_REMOVE_PREVIEW:
 				removePreview();
+				break;
+			case MSG_STOP_DOUBLE_TAP:
+				isDoubleTapReady = false;
 				break;
 			}
 		}
@@ -93,6 +99,7 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 		inMoreSymbolMode = false;
 		isPersistent = false;
 		inQuickSymbolMode = false;
+		isDoubleTapReady = false;
 	}
 
 	@SuppressLint("UseSparseArrays")
@@ -362,13 +369,22 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	private void handleSpecialInput(int keyCode) {
 		if (keyCode == SHIFT && !shiftHandled) {
 			if (!inSymbolMode) {
-				if (isShifted) {
-					isShifted = false;
-					isPersistent = false;
-					changeLayout();
-				} else {
+				if(isDoubleTapReady){
 					isShifted = true;
+					isPersistent = true;
+					isDoubleTapReady = false;
 					changeLayout();
+				}else{
+					if (isShifted) {
+						isShifted = false;
+						isPersistent = false;
+						changeLayout();
+					} else {
+						isShifted = true;
+						changeLayout();
+					}
+					isDoubleTapReady = true;
+					mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_STOP_DOUBLE_TAP), DELAY_SHIFT_DOUBLE_TAP);
 				}
 			} else {
 				inMoreSymbolMode = !(inMoreSymbolMode);
