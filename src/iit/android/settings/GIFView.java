@@ -64,6 +64,21 @@ public class GIFView extends View{
             e.printStackTrace();
         }
     }
+    
+    public int getMarginLeft() {
+    	int margin = (int) (screenwidth * (1-scaleFactor) * 0.5);
+    	return margin;
+    }
+    
+    public int getMarginTop() {
+    	int margin = (int) (screenheight * 0.02);
+    	return margin;
+    }
+    
+    public int getMarginBottom() {
+    	int margin = screenheight - getMeasuredHeight() - getMarginTop();
+    	return margin;
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
