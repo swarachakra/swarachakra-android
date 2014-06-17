@@ -299,13 +299,8 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 		return "";
 	}
 
-	/**
-	 * Changes the layout of the keyboard
-	 * 
-	 * @param layout
-	 *            name string of the layout resource
-	 */
-	private void changeLayout() {
+	
+	public void changeLayout() {
 		List<Key> keys = mKeyboardView.getKeyboard().getKeys();
 		for (Key key : keys) {
 			if (mKeys.containsKey(key.codes[0])) {
@@ -343,6 +338,8 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 					} else {
 						key.label = "123";
 					}
+				} else if (code == ENGLISH){
+					key.label = mSoftKeyboard.mainLanguageSymbol;
 				}
 			}
 		}
