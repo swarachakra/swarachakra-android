@@ -33,7 +33,15 @@ public class SoftKeyboard extends InputMethodService {
 	private Context mContext;
 	private String displayMode;
 	private Key mEnterKey;
+	private String extractedText;
 
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		Installation.id(getApplicationContext());
+        extractedText="";
+        Log.d("layout", "called onCreate");
+	}
 	@Override
 	public void onInitializeInterface() {
 		mainLanguage = new MainLanguage();
