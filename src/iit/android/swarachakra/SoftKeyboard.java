@@ -18,7 +18,13 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.RelativeLayout;
+/**
+ * Input Method Service that runs when the keyboard is up and manages the whole life cycle of the keyboard 
+ * @author Manideep Polireddi, Madhu Kiran
+ *
+ */
 public class SoftKeyboard extends InputMethodService {
+	
 	private CustomKeyboardView mKeyboardView;
 	private Keyboard mKeyboard;
 	private HashMap<Integer, KeyAttr> mKeys;
@@ -103,7 +109,11 @@ public class SoftKeyboard extends InputMethodService {
 		mKeyLogger.writeToLocalStorage();
 		mKeyLogger.extractedText="";
 	}
-
+	
+	/**
+	 * Generates the layout resource id for the keyboard view based on the displayMode and current language
+	 * @return layout resource id of the keyboard view to be shown 
+	 */
 	private int getKeyboardViewResourceId() {
 		String file = "kview_" + displayMode + languageName;
 		Log.d("chakra", "filename = " + file);
@@ -126,6 +136,9 @@ public class SoftKeyboard extends InputMethodService {
 		return false;
 	}
 
+	/**
+	 * sets the labels to the keys on the keyboard 
+	 */
 	private void setKeys() {
 		List<Key> keys = mKeyboard.getKeys();
 		for (Key key : keys) {
@@ -145,7 +158,10 @@ public class SoftKeyboard extends InputMethodService {
 		setImeOptions();
 	}
 
-
+	/**
+	 * changes the keyboard in the keyboardView
+	 * @param layoutFile	layout id of the layout to be loaded into the keyboardView
+	 */
 	public void changeKeyboard(String layoutFile) {
 		int resourceId = getResourceId(layoutFile);
 		if (resourceId != 0) {
@@ -156,7 +172,11 @@ public class SoftKeyboard extends InputMethodService {
 			Log.d("layout", "you suck");
 		}
 	}
-
+	
+	/**
+	 * sets the current language and keys hashmap according to the language
+	 * @param name	name of the language
+	 */
 	public void setLanguage(String name) {
 		languageName = name;
 		if (name == "english") {
@@ -167,7 +187,10 @@ public class SoftKeyboard extends InputMethodService {
 			mKeys = mainKeys;
 		}
 	}
-
+	
+	/**
+	 * Changes the language of the keyboard from english to main language and vice-versa
+	 */
 	public void changeLanguage() {
 		if (languageName == "main") {
 			language = english;
@@ -180,18 +203,10 @@ public class SoftKeyboard extends InputMethodService {
 		}
 		setInputView(onCreateInputView());
 	}
-
-	public void restartKeyboard() {
-		int resourceId = getResourceId("default");
-		mKeyboard = new Keyboard(this, resourceId);
-		mKeyboardView.setKeyboard(mKeyboard);
-
-		mKeyboardView.init(this, language, mKeys);
-
-		setKeys();
-		mKeyboardView.invalidateAllKeys();
-	}
-
+	
+	/**
+	 * Detects the display config(landscape or portrait) and sets the displayMode accordingly
+	 */
 	public void detectDisplayMode() {
 		int dispMode = getResources().getConfiguration().orientation;
 
@@ -202,6 +217,11 @@ public class SoftKeyboard extends InputMethodService {
 		}
 	}
 
+	/**
+	 * Gets the layout file resource id of the keyboard based on displayMode and languageName 
+	 * @param layoutFile	layout of the keyboard whose resource id is to be returned
+	 * @return Resource id of the layout file of the keyboard to be shown 
+	 */
 	public int getResourceId(String layoutFile) {
 		int resourceId = 0;
 		resourceId = getResources().getIdentifier(
@@ -210,9 +230,14 @@ public class SoftKeyboard extends InputMethodService {
 		return resourceId;
 	}
 
-	public int getDrawableId(String layoutFile) {
+	/**
+	 * Gets the resource id of the drawable
+	 * @param drawable	drawable name of whose resource id is to be returned
+	 * @return Drawable id in the resources 
+	 */
+	public int getDrawableId(String drawable) {
 		int resourceId = 0;
-		resourceId = getResources().getIdentifier(layoutFile, "drawable",
+		resourceId = getResources().getIdentifier(drawable, "drawable",
 				getPackageName());
 		Log.d("Location", "R id " + resourceId);
 		return resourceId;
@@ -227,7 +252,10 @@ public class SoftKeyboard extends InputMethodService {
 		}
 		super.onConfigurationChanged(newConfig);
 	}
-
+	
+	/**
+	 * Changes the appearance of the enter key based on IME options
+	 */
 	void setImeOptions() {
 		Resources res = getResources();
 		EditorInfo ei = getCurrentInputEditorInfo();
@@ -280,7 +308,11 @@ public class SoftKeyboard extends InputMethodService {
 		}
 		mKeyboardView.invalidateAllKeys();
 	}
-
+	
+	/**
+	 * Gets the KeyLogger of this SoftKeyboard service
+	 * @return KeyLogger of this SoftKeyboard service
+	 */
 	public KeyLogger getKeyLogger() {
 		return mKeyLogger;
 	}
