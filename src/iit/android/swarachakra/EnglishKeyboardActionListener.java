@@ -43,7 +43,7 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 	private static final int MSG_REMOVE_PREVIEW = 2;
 	private static final int MSG_STOP_DOUBLE_TAP = 3;
 	private static final int DELAY_BEFORE_PREVIEW = 0;
-	private static final int DELAY_AFTER_PREVIEW = 140;
+	private static final int DELAY_AFTER_PREVIEW = 100;
 	private static final int DELAY_SHIFT_DOUBLE_TAP = 200;
 
 	private static PopupWindow mPreviewPopup;
