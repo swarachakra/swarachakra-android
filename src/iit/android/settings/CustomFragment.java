@@ -39,8 +39,10 @@ public class CustomFragment extends Fragment {
 		containWidth = gifcontain.getWidth();
 		switch (stageNo) {
 		case 0:
-			instruction.setText(mMainActivity.getStringResourceByName("welcome_instruction"));
-			title.setText(mMainActivity.getStringResourceByName("welcome_title"));
+			instruction.setText(mMainActivity
+					.getStringResourceByName("welcome_instruction"));
+			title.setText(mMainActivity
+					.getStringResourceByName("welcome_title"));
 			gif.setVisibility(View.GONE);
 			break;
 		case 1:
@@ -59,7 +61,6 @@ public class CustomFragment extends Fragment {
 			title.setVisibility(View.GONE);
 			gif.loadGIFResource(getActivity(), R.drawable.defaults,
 					containHeight, containWidth);
-			;
 			MarginLayoutParams m2 = (MarginLayoutParams) gif.getLayoutParams();
 			m2.setMargins(gif.getMarginLeft(), gif.getMarginTop(),
 					gif.getMarginLeft(), 0);
@@ -67,9 +68,11 @@ public class CustomFragment extends Fragment {
 			gif.setVisibility(View.VISIBLE);
 			break;
 		case 3:
-			instruction.setText(mMainActivity.getStringResourceByName("congrats_instruction"));
+			instruction.setText(mMainActivity
+					.getStringResourceByName("congrats_instruction"));
 			instruction.setVisibility(View.VISIBLE);
-			title.setText(mMainActivity.getStringResourceByName("congrats_title"));
+			title.setText(mMainActivity
+					.getStringResourceByName("congrats_title"));
 			title.setVisibility(View.VISIBLE);
 			gif.setVisibility(View.GONE);
 			break;
@@ -80,5 +83,5 @@ public class CustomFragment extends Fragment {
 		}
 		return v;
 	}
-	
+
 }
