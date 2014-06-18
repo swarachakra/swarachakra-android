@@ -5,7 +5,6 @@ import iit.android.language.ExceptionHandler;
 import java.util.HashMap;
 import java.util.List;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.inputmethodservice.Keyboard.Key;
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener;
@@ -18,6 +17,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnTouchListener;
+import android.view.inputmethod.ExtractedText;
+import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.PopupWindow;
@@ -25,6 +26,7 @@ import android.widget.PopupWindow;
 public class MainKeyboardActionListener implements OnKeyboardActionListener,
 		OnTouchListener {
 	private SoftKeyboard mSoftKeyboard;
+	private KeyLogger mKeyLogger;
 	private static MainKeyboardView mKeyboardView;
 	private static PopupWindow mChakraPopup;
 	private static SwaraChakra mSwaraChakra;
@@ -57,12 +59,12 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 	private static final int MSG_SHOW_CHAKRA = 1;
 	private static final int MSG_REMOVE_CHAKRA = 2;
 	private static final int DELAY_BEFORE_SHOW = 70;
-	
-	static Handler mHandler = new Handler(){
-		@SuppressLint("NewApi")
+
+	static Handler mHandler = new Handler() {
+
 		@Override
-		public void handleMessage(Message msg){
-			switch(msg.what){
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
 			case MSG_SHOW_CHAKRA:
 				mSwaraChakra.setVisibility(View.VISIBLE);
 				mKeyboardView.setAlpha(0.75f);
@@ -88,14 +90,13 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 		ENGLISH = mKeyboardView.ENGLISH;
 		SYMBOLS = mKeyboardView.SYMBOLS;
 		SHIFT = mKeyboardView.SHIFT;
-		
 
 		inHalantMode = false;
 		inExceptionMode = false;
 		exceptionCode = 0;
 		preText = "";
 		MOVE_THRESHOLD = (int) mSwaraChakra.getInnerRadius();
-		DIM_THRESHOLD = (int) (mSwaraChakra.getOuterRadius()*0.6);
+		DIM_THRESHOLD = (int) (mSwaraChakra.getOuterRadius() * 0.6);
 	}
 
 	public void setInputConnection(InputConnection ic) {
@@ -122,32 +123,31 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 	public void setSoftKeyboard(SoftKeyboard sk) {
 		this.mSoftKeyboard = sk;
 	}
-	
 
-	@SuppressLint("NewApi")
 	private static void showChakraAt(int posX, int posY) {
 		final PopupWindow chakraPopup = mChakraPopup;
-		mSwaraChakra.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-		float offset = 2*mSwaraChakra.getOuterRadius();
-		
+		mSwaraChakra.measure(
+				MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
+				MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+		float offset = 2 * mSwaraChakra.getOuterRadius();
+
 		int w = mSwaraChakra.getMeasuredWidth();
 		int h = mSwaraChakra.getMeasuredHeight();
 		int x = (int) (posX - offset);
 		int y = (int) (posY - offset);
-		
-		if(chakraPopup.isShowing()){
+
+		if (chakraPopup.isShowing()) {
 			chakraPopup.update(x, y, w, h);
-		}
-		else{
+		} else {
 			chakraPopup.setWidth(w);
 			chakraPopup.setHeight(h);
 			chakraPopup.showAtLocation(mPopupParent, Gravity.NO_GRAVITY, x, y);
 		}
-		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_SHOW_CHAKRA), DELAY_BEFORE_SHOW);
+		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_SHOW_CHAKRA),
+				DELAY_BEFORE_SHOW);
 		isChakraVisible = true;
 	}
 
-	@SuppressLint("NewApi")
 	private static void removeChakra() {
 		mHandler.removeMessages(MSG_SHOW_CHAKRA);
 		mSwaraChakra.desetArc();
@@ -168,7 +168,7 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 				isShifted = true;
 			}
 			shiftHandled = true;
-			
+
 		} else if (key.codes[0] == SPACE) {
 			InputMethodManager imm = (InputMethodManager) mSoftKeyboard
 					.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -189,11 +189,10 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 		shiftHandled = false;
 		KeyAttr key = null;
 		boolean showChakra = false;
-		if(inExceptionMode && sKeys.containsKey(keyCode)){
+		if (inExceptionMode && sKeys.containsKey(keyCode)) {
 			showChakra = sKeys.get(keyCode).showChakra && !(isChakraVisible);
 			key = sKeys.get(keyCode);
-		}
-		else if (mKeys.containsKey(keyCode)) {
+		} else if (mKeys.containsKey(keyCode)) {
 			showChakra = mKeys.get(keyCode).showChakra && !(isChakraVisible);
 			key = mKeys.get(keyCode);
 		}
@@ -383,6 +382,22 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 	private void commitText(String text) {
 		mInputConnection.setComposingText(text, 1);
 		mInputConnection.finishComposingText();
+		updateExtractedText();
+	}
+
+	private void updateExtractedText() {
+		try{
+			ExtractedText edt= mInputConnection.getExtractedText(new ExtractedTextRequest(), 0);
+			
+			if(edt != null){
+				mKeyLogger.extractedText = edt.text.toString();
+			}
+			else{
+				Log.d(mKeyLogger.TAG,"handlechar(): About to hide, nothing to save" + edt);
+			}
+			}catch(Exception ex){
+				Log.d(mKeyLogger.TAG,"handlechar():ex "+ex.getMessage());
+		}	
 	}
 
 	private void updateKeyLabels() {
@@ -474,18 +489,16 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 		return mKeyboardView.onTouchEvent(me);
 	}
 
-	
-	@SuppressLint("NewApi")
-	private void handleMove(int x, int y){
-		
-		
+	private void handleMove(int x, int y) {
+
 		int touchMovementX = (int) x - touchDownX;
 		int touchMovementY = (int) y - touchDownY;
-		
-		
-		if(y==0 && touchMovementX < mSwaraChakra.getOuterRadius() && touchMovementY < mSwaraChakra.getOuterRadius()){
+
+		if (y == 0 && touchMovementX < mSwaraChakra.getOuterRadius()
+				&& touchMovementY < mSwaraChakra.getOuterRadius()) {
 			float outerRadius = (float) (1.2 * mSwaraChakra.getOuterRadius());
-			touchMovementY = -(int)Math.sqrt(outerRadius*outerRadius - touchMovementX*touchMovementX);
+			touchMovementY = -(int) Math.sqrt(outerRadius * outerRadius
+					- touchMovementX * touchMovementX);
 		}
 
 		int radius = (int) Math.sqrt((touchMovementX * touchMovementX)
@@ -493,7 +506,7 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 
 		float theta = (float) Math.toDegrees(Math.atan2(touchMovementY,
 				touchMovementX));
-		
+
 		if (radius > MOVE_THRESHOLD) {
 			int arc = findArc(theta);
 			if (isChakraVisible) {
@@ -502,23 +515,22 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 				mInputConnection.setComposingText(text, 1);
 			}
 		} else {
-			if(isChakraVisible){
+			if (isChakraVisible) {
 				mSwaraChakra.desetArc();
 				String text = mSwaraChakra.getText();
 				mInputConnection.setComposingText(text, 1);
 			}
 		}
-		
-		if(radius > DIM_THRESHOLD){
-			if(mSwaraChakra.getVisibility() == View.VISIBLE){
+
+		if (radius > DIM_THRESHOLD) {
+			if (mSwaraChakra.getVisibility() == View.VISIBLE) {
 				mKeyboardView.setAlpha(0.35f);
 			}
-		}
-		else{
-			if(mSwaraChakra.getVisibility() == View.VISIBLE){
+		} else {
+			if (mSwaraChakra.getVisibility() == View.VISIBLE) {
 				float a = 0;
-				double k = (-0.45)/DIM_THRESHOLD;
-				a = (float) (0.80+k*radius);
+				double k = (-0.45) / DIM_THRESHOLD;
+				a = (float) (0.80 + k * radius);
 				mKeyboardView.setAlpha(a);
 			}
 		}
@@ -535,4 +547,7 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 		return region;
 	}
 
+	public void setKeyLogger(KeyLogger keyLogger) {
+		mKeyLogger = keyLogger;	
+	}
 }

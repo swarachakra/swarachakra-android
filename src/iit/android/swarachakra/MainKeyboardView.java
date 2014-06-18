@@ -6,7 +6,6 @@ import iit.android.language.telugu.MainLanguageExceptionHandler;
 
 import java.util.HashMap;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.inputmethodservice.Keyboard.Key;
 import android.util.AttributeSet;
@@ -20,36 +19,35 @@ public class MainKeyboardView extends CustomKeyboardView {
 	public PopupWindow mChakraPopup;
 	public View mPopupParent;
 	public SwaraChakra mSwaraChakra;
+	private KeyLogger mKeyLogger;
 	private MainKeyboardActionListener mActionListener;
-	
-	
+
 	public MainKeyboardView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initialize(context);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public MainKeyboardView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		initialize(context);
 		// TODO Auto-generated constructor stub
 	}
-	
 
-	@SuppressLint("NewApi")
 	private void initialize(Context context) {
 		super.setPreviewEnabled(false);
-		
+
 		setLayerType(View.LAYER_TYPE_HARDWARE, null);
-		
-		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View v = inflater.inflate(R.layout.chakra_layout, null);
 		mSwaraChakra = (SwaraChakra) v.findViewById(R.id.swarachakra);
-		//TO BE DONE
-		int mode = 0;//based on device and orientation
+		// TO BE DONE
+		int mode = 0;// based on device and orientation
 		mSwaraChakra.setMetrics(mode);
 		mSwaraChakra.setVisibility(View.GONE);
-		
+
 		mChakraPopup = new PopupWindow(context);
 		mChakraPopup.setContentView(v);
 		mChakraPopup.setTouchable(false);
@@ -57,9 +55,10 @@ public class MainKeyboardView extends CustomKeyboardView {
 		mChakraPopup.setBackgroundDrawable(null);
 		mPopupParent = this;
 	}
-	
+
 	@Override
-	public void init(SoftKeyboard sk, Language lang, HashMap<Integer, KeyAttr> keys){
+	public void init(SoftKeyboard sk, Language lang,
+			HashMap<Integer, KeyAttr> keys) {
 		mActionListener = new MainKeyboardActionListener();
 		this.setOnKeyboardActionListener(mActionListener);
 		mActionListener.initialize(this);
@@ -69,27 +68,31 @@ public class MainKeyboardView extends CustomKeyboardView {
 		mActionListener.setSoftKeyboard(sk);
 		InputConnection mInputConnection = sk.getCurrentInputConnection();
 		mActionListener.setInputConnection(mInputConnection);
-		
+		mActionListener.setKeyLogger(sk.getKeyLogger());
+
+		mKeyLogger = sk.getKeyLogger();
+
 		String[] swaras = lang.defaultChakra;
 		boolean halantExists = lang.halantExists;
 		SwaraChakra.setHalantExists(halantExists);
 		SwaraChakra.setDefaultChakra(swaras);
 
-		
-		ExceptionHandler exceptionHandler = new MainLanguageExceptionHandler(lang);
+		ExceptionHandler exceptionHandler = new MainLanguageExceptionHandler(
+				lang);
 		mActionListener.setExceptionHandler(exceptionHandler);
-	
+
 	}
-	
+
 	@Override
-	public void resetInputConnection(InputConnection ic){
+	public void resetInputConnection(InputConnection ic) {
 		mActionListener.setInputConnection(ic);
+		mKeyLogger.writeToLocalStorage();
+		mKeyLogger.extractedText="";
 	}
-	
-	
+
 	@Override
 	protected boolean onLongPress(Key key) {
-	    mActionListener.onLongPress(key);
+		mActionListener.onLongPress(key);
 		return super.onLongPress(key);
 	}
 
@@ -98,9 +101,9 @@ public class MainKeyboardView extends CustomKeyboardView {
 		// TODO Auto-generated method stub
 		mChakraPopup.dismiss();
 	}
-	
+
 	@Override
-	public boolean onTouchEvent(MotionEvent me){
+	public boolean onTouchEvent(MotionEvent me) {
 		return super.onTouchEvent(me);
 	}
 

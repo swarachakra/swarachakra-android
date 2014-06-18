@@ -7,7 +7,6 @@ import iit.android.language.telugu.MainLanguage;
 import java.util.HashMap;
 import java.util.List;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -33,15 +32,17 @@ public class SoftKeyboard extends InputMethodService {
 	private Context mContext;
 	private String displayMode;
 	private Key mEnterKey;
-	private String extractedText;
+	private KeyLogger mKeyLogger;
 
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		Installation.id(getApplicationContext());
-        extractedText="";
-        Log.d("layout", "called onCreate");
+		mKeyLogger = new KeyLogger();
+		mKeyLogger.setSoftKeyboard(this);
+        mKeyLogger.extractedText="";
 	}
+	
 	@Override
 	public void onInitializeInterface() {
 		mainLanguage = new MainLanguage();
@@ -55,7 +56,6 @@ public class SoftKeyboard extends InputMethodService {
 		} else {
 			setLanguage(languageName);
 		}
-
 	}
 
 	@Override
@@ -93,6 +93,14 @@ public class SoftKeyboard extends InputMethodService {
 
 		return layout;
 	}
+	
+	@Override
+	public void onFinishInputView(boolean finishingInput) {
+		super.onFinishInputView(finishingInput);
+		
+		mKeyLogger.writeToLocalStorage();
+		mKeyLogger.extractedText="";
+	}
 
 	private int getKeyboardViewResourceId() {
 		String file = "kview_" + displayMode + languageName;
@@ -103,7 +111,6 @@ public class SoftKeyboard extends InputMethodService {
 		return output;
 	}
 
-	@SuppressLint("NewApi")
 	@Override
 	public void onStartInputView(EditorInfo info, boolean restarting) {
 		mInputConnection = getCurrentInputConnection();
@@ -116,12 +123,6 @@ public class SoftKeyboard extends InputMethodService {
 	public boolean onEvaluateFullscreenMode() {
 		return false;
 	}
-
-	// @Override
-	// public void onUpdateExtractingVisibility(EditorInfo ei) {
-	// setExtractViewShown(false);
-	// }
-
 
 	private void setKeys() {
 		List<Key> keys = mKeyboard.getKeys();
@@ -278,10 +279,7 @@ public class SoftKeyboard extends InputMethodService {
 		mKeyboardView.invalidateAllKeys();
 	}
 
-//	private void printHash() {
-//		for (KeyAttr key : mKeys.values()) {
-//			int code = key.code;
-//			Log.d("Parser", Integer.toString(code) + " " + key.isException);
-//		}
-//	}
+	public KeyLogger getKeyLogger() {
+		return mKeyLogger;
+	}
 }
