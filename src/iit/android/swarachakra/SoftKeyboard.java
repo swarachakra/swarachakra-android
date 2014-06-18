@@ -25,6 +25,7 @@ public class SoftKeyboard extends InputMethodService {
 	private HashMap<Integer, KeyAttr> mainKeys;
 	private HashMap<Integer, KeyAttr> englishKeys;
 	private MainLanguage mainLanguage;
+	public String mainLanguageSymbol;
 	private English english;
 	private Language language;
 	private InputConnection mInputConnection;
@@ -47,6 +48,7 @@ public class SoftKeyboard extends InputMethodService {
 	public void onInitializeInterface() {
 		mainLanguage = new MainLanguage();
 		mainKeys = mainLanguage.hashThis();
+		mainLanguageSymbol = mainLanguage.symbol;
 
 		english = new English();
 		englishKeys = english.hashThis();

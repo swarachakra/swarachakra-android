@@ -12,7 +12,7 @@ public class English extends Language {
 	
 	public English() {
 		name = "english";
-		nKeys = 81 ;
+		nKeys = 106 ;
 		defaultChakra = new String [] {};
 		halantExists = false;
 		halantEnd = 0;
@@ -830,7 +830,7 @@ public class English extends Language {
 
 		KeyAttr myKey67 = new KeyAttr();
 		myKey67.code = 68;
-		myKey67.label = "_" ;
+		myKey67.label = "%" ;
 		myKey67.showChakra = false ;
 		myKey67.showCustomChakra = false ;
 		myKey67.customChakraLayout = new String[] {} ;
@@ -842,7 +842,7 @@ public class English extends Language {
 
 		KeyAttr myKey68 = new KeyAttr();
 		myKey68.code = 69;
-		myKey68.label = "\\" ;
+		myKey68.label = "&" ;
 		myKey68.showChakra = false ;
 		myKey68.showCustomChakra = false ;
 		myKey68.customChakraLayout = new String[] {} ;
@@ -854,7 +854,7 @@ public class English extends Language {
 
 		KeyAttr myKey69 = new KeyAttr();
 		myKey69.code = 70;
-		myKey69.label = "*" ;
+		myKey69.label = "-" ;
 		myKey69.showChakra = false ;
 		myKey69.showCustomChakra = false ;
 		myKey69.customChakraLayout = new String[] {} ;
@@ -866,7 +866,7 @@ public class English extends Language {
 
 		KeyAttr myKey70 = new KeyAttr();
 		myKey70.code = 71;
-		myKey70.label = "-" ;
+		myKey70.label = "*" ;
 		myKey70.showChakra = false ;
 		myKey70.showCustomChakra = false ;
 		myKey70.customChakraLayout = new String[] {} ;
@@ -878,7 +878,7 @@ public class English extends Language {
 
 		KeyAttr myKey71 = new KeyAttr();
 		myKey71.code = 72;
-		myKey71.label = "=" ;
+		myKey71.label = "(" ;
 		myKey71.showChakra = false ;
 		myKey71.showCustomChakra = false ;
 		myKey71.customChakraLayout = new String[] {} ;
@@ -890,7 +890,7 @@ public class English extends Language {
 
 		KeyAttr myKey72 = new KeyAttr();
 		myKey72.code = 73;
-		myKey72.label = "(" ;
+		myKey72.label = ")" ;
 		myKey72.showChakra = false ;
 		myKey72.showCustomChakra = false ;
 		myKey72.customChakraLayout = new String[] {} ;
@@ -902,7 +902,7 @@ public class English extends Language {
 
 		KeyAttr myKey73 = new KeyAttr();
 		myKey73.code = 74;
-		myKey73.label = ")" ;
+		myKey73.label = ":" ;
 		myKey73.showChakra = false ;
 		myKey73.showCustomChakra = false ;
 		myKey73.customChakraLayout = new String[] {} ;
@@ -914,7 +914,7 @@ public class English extends Language {
 
 		KeyAttr myKey74 = new KeyAttr();
 		myKey74.code = 75;
-		myKey74.label = "!" ;
+		myKey74.label = "'" ;
 		myKey74.showChakra = false ;
 		myKey74.showCustomChakra = false ;
 		myKey74.customChakraLayout = new String[] {} ;
@@ -938,7 +938,7 @@ public class English extends Language {
 
 		KeyAttr myKey76 = new KeyAttr();
 		myKey76.code = 77;
-		myKey76.label = "'" ;
+		myKey76.label = "/" ;
 		myKey76.showChakra = false ;
 		myKey76.showCustomChakra = false ;
 		myKey76.customChakraLayout = new String[] {} ;
@@ -950,7 +950,7 @@ public class English extends Language {
 
 		KeyAttr myKey77 = new KeyAttr();
 		myKey77.code = 78;
-		myKey77.label = ":" ;
+		myKey77.label = "," ;
 		myKey77.showChakra = false ;
 		myKey77.showCustomChakra = false ;
 		myKey77.customChakraLayout = new String[] {} ;
@@ -962,7 +962,7 @@ public class English extends Language {
 
 		KeyAttr myKey78 = new KeyAttr();
 		myKey78.code = 79;
-		myKey78.label = ";" ;
+		myKey78.label = "!" ;
 		myKey78.showChakra = false ;
 		myKey78.showCustomChakra = false ;
 		myKey78.customChakraLayout = new String[] {} ;
@@ -974,7 +974,7 @@ public class English extends Language {
 
 		KeyAttr myKey79 = new KeyAttr();
 		myKey79.code = 80;
-		myKey79.label = "/" ;
+		myKey79.label = "?" ;
 		myKey79.showChakra = false ;
 		myKey79.showCustomChakra = false ;
 		myKey79.customChakraLayout = new String[] {} ;
@@ -986,7 +986,7 @@ public class English extends Language {
 
 		KeyAttr myKey80 = new KeyAttr();
 		myKey80.code = 81;
-		myKey80.label = "?" ;
+		myKey80.label = "_" ;
 		myKey80.showChakra = false ;
 		myKey80.showCustomChakra = false ;
 		myKey80.customChakraLayout = new String[] {} ;
@@ -996,6 +996,305 @@ public class English extends Language {
 		myKey80.layout = "";
 		myKey.set(80, myKey80);
 
+		KeyAttr myKey81 = new KeyAttr();
+		myKey81.code = 82;
+		myKey81.label = "+" ;
+		myKey81.showChakra = false ;
+		myKey81.showCustomChakra = false ;
+		myKey81.customChakraLayout = new String[] {} ;
+		myKey81.showIcon = false ;
+		myKey81.icon = "";
+		myKey81.changeLayout = false ;
+		myKey81.layout = "";
+		myKey.set(81, myKey81);
+
+		KeyAttr myKey82 = new KeyAttr();
+		myKey82.code = 83;
+		myKey82.label = "=" ;
+		myKey82.showChakra = false ;
+		myKey82.showCustomChakra = false ;
+		myKey82.customChakraLayout = new String[] {} ;
+		myKey82.showIcon = false ;
+		myKey82.icon = "";
+		myKey82.changeLayout = false ;
+		myKey82.layout = "";
+		myKey.set(82, myKey82);
+
+		KeyAttr myKey83 = new KeyAttr();
+		myKey83.code = 84;
+		myKey83.label = "`" ;
+		myKey83.showChakra = false ;
+		myKey83.showCustomChakra = false ;
+		myKey83.customChakraLayout = new String[] {} ;
+		myKey83.showIcon = false ;
+		myKey83.icon = "";
+		myKey83.changeLayout = false ;
+		myKey83.layout = "";
+		myKey.set(83, myKey83);
+
+		KeyAttr myKey84 = new KeyAttr();
+		myKey84.code = 85;
+		myKey84.label = ";" ;
+		myKey84.showChakra = false ;
+		myKey84.showCustomChakra = false ;
+		myKey84.customChakraLayout = new String[] {} ;
+		myKey84.showIcon = false ;
+		myKey84.icon = "";
+		myKey84.changeLayout = false ;
+		myKey84.layout = "";
+		myKey.set(84, myKey84);
+
+		KeyAttr myKey85 = new KeyAttr();
+		myKey85.code = 86;
+		myKey85.label = "|" ;
+		myKey85.showChakra = false ;
+		myKey85.showCustomChakra = false ;
+		myKey85.customChakraLayout = new String[] {} ;
+		myKey85.showIcon = false ;
+		myKey85.icon = "";
+		myKey85.changeLayout = false ;
+		myKey85.layout = "";
+		myKey.set(85, myKey85);
+
+		KeyAttr myKey86 = new KeyAttr();
+		myKey86.code = 87;
+		myKey86.label = "£" ;
+		myKey86.showChakra = false ;
+		myKey86.showCustomChakra = false ;
+		myKey86.customChakraLayout = new String[] {} ;
+		myKey86.showIcon = false ;
+		myKey86.icon = "";
+		myKey86.changeLayout = false ;
+		myKey86.layout = "";
+		myKey.set(86, myKey86);
+
+		KeyAttr myKey87 = new KeyAttr();
+		myKey87.code = 88;
+		myKey87.label = "€" ;
+		myKey87.showChakra = false ;
+		myKey87.showCustomChakra = false ;
+		myKey87.customChakraLayout = new String[] {} ;
+		myKey87.showIcon = false ;
+		myKey87.icon = "";
+		myKey87.changeLayout = false ;
+		myKey87.layout = "";
+		myKey.set(87, myKey87);
+
+		KeyAttr myKey88 = new KeyAttr();
+		myKey88.code = 89;
+		myKey88.label = "₹" ;
+		myKey88.showChakra = false ;
+		myKey88.showCustomChakra = false ;
+		myKey88.customChakraLayout = new String[] {} ;
+		myKey88.showIcon = false ;
+		myKey88.icon = "";
+		myKey88.changeLayout = false ;
+		myKey88.layout = "";
+		myKey.set(88, myKey88);
+
+		KeyAttr myKey89 = new KeyAttr();
+		myKey89.code = 90;
+		myKey89.label = "\\" ;
+		myKey89.showChakra = false ;
+		myKey89.showCustomChakra = false ;
+		myKey89.customChakraLayout = new String[] {} ;
+		myKey89.showIcon = false ;
+		myKey89.icon = "";
+		myKey89.changeLayout = false ;
+		myKey89.layout = "";
+		myKey.set(89, myKey89);
+
+		KeyAttr myKey90 = new KeyAttr();
+		myKey90.code = 91;
+		myKey90.label = "{" ;
+		myKey90.showChakra = false ;
+		myKey90.showCustomChakra = false ;
+		myKey90.customChakraLayout = new String[] {} ;
+		myKey90.showIcon = false ;
+		myKey90.icon = "";
+		myKey90.changeLayout = false ;
+		myKey90.layout = "";
+		myKey.set(90, myKey90);
+
+		KeyAttr myKey91 = new KeyAttr();
+		myKey91.code = 92;
+		myKey91.label = "}" ;
+		myKey91.showChakra = false ;
+		myKey91.showCustomChakra = false ;
+		myKey91.customChakraLayout = new String[] {} ;
+		myKey91.showIcon = false ;
+		myKey91.icon = "";
+		myKey91.changeLayout = false ;
+		myKey91.layout = "";
+		myKey.set(91, myKey91);
+
+		KeyAttr myKey92 = new KeyAttr();
+		myKey92.code = 93;
+		myKey92.label = "[" ;
+		myKey92.showChakra = false ;
+		myKey92.showCustomChakra = false ;
+		myKey92.customChakraLayout = new String[] {} ;
+		myKey92.showIcon = false ;
+		myKey92.icon = "";
+		myKey92.changeLayout = false ;
+		myKey92.layout = "";
+		myKey.set(92, myKey92);
+
+		KeyAttr myKey93 = new KeyAttr();
+		myKey93.code = 94;
+		myKey93.label = "]" ;
+		myKey93.showChakra = false ;
+		myKey93.showCustomChakra = false ;
+		myKey93.customChakraLayout = new String[] {} ;
+		myKey93.showIcon = false ;
+		myKey93.icon = "";
+		myKey93.changeLayout = false ;
+		myKey93.layout = "";
+		myKey.set(93, myKey93);
+
+		KeyAttr myKey94 = new KeyAttr();
+		myKey94.code = 95;
+		myKey94.label = "©" ;
+		myKey94.showChakra = false ;
+		myKey94.showCustomChakra = false ;
+		myKey94.customChakraLayout = new String[] {} ;
+		myKey94.showIcon = false ;
+		myKey94.icon = "";
+		myKey94.changeLayout = false ;
+		myKey94.layout = "";
+		myKey.set(94, myKey94);
+
+		KeyAttr myKey95 = new KeyAttr();
+		myKey95.code = 96;
+		myKey95.label = "®" ;
+		myKey95.showChakra = false ;
+		myKey95.showCustomChakra = false ;
+		myKey95.customChakraLayout = new String[] {} ;
+		myKey95.showIcon = false ;
+		myKey95.icon = "";
+		myKey95.changeLayout = false ;
+		myKey95.layout = "";
+		myKey.set(95, myKey95);
+
+		KeyAttr myKey96 = new KeyAttr();
+		myKey96.code = 97;
+		myKey96.label = "™" ;
+		myKey96.showChakra = false ;
+		myKey96.showCustomChakra = false ;
+		myKey96.customChakraLayout = new String[] {} ;
+		myKey96.showIcon = false ;
+		myKey96.icon = "";
+		myKey96.changeLayout = false ;
+		myKey96.layout = "";
+		myKey.set(96, myKey96);
+
+		KeyAttr myKey97 = new KeyAttr();
+		myKey97.code = 98;
+		myKey97.label = "<" ;
+		myKey97.showChakra = false ;
+		myKey97.showCustomChakra = false ;
+		myKey97.customChakraLayout = new String[] {} ;
+		myKey97.showIcon = false ;
+		myKey97.icon = "";
+		myKey97.changeLayout = false ;
+		myKey97.layout = "";
+		myKey.set(97, myKey97);
+
+		KeyAttr myKey98 = new KeyAttr();
+		myKey98.code = 99;
+		myKey98.label = ">" ;
+		myKey98.showChakra = false ;
+		myKey98.showCustomChakra = false ;
+		myKey98.customChakraLayout = new String[] {} ;
+		myKey98.showIcon = false ;
+		myKey98.icon = "";
+		myKey98.changeLayout = false ;
+		myKey98.layout = "";
+		myKey.set(98, myKey98);
+
+		KeyAttr myKey99 = new KeyAttr();
+		myKey99.code = 100;
+		myKey99.label = "^" ;
+		myKey99.showChakra = false ;
+		myKey99.showCustomChakra = false ;
+		myKey99.customChakraLayout = new String[] {} ;
+		myKey99.showIcon = false ;
+		myKey99.icon = "";
+		myKey99.changeLayout = false ;
+		myKey99.layout = "";
+		myKey.set(99, myKey99);
+
+		KeyAttr myKey100 = new KeyAttr();
+		myKey100.code = 101;
+		myKey100.label = "·" ;
+		myKey100.showChakra = false ;
+		myKey100.showCustomChakra = false ;
+		myKey100.customChakraLayout = new String[] {} ;
+		myKey100.showIcon = false ;
+		myKey100.icon = "";
+		myKey100.changeLayout = false ;
+		myKey100.layout = "";
+		myKey.set(100, myKey100);
+
+		KeyAttr myKey101 = new KeyAttr();
+		myKey101.code = 102;
+		myKey101.label = "~" ;
+		myKey101.showChakra = false ;
+		myKey101.showCustomChakra = false ;
+		myKey101.customChakraLayout = new String[] {} ;
+		myKey101.showIcon = false ;
+		myKey101.icon = "";
+		myKey101.changeLayout = false ;
+		myKey101.layout = "";
+		myKey.set(101, myKey101);
+
+		KeyAttr myKey102 = new KeyAttr();
+		myKey102.code = 103;
+		myKey102.label = ":" ;
+		myKey102.showChakra = false ;
+		myKey102.showCustomChakra = false ;
+		myKey102.customChakraLayout = new String[] {} ;
+		myKey102.showIcon = false ;
+		myKey102.icon = "";
+		myKey102.changeLayout = false ;
+		myKey102.layout = "";
+		myKey.set(102, myKey102);
+
+		KeyAttr myKey103 = new KeyAttr();
+		myKey103.code = 104;
+		myKey103.label = "," ;
+		myKey103.showChakra = false ;
+		myKey103.showCustomChakra = false ;
+		myKey103.customChakraLayout = new String[] {} ;
+		myKey103.showIcon = false ;
+		myKey103.icon = "";
+		myKey103.changeLayout = false ;
+		myKey103.layout = "";
+		myKey.set(103, myKey103);
+
+		KeyAttr myKey104 = new KeyAttr();
+		myKey104.code = 105;
+		myKey104.label = "!" ;
+		myKey104.showChakra = false ;
+		myKey104.showCustomChakra = false ;
+		myKey104.customChakraLayout = new String[] {} ;
+		myKey104.showIcon = false ;
+		myKey104.icon = "";
+		myKey104.changeLayout = false ;
+		myKey104.layout = "";
+		myKey.set(104, myKey104);
+
+		KeyAttr myKey105 = new KeyAttr();
+		myKey105.code = 106;
+		myKey105.label = "?" ;
+		myKey105.showChakra = false ;
+		myKey105.showCustomChakra = false ;
+		myKey105.customChakraLayout = new String[] {} ;
+		myKey105.showIcon = false ;
+		myKey105.icon = "";
+		myKey105.changeLayout = false ;
+		myKey105.layout = "";
+		myKey.set(105, myKey105);
 
 	}
 

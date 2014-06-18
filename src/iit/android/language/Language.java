@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class Language {
 	public String name;
+	public String symbol;
 	public int nKeys;
 	public String[] defaultChakra;
 	public ArrayList<KeyAttr> myKey;

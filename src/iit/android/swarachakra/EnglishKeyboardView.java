@@ -59,6 +59,7 @@ public class EnglishKeyboardView extends CustomKeyboardView {
 		mActionListener.setKeysMap(mKeys);
 		InputConnection mInputConnection = sk.getCurrentInputConnection();
 		mActionListener.setInputConnection(mInputConnection);
+		mActionListener.changeLayout();
 	}
 	
 	@Override

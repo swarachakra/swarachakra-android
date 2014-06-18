@@ -11,6 +11,7 @@ public class MainLanguage extends Language{
 	
 	public MainLanguage() {
 		name = "hindi";
+		symbol ="Hn";
 		nKeys = 106;
 		myKey = new ArrayList<KeyAttr>(nKeys);
 		defaultChakra = new String[] {"\u094D", "\u093E", "\u093F", "\u0940", "\u0941", "\u0942", "\u0947", "\u0948", "\u094B", "\u094C"};
