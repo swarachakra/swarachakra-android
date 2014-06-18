@@ -13,6 +13,7 @@ import android.widget.TextView;
 public class CustomFragment extends Fragment {
 
 	public static final String STAGE_NO = "stageNo";
+	public static MainActivity mMainActivity;
 
 	public static final CustomFragment newInstance(int stageNo) {
 		CustomFragment f = new CustomFragment();
@@ -38,8 +39,8 @@ public class CustomFragment extends Fragment {
 		containWidth = gifcontain.getWidth();
 		switch (stageNo) {
 		case 0:
-			instruction.setText(R.string.welcome_instruction);
-			title.setText(R.string.welcome_title);
+			instruction.setText(mMainActivity.getStringResourceByName("welcome_instruction"));
+			title.setText(mMainActivity.getStringResourceByName("welcome_title"));
 			gif.setVisibility(View.GONE);
 			break;
 		case 1:
@@ -66,9 +67,9 @@ public class CustomFragment extends Fragment {
 			gif.setVisibility(View.VISIBLE);
 			break;
 		case 3:
-			instruction.setText(R.string.congrats_instruction);
+			instruction.setText(mMainActivity.getStringResourceByName("congrats_instruction"));
 			instruction.setVisibility(View.VISIBLE);
-			title.setText(R.string.congrats_title);
+			title.setText(mMainActivity.getStringResourceByName("congrats_title"));
 			title.setVisibility(View.VISIBLE);
 			gif.setVisibility(View.GONE);
 			break;
@@ -79,4 +80,5 @@ public class CustomFragment extends Fragment {
 		}
 		return v;
 	}
+	
 }

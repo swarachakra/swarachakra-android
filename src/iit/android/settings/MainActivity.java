@@ -1,5 +1,6 @@
 package iit.android.settings;
 
+import iit.android.language.telugu.MainLanguage;
 import iit.android.swarachakra.R;
 
 import java.util.ArrayList;
@@ -24,29 +25,46 @@ public class MainActivity extends FragmentActivity {
 	private boolean isEnabled = false;
 	private boolean startSetUp = false;
 	private boolean endSetUp = false;
+	private MainLanguage language = new MainLanguage();
 
 	CustomPageAdapter pageAdapter;
 	CustomViewPager pager;
 	Button b;
 
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		CustomFragment.mMainActivity = this;
+		
 		List<Fragment> fragments = getFragments();
-		pageAdapter = new CustomPageAdapter(getSupportFragmentManager(), fragments);
+		pageAdapter = new CustomPageAdapter(getSupportFragmentManager(),
+				fragments);
 		pager = (CustomViewPager) findViewById(R.id.viewpager);
 		pager.setPagingEnabled(false);
 		pager.setAdapter(pageAdapter);
 		pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                setButtonText();
-            }
-        });
-		
+			@Override
+			public void onPageSelected(int position) {
+				setButtonText();
+			}
+		});
+
 		b = (Button) findViewById(R.id.Button);
-		b.setText(R.string.welcome_button);
+		b.setText(getStringResourceByName("welcome_button"));
+	}
+
+	public String getStringResourceByName(String aString) {
+		String packageName = getPackageName();
+		int resId = getResources()
+				.getIdentifier(language.name + "_" + aString, "string", packageName);
+		if(resId == 0) {
+			resId = getResources()
+					.getIdentifier(aString, "string", packageName);
+		}
+		return getString(resId);
 	}
 
 	@Override
@@ -67,25 +85,25 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public void onWindowFocusChanged(final boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
-		if(startSetUp && !endSetUp && hasFocus) {
+		if (startSetUp && !endSetUp && hasFocus) {
 			final Handler handler = new Handler();
 			handler.postDelayed(new Runnable() {
-			    @Override
-			    public void run() {
-			        setCorrectView();
-			    }
+				@Override
+				public void run() {
+					setCorrectView();
+				}
 			}, 500);
 		}
 	}
-	
-	private List<Fragment> getFragments(){
-		  List<Fragment> fList = new ArrayList<Fragment>();
-		  fList.add(CustomFragment.newInstance(0));
-		  fList.add(CustomFragment.newInstance(1)); 
-		  fList.add(CustomFragment.newInstance(2));
-		  fList.add(CustomFragment.newInstance(3));
-		  return fList;
-		}
+
+	private List<Fragment> getFragments() {
+		List<Fragment> fList = new ArrayList<Fragment>();
+		fList.add(CustomFragment.newInstance(0));
+		fList.add(CustomFragment.newInstance(1));
+		fList.add(CustomFragment.newInstance(2));
+		fList.add(CustomFragment.newInstance(3));
+		return fList;
+	}
 
 	public void checkKeyboardStatus() {
 		InputMethodManager mgr = (InputMethodManager) this
@@ -124,20 +142,20 @@ public class MainActivity extends FragmentActivity {
 
 		return stageNumber;
 	}
-	
+
 	private void setButtonText() {
 		int stageNo = pager.getCurrentItem();
-		switch(stageNo) {
+		switch (stageNo) {
 		case 0:
-			b.setText(R.string.welcome_button);
+			b.setText(getStringResourceByName("welcome_button"));
 			b.setVisibility(View.VISIBLE);
 			break;
 		case 1:
-			b.setText(R.string.enable_button);
+			b.setText(getStringResourceByName("enable_button"));
 			b.setVisibility(View.VISIBLE);
 			break;
 		case 2:
-			b.setText(R.string.default_button);
+			b.setText(getStringResourceByName("default_button"));
 			b.setVisibility(View.VISIBLE);
 			break;
 		case 3:
@@ -145,12 +163,13 @@ public class MainActivity extends FragmentActivity {
 			break;
 		}
 	}
-	
+
 	public void buttonClick(View v) {
 		int stageNo = pager.getCurrentItem();
 		switch (stageNo) {
 		case 0:
-			setCorrectView();;
+			setCorrectView();
+			;
 			startSetUp = true;
 			break;
 		case 1:
@@ -166,38 +185,40 @@ public class MainActivity extends FragmentActivity {
 			break;
 		}
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-	    // Check which request it is that we're responding to
+		// Check which request it is that we're responding to
 		Log.d("main", "called onActivityResult");
 		final Handler handler = new Handler();
 		handler.postDelayed(new Runnable() {
-		    @Override
-		    public void run() {
-		        setCorrectView();
-		    }
+			@Override
+			public void run() {
+				setCorrectView();
+			}
 		}, 500);
-	    if (requestCode == 0) {
-	        Log.d("main","resultCode = " + resultCode);
-	        if (resultCode == RESULT_OK) {
-	        	Log.d("main", "data = " + data);
-	        }
-	    }
+		if (requestCode == 0) {
+			Log.d("main", "resultCode = " + resultCode);
+			if (resultCode == RESULT_OK) {
+				Log.d("main", "data = " + data);
+			}
+		}
 	}
-	
+
 	public void showInputEnableSettings() {
-		startActivityForResult( new Intent(android.provider.Settings.ACTION_INPUT_METHOD_SETTINGS), 0);
+		startActivityForResult(new Intent(
+				android.provider.Settings.ACTION_INPUT_METHOD_SETTINGS), 0);
 	}
-	
+
 	public void showInputDefaultSettings() {
-		InputMethodManager mgr =  (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+		InputMethodManager mgr = (InputMethodManager) getApplicationContext()
+				.getSystemService(Context.INPUT_METHOD_SERVICE);
 		mgr.showInputMethodPicker();
 	}
-	
+
 	public void setCorrectView() {
 		int stageNumber = getStageNumber();
-		switch(stageNumber) {
+		switch (stageNumber) {
 		case 0:
 			moveTo(1);
 			break;
@@ -214,15 +235,14 @@ public class MainActivity extends FragmentActivity {
 			pager.setCurrentItem(0);
 		}
 	}
-	
-	public void moveTo (int destFragment) {
+
+	public void moveTo(int destFragment) {
 		int curFragment = pager.getCurrentItem();
 		while (destFragment != curFragment) {
-			if(destFragment > curFragment) {
-				pager.setCurrentItem(curFragment+1, true);
-			}
-			else {
-				pager.setCurrentItem(curFragment-1, true);
+			if (destFragment > curFragment) {
+				pager.setCurrentItem(curFragment + 1, true);
+			} else {
+				pager.setCurrentItem(curFragment - 1, true);
 			}
 			curFragment = pager.getCurrentItem();
 		}
