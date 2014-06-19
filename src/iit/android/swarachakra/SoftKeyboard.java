@@ -2,17 +2,19 @@ package iit.android.swarachakra;
 
 import iit.android.language.Language;
 import iit.android.language.english.English;
-import iit.android.language.telugu.MainLanguage;
+import iit.android.language.hindi.MainLanguage;
 
 import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.Keyboard.Key;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -129,6 +131,12 @@ public class SoftKeyboard extends InputMethodService {
 		mKeyboardView.resetInputConnection(mInputConnection);
 		mKeyboardView.setAlpha(1);
 		setImeOptions();
+		
+		String curDisplayMode = displayMode;
+		detectDisplayMode();
+		if(displayMode != curDisplayMode){
+			setInputView(onCreateInputView());
+		}
 	}
 
 	@Override
@@ -205,10 +213,10 @@ public class SoftKeyboard extends InputMethodService {
 	}
 	
 	public static boolean isTablet(Context context) {
-//	    return (context.getResources().getConfiguration().screenLayout
-//	            & Configuration.SCREENLAYOUT_SIZE_MASK)
-//	            >= Configuration.SCREENLAYOUT_SIZE_LARGE;
-		return true;
+		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+		String key = context.getResources().getString(R.string.tablet_layout_setting_key);
+		boolean showTabletLayout = settings.getBoolean(key, false);
+		return showTabletLayout;
 	}
 	
 	/**
@@ -219,7 +227,7 @@ public class SoftKeyboard extends InputMethodService {
 
 		if (dispMode == 1) {
 			displayMode = "";
-			if(isTablet(getBaseContext())){displayMode = "tablet_";}
+			if(isTablet(mContext)){displayMode = "tablet_";}
 		} else {
 			displayMode = "land_";
 		}

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     android:keyHeight="6.65%p"
-    android:keyWidth="11.5%p">
+    android:keyWidth="10.6%p">
     
     <Row>
 
         <Key
             android:codes="54"
-            android:keyWidth="9.75%p"
+            android:keyWidth="12.6%p"
             android:keyEdgeFlags="left" />
 
         <Key android:codes="55" />
@@ -27,7 +27,7 @@
         <Key
             android:codes="@string/backspace"
             android:isRepeatable="true"
-            android:keyWidth="9.75%p"
+            android:keyWidth="12.6%p"
             android:keyEdgeFlags="right"
             android:keyHeight="13.3%p"
             android:keyIcon="@drawable/delete" />
@@ -37,7 +37,7 @@
 
         <Key
             android:codes="60"
-            android:keyWidth="9.75%p"
+            android:keyWidth="12.6%p"
             android:keyEdgeFlags="left" />
 
         <Key android:codes="61" />
@@ -59,7 +59,7 @@
 
         <Key
             android:codes="66"
-            android:keyWidth="9.75%p"
+            android:keyWidth="12.6%p"
             android:keyEdgeFlags="left" />
 
         <Key android:codes="67" />
@@ -78,7 +78,7 @@
 
         <Key
             android:codes="72"
-            android:keyWidth="9.75%p"
+            android:keyWidth="12.6%p"
             android:keyEdgeFlags="right" />
     </Row>
 
@@ -86,7 +86,7 @@
 
         <Key
             android:codes="73"
-            android:keyWidth="9.75%p"
+            android:keyWidth="12.6%p"
             android:keyEdgeFlags="left" />
 
         <Key android:codes="74" />
@@ -105,7 +105,7 @@
 
         <Key
             android:codes="79"
-            android:keyWidth="9.75%p"
+            android:keyWidth="12.6%p"
             android:keyEdgeFlags="right" />
     </Row>
 
@@ -113,7 +113,7 @@
 
         <Key
             android:codes="80"
-            android:keyWidth="9.75%p"
+            android:keyWidth="12.6%p"
             android:keyEdgeFlags="left" />
 
         <Key android:codes="81" />
@@ -132,7 +132,7 @@
 
         <Key
             android:codes="86"
-            android:keyWidth="9.75%p"
+            android:keyWidth="12.6%p"
             android:keyEdgeFlags="right" />
     </Row>
 
@@ -140,7 +140,7 @@
 
         <Key
             android:codes="@string/symbols"
-            android:keyWidth="9.75%p"
+            android:keyWidth="12.6%p"
             android:keyEdgeFlags="left"
             android:keyHeight="13.3%p"
             android:keyIcon="@drawable/shift" />
@@ -161,7 +161,7 @@
 
         <Key
             android:codes="94"
-            android:keyWidth="9.75%p"
+            android:keyWidth="12.6%p"
             android:keyEdgeFlags="right" />
     </Row>
 
@@ -170,18 +170,18 @@
 
         <Key
             android:codes="@string/english"
-            android:horizontalGap="9.75%p"
+            android:horizontalGap="12.6%p"
             android:keyLabel="En" />
 
         <Key
             android:codes="@string/space"
-            android:keyWidth="57.5%p" />
+            android:keyWidth="53%p" />
 
         <Key
             android:codes="@string/enter"
             android:isRepeatable="true"
             android:keyIcon="@drawable/sym_keyboard_return"
-            android:keyWidth="21.25%p" />
+            android:keyWidth="23.5%p" />
     </Row>
 
     <Row android:keyHeight="0.15%p" >

@@ -1,6 +1,6 @@
 package iit.android.settings;
 
-import iit.android.language.telugu.MainLanguage;
+import iit.android.language.hindi.MainLanguage;
 import iit.android.swarachakra.R;
 
 import java.util.ArrayList;
