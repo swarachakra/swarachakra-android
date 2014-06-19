@@ -7,6 +7,7 @@ import iit.android.language.telugu.MainLanguageExceptionHandler;
 import java.util.HashMap;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.inputmethodservice.Keyboard.Key;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -44,7 +45,8 @@ public class MainKeyboardView extends CustomKeyboardView {
 		View v = inflater.inflate(R.layout.chakra_layout, null);
 		mSwaraChakra = (SwaraChakra) v.findViewById(R.id.swarachakra);
 		// TO BE DONE
-		int mode = 0;// based on device and orientation
+		int mode = 0;
+		if(isTablet(context)){mode = 1;}
 		mSwaraChakra.setMetrics(mode);
 		mSwaraChakra.setVisibility(View.GONE);
 
@@ -54,6 +56,12 @@ public class MainKeyboardView extends CustomKeyboardView {
 		mChakraPopup.setClippingEnabled(false);
 		mChakraPopup.setBackgroundDrawable(null);
 		mPopupParent = this;
+	}
+	
+	public static boolean isTablet(Context context) {
+	    return (context.getResources().getConfiguration().screenLayout
+	            & Configuration.SCREENLAYOUT_SIZE_MASK)
+	            >= Configuration.SCREENLAYOUT_SIZE_LARGE;
 	}
 
 	@Override
