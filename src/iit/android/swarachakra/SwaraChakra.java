@@ -96,14 +96,17 @@ public class SwaraChakra extends View {
 		switch(mode){
 		case 0:
 			mOuterRadius = (float) (0.25*Math.min(screen_width, screen_height));
-			mInnerRadius = (float) (0.3*mOuterRadius);
-			mArcTextPaint.setTextSize((float) 0.20*mOuterRadius);
-			mInnerTextPaint.setTextSize((float) 0.25*mOuterRadius);
-			mArcTextRadius = (float) (0.55*mOuterRadius);
 			break;
+		case 1:
+			mOuterRadius = (float) (0.17*Math.min(screen_width, screen_height));
 		default:
+			
 			break;
 		}
+		mInnerRadius = (float) (0.3*mOuterRadius);
+		mArcTextPaint.setTextSize((float) 0.20*mOuterRadius);
+		mInnerTextPaint.setTextSize((float) 0.25*mOuterRadius);
+		mArcTextRadius = (float) (0.55*mOuterRadius);
 		bound = new RectF(mOuterRadius,mOuterRadius,3*mOuterRadius, 3*mOuterRadius);
 		centerX = bound.centerX();
 		centerY = bound.centerY();

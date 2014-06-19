@@ -204,6 +204,13 @@ public class SoftKeyboard extends InputMethodService {
 		setInputView(onCreateInputView());
 	}
 	
+	public static boolean isTablet(Context context) {
+//	    return (context.getResources().getConfiguration().screenLayout
+//	            & Configuration.SCREENLAYOUT_SIZE_MASK)
+//	            >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+		return true;
+	}
+	
 	/**
 	 * Detects the display config(landscape or portrait) and sets the displayMode accordingly
 	 */
@@ -212,6 +219,7 @@ public class SoftKeyboard extends InputMethodService {
 
 		if (dispMode == 1) {
 			displayMode = "";
+			if(isTablet(getBaseContext())){displayMode = "tablet_";}
 		} else {
 			displayMode = "land_";
 		}
