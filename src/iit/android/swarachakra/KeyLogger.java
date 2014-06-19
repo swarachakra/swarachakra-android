@@ -77,7 +77,7 @@ public class KeyLogger {
 			Log.d(TAG, "No upload");
 		} else if ((tmpTS - uploadtimestamp) / (60 * 1000) >= uploadFreq) {
 			// uploadtimestamp=tmpTS;
-			uploadToServer();
+			//uploadToServer();
 		} else {
 			Log.d(TAG, "No upload");
 		}

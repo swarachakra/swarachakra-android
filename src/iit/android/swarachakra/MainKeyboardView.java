@@ -2,7 +2,7 @@ package iit.android.swarachakra;
 
 import iit.android.language.ExceptionHandler;
 import iit.android.language.Language;
-import iit.android.language.telugu.MainLanguageExceptionHandler;
+import iit.android.language.hindi.MainLanguageExceptionHandler;
 
 import java.util.HashMap;
 

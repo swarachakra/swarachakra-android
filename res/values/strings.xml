@@ -9,6 +9,10 @@
     <string name="space">403</string>
     <string name="enter">404</string>
     <string name="shift">405</string>
+    
+    <string name="tablet_layout_setting_key">use_small_layout</string>
+    <string name="tablet_layout_setting_title">Use small layout</string>
+    <string name="tablet_layout_setting_summary">Reduces the height of the keyboard and the key sizes</string>
 
     <!-- Settings -->
     <!-- Fragments -->

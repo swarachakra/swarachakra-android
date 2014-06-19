@@ -244,8 +244,8 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 				commitText(key.label);
 			}
 		} else {
-			removeHalantMode();
 			handleSpecialInput(keyCode);
+			removeHalantMode();
 		}
 	}
 
@@ -281,7 +281,6 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 			inHalantMode = true;
 			updateKeyLabels();
 		}
-		mInputConnection.setComposingText("", 1);
 	}
 
 	/**
