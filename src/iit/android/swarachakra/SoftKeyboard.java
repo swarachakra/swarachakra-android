@@ -212,11 +212,26 @@ public class SoftKeyboard extends InputMethodService {
 		setInputView(onCreateInputView());
 	}
 	
-	public static boolean isTablet(Context context) {
+	public static boolean showTablet(Context context) {
 		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+		SharedPreferences.Editor editor = settings.edit();
 		String key = context.getResources().getString(R.string.tablet_layout_setting_key);
+		boolean isFirstRun = settings.getBoolean("is_first_run", true);
+		if(isFirstRun){
+			editor.putBoolean("is_first_run", false);
+			editor.putBoolean(key, isTablet(context));
+			editor.commit();
+		}
+		
+		
 		boolean showTabletLayout = settings.getBoolean(key, false);
 		return showTabletLayout;
+	}
+	
+	public static boolean isTablet(Context context) {
+	    return (context.getResources().getConfiguration().screenLayout
+	            & Configuration.SCREENLAYOUT_SIZE_MASK)
+	            >= Configuration.SCREENLAYOUT_SIZE_LARGE;
 	}
 	
 	/**
@@ -227,7 +242,7 @@ public class SoftKeyboard extends InputMethodService {
 
 		if (dispMode == 1) {
 			displayMode = "";
-			if(isTablet(mContext)){displayMode = "tablet_";}
+			if(showTablet(mContext)){displayMode = "tablet_";}
 		} else {
 			displayMode = "land_";
 		}
