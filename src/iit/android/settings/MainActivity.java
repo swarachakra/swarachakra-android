@@ -15,7 +15,6 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodInfo;
@@ -25,9 +24,8 @@ import android.widget.Button;
 public class MainActivity extends FragmentActivity {
 	private boolean isDefault = false;
 	private boolean isEnabled = false;
-	private boolean startSetUp = false;
-	private boolean endSetUp = false;
 	private boolean isFirstRun;
+	private static MainActivity mainApp;
 	private MainLanguage language = new MainLanguage();
 
 	SharedPreferences settings;
@@ -42,14 +40,12 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		mainApp = this;
 		CustomFragment.mMainActivity = this;
 		settings = PreferenceManager.getDefaultSharedPreferences(this);
 		editor = settings.edit();
 		String key = this.getResources().getString(R.string.first_run_tutorial);
 		isFirstRun = settings.getBoolean(key, true);
-		if (!isFirstRun) {
-			startSetUp = true;
-		}
 
 		List<Fragment> fragments = getFragments();
 		pageAdapter = new CustomPageAdapter(getSupportFragmentManager(),
@@ -57,12 +53,6 @@ public class MainActivity extends FragmentActivity {
 		pager = (CustomViewPager) findViewById(R.id.viewpager);
 		pager.setPagingEnabled(false);
 		pager.setAdapter(pageAdapter);
-		pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-			@Override
-			public void onPageSelected(int position) {
-				setButtonText();
-			}
-		});
 
 		b = (Button) findViewById(R.id.Button);
 		b.setText(getStringResourceByName("welcome_button"));
@@ -97,18 +87,16 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public void onWindowFocusChanged(final boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
-		if (isFirstRun) {
-			if (startSetUp && !endSetUp && hasFocus) {
-				final Handler handler = new Handler();
-				handler.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						setCorrectView();
-					}
-				}, 500);
-			}
-		} else {
-			setCorrectView();
+		boolean isWelcomeFragment = isFirstRun && (pager.getCurrentItem()==0);
+		boolean isCongratsFragment = isFirstRun && (pager.getCurrentItem()==3);
+		if (hasFocus && !isWelcomeFragment && !isCongratsFragment) {
+			final Handler handler = new Handler();
+			handler.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					setCorrectView();
+				}
+			}, 500);
 		}
 	}
 
@@ -117,12 +105,18 @@ public class MainActivity extends FragmentActivity {
 		moveTaskToBack(true);
 	}
 
+	public static MainActivity getMainApp() {
+		return mainApp;
+	}
+
 	private List<Fragment> getFragments() {
 		List<Fragment> fList = new ArrayList<Fragment>();
-		fList.add(CustomFragment.newInstance(0));
-		fList.add(CustomFragment.newInstance(1));
-		fList.add(CustomFragment.newInstance(2));
-		fList.add(CustomFragment.newInstance(3));
+		if (isFirstRun)
+			fList.add(new WelcomeFragment());
+		fList.add(new EnableFragment());
+		fList.add(new DefaultFragment());
+		if (isFirstRun)
+			fList.add(new CongratsFragment());
 		return fList;
 	}
 
@@ -164,32 +158,12 @@ public class MainActivity extends FragmentActivity {
 		return stageNumber;
 	}
 
-	private void setButtonText() {
-		int stageNo = pager.getCurrentItem();
-		switch (stageNo) {
-		case 0:
-			b.setText(getStringResourceByName("welcome_button"));
-			break;
-		case 1:
-			b.setText(getStringResourceByName("enable_button"));
-			break;
-		case 2:
-			b.setText(getStringResourceByName("default_button"));
-			break;
-		case 3:
-			b.setText(getStringResourceByName("congrats_button"));
-			;
-			break;
-		}
-	}
-
 	public void buttonClick(View v) {
-		int stageNo = pager.getCurrentItem();
-		Log.d("settings", "stageNo = " + stageNo);
-		switch (stageNo) {
+		int fragmentNo = pager.getCurrentItem();
+		if (!isFirstRun) fragmentNo += 1;
+		switch (fragmentNo) {
 		case 0:
 			setCorrectView();
-			startSetUp = true;
 			break;
 		case 1:
 			showInputEnableSettings();
@@ -199,7 +173,6 @@ public class MainActivity extends FragmentActivity {
 			break;
 		case 3:
 			openSettingsApp();
-			endSetUp = true;
 			break;
 		default:
 			break;
@@ -208,8 +181,7 @@ public class MainActivity extends FragmentActivity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// Check which request it is that we're responding to
-		Log.d("main", "called onActivityResult");
+
 		final Handler handler = new Handler();
 		handler.postDelayed(new Runnable() {
 			@Override
@@ -217,12 +189,6 @@ public class MainActivity extends FragmentActivity {
 				setCorrectView();
 			}
 		}, 500);
-		if (requestCode == 0) {
-			Log.d("main", "resultCode = " + resultCode);
-			if (resultCode == RESULT_OK) {
-				Log.d("main", "data = " + data);
-			}
-		}
 	}
 
 	public void showInputEnableSettings() {
@@ -237,14 +203,22 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	public void setCorrectView() {
-		Log.d("settings", "getStageNumber = " + getStageNumber());
+
 		int stageNumber = getStageNumber();
 		switch (stageNumber) {
 		case 0:
-			pager.setCurrentItem(1, true);
+			if (isFirstRun)
+				pager.setCurrentItem(1, true);
+			else
+				pager.setCurrentItem(0, true);
+			b.setText(getStringResourceByName("enable_button"));
 			break;
 		case 1:
-			pager.setCurrentItem(2, true);
+			if (isFirstRun)
+				pager.setCurrentItem(2, true);
+			else
+				pager.setCurrentItem(1, true);
+			b.setText(getStringResourceByName("default_button"));
 			break;
 		case 2:
 			if (isFirstRun) {
@@ -253,6 +227,7 @@ public class MainActivity extends FragmentActivity {
 				editor.putBoolean(key, false);
 				editor.commit();
 				pager.setCurrentItem(3, true);
+				b.setText(getStringResourceByName("congrats_button"));
 			} else {
 				openSettingsApp();
 			}
@@ -260,18 +235,6 @@ public class MainActivity extends FragmentActivity {
 		default:
 			Log.d("main", "I'm defaulting");
 			pager.setCurrentItem(0);
-		}
-	}
-
-	public void moveTo(int destFragment) {
-		int curFragment = pager.getCurrentItem();
-		while (destFragment != curFragment) {
-			if (destFragment > curFragment) {
-				pager.setCurrentItem(curFragment + 1, true);
-			} else {
-				pager.setCurrentItem(curFragment - 1, true);
-			}
-			curFragment = pager.getCurrentItem();
 		}
 	}
 
