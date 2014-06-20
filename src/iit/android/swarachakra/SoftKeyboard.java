@@ -42,10 +42,16 @@ public class SoftKeyboard extends InputMethodService {
 	private String displayMode;
 	private Key mEnterKey;
 	private KeyLogger mKeyLogger;
+	private static Context appContext = null;
+	String PACKAGE_NAME = "iit.android.swarachakra";
+	String PREFERENCE_NAME = "GlobalPrefs";
+	Context myContext;
 
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		Log.d("settings","onCreate Called");
+		appContext = getApplicationContext();
 		Installation.id(getApplicationContext());
 		mKeyLogger = new KeyLogger();
 		mKeyLogger.setSoftKeyboard(this);
@@ -110,6 +116,10 @@ public class SoftKeyboard extends InputMethodService {
 		
 		mKeyLogger.writeToLocalStorage();
 		mKeyLogger.extractedText="";
+	}
+	
+	public static Context appContext() {
+		return appContext;
 	}
 	
 	/**
@@ -212,8 +222,10 @@ public class SoftKeyboard extends InputMethodService {
 		setInputView(onCreateInputView());
 	}
 	
-	public static boolean showTablet(Context context) {
-		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+	public boolean showTablet(Context context) {
+		
+		// SharedPreferences settings = mySharedPreferences();
+		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(SoftKeyboard.appContext());
 		SharedPreferences.Editor editor = settings.edit();
 		String key = context.getResources().getString(R.string.tablet_layout_setting_key);
 		boolean isFirstRun = settings.getBoolean("is_first_run", true);

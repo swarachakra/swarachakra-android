@@ -1,5 +1,6 @@
-package iit.android.swarachakra;
+package iit.android.settings;
 
+import iit.android.swarachakra.R;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 

@@ -90,7 +90,7 @@ public class MainActivity extends FragmentActivity {
 			handler.postDelayed(new Runnable() {
 				@Override
 				public void run() {
-					setCorrectView();
+					// setCorrectView();
 				}
 			}, 500);
 		}
@@ -166,10 +166,10 @@ public class MainActivity extends FragmentActivity {
 
 	public void buttonClick(View v) {
 		int stageNo = pager.getCurrentItem();
+		Log.d("settings", "stageNo = " + stageNo);
 		switch (stageNo) {
 		case 0:
 			setCorrectView();
-			;
 			startSetUp = true;
 			break;
 		case 1:
@@ -217,19 +217,21 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	public void setCorrectView() {
+		Log.d("settings", "getStageNumber = " + getStageNumber());
 		int stageNumber = getStageNumber();
 		switch (stageNumber) {
 		case 0:
-			moveTo(1);
+			pager.setCurrentItem(1, true);
 			break;
 		case 1:
-			moveTo(2);
+			pager.setCurrentItem(2, true);
 			break;
 		case 2:
-			moveTo(3);
+			pager.setCurrentItem(3, true);
 			break;
 		case 3:
-			moveTo(4);
+			pager.setCurrentItem(4, true);
+			break;
 		default:
 			Log.d("main", "I'm defaulting");
 			pager.setCurrentItem(0);
@@ -246,6 +248,11 @@ public class MainActivity extends FragmentActivity {
 			}
 			curFragment = pager.getCurrentItem();
 		}
+	}
+	
+	public void openSettingsApp() {
+		Intent intent = new Intent(this, SettingsActivity.class);
+		startActivity(intent);
 	}
 
 }
