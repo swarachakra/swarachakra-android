@@ -13,6 +13,7 @@
     <string name="tablet_layout_setting_key">use_small_layout</string>
     <string name="tablet_layout_setting_title">Use small layout</string>
     <string name="tablet_layout_setting_summary">Reduces the height of the keyboard and the key sizes</string>
+    <string name="first_run_tutorial">first_run_tutorial</string>
 
     <!-- Settings -->
     <!-- Fragments -->
@@ -28,6 +29,7 @@
     <!-- Congrats fragment -->
     <string name="congrats_instruction">"स्वरचक्र इस्तेमाल के लिए तैयार है।"</string>
     <string name="congrats_title">"बधाईयाँ"</string>
+    <string name="congrats_button">"सेटिंग्स "</string>
     
     <!-- Settings -->
     <!-- Fragments -->
@@ -43,5 +45,5 @@
     <!-- Congrats fragment -->
     <string name="telugu_congrats_instruction">"స్వరచక్ర సెట్ అప్ పూర్తి అయ్యింది "</string>
     <string name="telugu_congrats_title">"ధన్యవాదాలు "</string>
-    
+    <string name="telugu_settings_button">"సెట్టింగ్స్ "</string>
 </resources>

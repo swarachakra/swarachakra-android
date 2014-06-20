@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class CustomFragment extends Fragment {
 
@@ -69,16 +68,13 @@ public class CustomFragment extends Fragment {
 			gif.setVisibility(View.VISIBLE);
 			break;
 		case 3:
-			/*instruction.setText(mMainActivity
+			instruction.setText(mMainActivity
 					.getStringResourceByName("congrats_instruction"));
 			instruction.setVisibility(View.VISIBLE);
 			title.setText(mMainActivity
 					.getStringResourceByName("congrats_title"));
 			title.setVisibility(View.VISIBLE);
-			gif.setVisibility(View.GONE);*/
-			Toast toast = Toast.makeText(mMainActivity, "called open settings App", Toast.LENGTH_SHORT);
-			toast.show();
-			mMainActivity.openSettingsApp();
+			gif.setVisibility(View.GONE);
 			break;
 		default:
 			title.setText("Something went wrong");

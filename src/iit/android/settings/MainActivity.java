@@ -8,8 +8,10 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -25,20 +27,30 @@ public class MainActivity extends FragmentActivity {
 	private boolean isEnabled = false;
 	private boolean startSetUp = false;
 	private boolean endSetUp = false;
+	private boolean isFirstRun;
 	private MainLanguage language = new MainLanguage();
+
+	SharedPreferences settings;
+	SharedPreferences.Editor editor;
 
 	CustomPageAdapter pageAdapter;
 	CustomViewPager pager;
 	Button b;
 
-	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		CustomFragment.mMainActivity = this;
-		
+		settings = PreferenceManager.getDefaultSharedPreferences(this);
+		editor = settings.edit();
+		String key = this.getResources().getString(R.string.first_run_tutorial);
+		isFirstRun = settings.getBoolean(key, true);
+		if (!isFirstRun) {
+			startSetUp = true;
+		}
+
 		List<Fragment> fragments = getFragments();
 		pageAdapter = new CustomPageAdapter(getSupportFragmentManager(),
 				fragments);
@@ -58,9 +70,9 @@ public class MainActivity extends FragmentActivity {
 
 	public String getStringResourceByName(String aString) {
 		String packageName = getPackageName();
-		int resId = getResources()
-				.getIdentifier(language.name + "_" + aString, "string", packageName);
-		if(resId == 0) {
+		int resId = getResources().getIdentifier(language.name + "_" + aString,
+				"string", packageName);
+		if (resId == 0) {
 			resId = getResources()
 					.getIdentifier(aString, "string", packageName);
 		}
@@ -85,15 +97,24 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public void onWindowFocusChanged(final boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
-		if (startSetUp && !endSetUp && hasFocus) {
-			final Handler handler = new Handler();
-			handler.postDelayed(new Runnable() {
-				@Override
-				public void run() {
-					// setCorrectView();
-				}
-			}, 500);
+		if (isFirstRun) {
+			if (startSetUp && !endSetUp && hasFocus) {
+				final Handler handler = new Handler();
+				handler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						setCorrectView();
+					}
+				}, 500);
+			}
+		} else {
+			setCorrectView();
 		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		moveTaskToBack(true);
 	}
 
 	private List<Fragment> getFragments() {
@@ -148,18 +169,16 @@ public class MainActivity extends FragmentActivity {
 		switch (stageNo) {
 		case 0:
 			b.setText(getStringResourceByName("welcome_button"));
-			b.setVisibility(View.VISIBLE);
 			break;
 		case 1:
 			b.setText(getStringResourceByName("enable_button"));
-			b.setVisibility(View.VISIBLE);
 			break;
 		case 2:
 			b.setText(getStringResourceByName("default_button"));
-			b.setVisibility(View.VISIBLE);
 			break;
 		case 3:
-			b.setVisibility(View.GONE);
+			b.setText(getStringResourceByName("congrats_button"));
+			;
 			break;
 		}
 	}
@@ -179,6 +198,7 @@ public class MainActivity extends FragmentActivity {
 			showInputDefaultSettings();
 			break;
 		case 3:
+			openSettingsApp();
 			endSetUp = true;
 			break;
 		default:
@@ -227,10 +247,15 @@ public class MainActivity extends FragmentActivity {
 			pager.setCurrentItem(2, true);
 			break;
 		case 2:
-			pager.setCurrentItem(3, true);
-			break;
-		case 3:
-			pager.setCurrentItem(4, true);
+			if (isFirstRun) {
+				String key = this.getResources().getString(
+						R.string.first_run_tutorial);
+				editor.putBoolean(key, false);
+				editor.commit();
+				pager.setCurrentItem(3, true);
+			} else {
+				openSettingsApp();
+			}
 			break;
 		default:
 			Log.d("main", "I'm defaulting");
@@ -249,7 +274,7 @@ public class MainActivity extends FragmentActivity {
 			curFragment = pager.getCurrentItem();
 		}
 	}
-	
+
 	public void openSettingsApp() {
 		Intent intent = new Intent(this, SettingsActivity.class);
 		startActivity(intent);

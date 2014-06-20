@@ -2,21 +2,17 @@ package iit.android.settings;
 
 import java.util.List;
 
-import iit.android.swarachakra.R;
-import iit.android.swarachakra.SoftKeyboard;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 
 public class SettingsActivity extends PreferenceActivity {
+	public static boolean isTablet;
 	private boolean isDefault = false;
 	private boolean isEnabled = false;
 
@@ -25,25 +21,29 @@ public class SettingsActivity extends PreferenceActivity {
 		super.onCreate(savedInstanceState);
 		checkKeyboardStatus();
 		if (isDefault && isEnabled) {
-			SharedPreferences settings = PreferenceManager
-					.getDefaultSharedPreferences(SoftKeyboard.appContext());
-			SharedPreferences.Editor editor = settings.edit();
-			String key = this.getResources().getString(
-					R.string.tablet_layout_setting_key);
-			boolean isFirstRun = settings.getBoolean("is_first_run", true);
-			if (isFirstRun) {
-				editor.putBoolean("is_first_run", false);
-				editor.putBoolean(key, isTablet(this));
-				editor.commit();
-			}
-
 			// Display the fragment as the main content.
+			isTablet = isTablet(this);
 			getFragmentManager().beginTransaction()
 					.replace(android.R.id.content, new UserSettings()).commit();
 		} else {
 			Intent intent = new Intent(this, MainActivity.class);
-			Toast toast = Toast.makeText(this, "called open MainActivity App", Toast.LENGTH_SHORT);
-			toast.show();
+			startActivity(intent);
+		}
+	}
+	
+	@Override
+	public void onBackPressed() {
+	    moveTaskToBack(true);
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		checkKeyboardStatus();
+		if(isDefault && isEnabled) {
+			
+		} else {
+			Intent intent = new Intent(this, MainActivity.class);
 			startActivity(intent);
 		}
 	}
