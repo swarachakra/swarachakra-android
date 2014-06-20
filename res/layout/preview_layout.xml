@@ -5,6 +5,5 @@
     android:id="@+id/preview_text_view"
     android:textSize="36sp"
     android:textAlignment="center"
-    android:gravity="center|top"
-    android:paddingTop="10dp"
+    android:gravity="center"
     />

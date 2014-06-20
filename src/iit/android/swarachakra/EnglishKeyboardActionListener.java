@@ -94,6 +94,10 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 		mPreviewPopup = mKeyboardView.mPreviewPopup;
 		mPreviewTextView = mKeyboardView.mPreviewTextView;
 
+		initBooleans();
+	}
+	
+	private void initBooleans(){
 		isShifted = false;
 		inSymbolMode = false;
 		inMoreSymbolMode = false;
@@ -121,6 +125,8 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 
 	public void setInputConnection(InputConnection ic) {
 		mInputConnection = ic;
+		initBooleans();
+		changeLayout();
 	}
 
 	@Override
@@ -203,9 +209,9 @@ public class EnglishKeyboardActionListener implements OnKeyboardActionListener,
 			int x = 0;
 			int y = 0;
 			w = key.width * 5 / 3;
-			h = key.height * 5 / 3;
+			h = key.height*5/3;
 			x = key.x - w / 5;
-			y = key.y - h + (int) 0.1 * key.y;
+			y = key.y - h + (int)(0.02*h);
 
 			mPreviewTextView.setText(getLabel(keyCode));
 

@@ -82,7 +82,7 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 		mChakraPopup = mKeyboardView.mChakraPopup;
 		mSwaraChakra = mKeyboardView.mSwaraChakra;
 		mPopupParent = mKeyboardView.mPopupParent;
-		isChakraVisible = false;
+		
 
 		BACKSPACE = mKeyboardView.BACKSPACE;
 		ENTER = mKeyboardView.ENTER;
@@ -91,16 +91,23 @@ public class MainKeyboardActionListener implements OnKeyboardActionListener,
 		SYMBOLS = mKeyboardView.SYMBOLS;
 		SHIFT = mKeyboardView.SHIFT;
 
+		initVariables();
+		MOVE_THRESHOLD = (int) mSwaraChakra.getInnerRadius();
+		DIM_THRESHOLD = (int) (mSwaraChakra.getOuterRadius() * 0.6);
+	}
+	
+	private void initVariables(){
+		isChakraVisible = false;
 		inHalantMode = false;
 		inExceptionMode = false;
 		exceptionCode = 0;
 		preText = "";
-		MOVE_THRESHOLD = (int) mSwaraChakra.getInnerRadius();
-		DIM_THRESHOLD = (int) (mSwaraChakra.getOuterRadius() * 0.6);
 	}
 
 	public void setInputConnection(InputConnection ic) {
 		mInputConnection = ic;
+		initVariables();
+		changeLayout("default");
 	}
 
 	public void setExceptionHandler(ExceptionHandler eh) {

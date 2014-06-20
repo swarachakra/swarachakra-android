@@ -239,7 +239,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	public void openSettingsApp() {
-		Intent intent = new Intent(this, SettingsActivity.class);
+		Intent intent = new Intent(this, iit.android.settings.SettingsActivity.class);
 		startActivity(intent);
 	}
 
