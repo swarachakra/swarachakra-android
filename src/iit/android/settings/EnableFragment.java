@@ -6,8 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class EnableFragment extends Fragment {
@@ -15,27 +14,29 @@ public class EnableFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		int containHeight;
-		int containWidth;
-		View v = inflater.inflate(R.layout.fragment_layout, container, false);
-		TextView title = (TextView) v.findViewById(R.id.title);
-		TextView instruction = (TextView) v.findViewById(R.id.instruction);
-		GIFView gif = (GIFView) v.findViewById(R.id.gif);
-		FrameLayout gifcontain = (FrameLayout) v
-				.findViewById(R.id.main_container);
+		MainActivity mainApp = MainActivity.getMainApp();
 		
-		containHeight = gifcontain.getHeight();
-		containWidth = gifcontain.getWidth();
-		instruction.setVisibility(View.GONE);
-		title.setVisibility(View.GONE);
-		gif.loadGIFResource(getActivity(), R.drawable.enable, containHeight,
-				containWidth);
-		MarginLayoutParams m = (MarginLayoutParams) gif.getLayoutParams();
-		m.setMargins(gif.getMarginLeft(), gif.getMarginTop(),
-				gif.getMarginLeft(), 0);
-		gif.setLayoutParams(m);
-		gif.setVisibility(View.VISIBLE);
+		View v = inflater.inflate(R.layout.enable_fragment, container,  false);
+		TextView instructionsHeadTextView = (TextView)v.findViewById(R.id.enable_instructions_head);
+		TextView stepsHeadTextView = (TextView)v.findViewById(R.id.enable_steps_head);
+		TextView step1TextView = (TextView)v.findViewById(R.id.enable_step_1);
+		TextView step2TextView = (TextView)v.findViewById(R.id.enable_step_2);
+		TextView step3TextView = (TextView)v.findViewById(R.id.enable_step_3);
+		Button enableButton = (Button)v.findViewById(R.id.enable_button);
 		
+		String instructionsHeadText = mainApp.getStringResourceByName("enable_instructions_head");
+		String stepsHeadText = mainApp.getStringResourceByName("enable_steps_head");
+		String step1Text = mainApp.getStringResourceByName("enable_step_1");
+		String step2Text = mainApp.getStringResourceByName("enable_step_2");
+		String step3Text = mainApp.getStringResourceByName("enable_step_3");
+		String enableButtonText = mainApp.getStringResourceByName("enable_button");
+		
+		instructionsHeadTextView.setText(instructionsHeadText);
+		stepsHeadTextView.setText(stepsHeadText);
+		step1TextView.setText(step1Text);
+		step2TextView.setText(step2Text);
+		step3TextView.setText(step3Text);
+		enableButton.setText(enableButtonText);
 		return v;
 	}
 

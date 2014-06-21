@@ -1,6 +1,5 @@
 package iit.android.settings;
 
-import iit.android.language.hindi.MainLanguage;
 import iit.android.swarachakra.R;
 
 import java.util.ArrayList;
@@ -19,21 +18,18 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 
 public class MainActivity extends FragmentActivity {
 	private boolean isDefault = false;
 	private boolean isEnabled = false;
 	private boolean isFirstRun;
 	private static MainActivity mainApp;
-	private MainLanguage language = new MainLanguage();
 
 	SharedPreferences settings;
 	SharedPreferences.Editor editor;
 
 	CustomPageAdapter pageAdapter;
 	CustomViewPager pager;
-	Button b;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -53,14 +49,12 @@ public class MainActivity extends FragmentActivity {
 		pager = (CustomViewPager) findViewById(R.id.viewpager);
 		pager.setPagingEnabled(false);
 		pager.setAdapter(pageAdapter);
-
-		b = (Button) findViewById(R.id.Button);
-		b.setText(getStringResourceByName("welcome_button"));
 	}
 
 	public String getStringResourceByName(String aString) {
 		String packageName = getPackageName();
-		int resId = getResources().getIdentifier(language.name + "_" + aString,
+		String languageName = getResources().getString(R.string.language_name);
+		int resId = getResources().getIdentifier(languageName + "_" + aString,
 				"string", packageName);
 		if (resId == 0) {
 			resId = getResources()
@@ -115,7 +109,7 @@ public class MainActivity extends FragmentActivity {
 			fList.add(new WelcomeFragment());
 		fList.add(new EnableFragment());
 		fList.add(new DefaultFragment());
-		if (isFirstRun)
+		if(isFirstRun)
 			fList.add(new CongratsFragment());
 		return fList;
 	}
@@ -160,7 +154,7 @@ public class MainActivity extends FragmentActivity {
 
 	public void buttonClick(View v) {
 		int fragmentNo = pager.getCurrentItem();
-		if (!isFirstRun) fragmentNo += 1;
+		if(!isFirstRun)fragmentNo += 1;
 		switch (fragmentNo) {
 		case 0:
 			setCorrectView();
@@ -211,14 +205,12 @@ public class MainActivity extends FragmentActivity {
 				pager.setCurrentItem(1, true);
 			else
 				pager.setCurrentItem(0, true);
-			b.setText(getStringResourceByName("enable_button"));
 			break;
 		case 1:
 			if (isFirstRun)
 				pager.setCurrentItem(2, true);
 			else
 				pager.setCurrentItem(1, true);
-			b.setText(getStringResourceByName("default_button"));
 			break;
 		case 2:
 			if (isFirstRun) {
@@ -227,7 +219,6 @@ public class MainActivity extends FragmentActivity {
 				editor.putBoolean(key, false);
 				editor.commit();
 				pager.setCurrentItem(3, true);
-				b.setText(getStringResourceByName("congrats_button"));
 			} else {
 				openSettingsApp();
 			}

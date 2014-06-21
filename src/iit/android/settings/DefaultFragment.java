@@ -6,36 +6,30 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class DefaultFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+MainActivity mainApp = MainActivity.getMainApp();
 		
-		int containHeight;
-		int containWidth;
-		View v = inflater.inflate(R.layout.fragment_layout, container, false);
-		TextView title = (TextView) v.findViewById(R.id.title);
-		TextView instruction = (TextView) v.findViewById(R.id.instruction);
-		GIFView gif = (GIFView) v.findViewById(R.id.gif);
-		FrameLayout gifcontain = (FrameLayout) v
-				.findViewById(R.id.main_container);
+		View v = inflater.inflate(R.layout.default_fragment, container,  false);
+		TextView instructionsHeadTextView = (TextView)v.findViewById(R.id.default_instructions_head);
+		TextView stepsHeadTextView = (TextView)v.findViewById(R.id.default_steps_head);
+		TextView step1TextView = (TextView)v.findViewById(R.id.default_step_1);
+		Button defaultButton = (Button)v.findViewById(R.id.default_button);
 		
-		containHeight = gifcontain.getHeight();
-		containWidth = gifcontain.getWidth();
-		instruction.setVisibility(View.GONE);
-		title.setVisibility(View.GONE);
-		gif.loadGIFResource(getActivity(), R.drawable.defaults, containHeight,
-				containWidth);
-		MarginLayoutParams m2 = (MarginLayoutParams) gif.getLayoutParams();
-		m2.setMargins(gif.getMarginLeft(), gif.getMarginTop(),
-				gif.getMarginLeft(), 0);
-		gif.setLayoutParams(m2);
-		gif.setVisibility(View.VISIBLE);
-
+		String instructionsHeadText = mainApp.getStringResourceByName("default_instructions_head");
+		String stepsHeadText = mainApp.getStringResourceByName("default_steps_head");
+		String step1Text = mainApp.getStringResourceByName("default_step_1");
+		String defaultButtonText = mainApp.getStringResourceByName("default_button");
+		
+		instructionsHeadTextView.setText(instructionsHeadText);
+		stepsHeadTextView.setText(stepsHeadText);
+		step1TextView.setText(step1Text);
+		defaultButton.setText(defaultButtonText);
 		return v;
 	}
 

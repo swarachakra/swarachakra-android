@@ -142,9 +142,9 @@ public class SoftKeyboard extends InputMethodService {
 		mKeyboardView.setAlpha(1);
 		setImeOptions();
 		
-		String curDisplayMode = displayMode;
+		String prevDisplayMode = displayMode;
 		detectDisplayMode();
-		if(displayMode != curDisplayMode){
+		if(displayMode != prevDisplayMode){
 			setInputView(onCreateInputView());
 		}
 	}
@@ -181,6 +181,11 @@ public class SoftKeyboard extends InputMethodService {
 	 * @param layoutFile	layout id of the layout to be loaded into the keyboardView
 	 */
 	public void changeKeyboard(String layoutFile) {
+		String prevDislayMode = displayMode;
+		detectDisplayMode();
+		if(prevDislayMode != displayMode){
+			setInputView(onCreateInputView());
+		}
 		int resourceId = getResourceId(layoutFile);
 		if (resourceId != 0) {
 			mKeyboard = new Keyboard(mContext, resourceId);

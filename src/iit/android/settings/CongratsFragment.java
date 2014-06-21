@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class CongratsFragment extends Fragment {
@@ -17,18 +18,15 @@ public class CongratsFragment extends Fragment {
 
 		mMainActivity = MainActivity.getMainApp();
 
-		View v = inflater.inflate(R.layout.fragment_layout, container, false);
+		View v = inflater.inflate(R.layout.congrats_fragment, container, false);
 		TextView title = (TextView) v.findViewById(R.id.title);
 		TextView instruction = (TextView) v.findViewById(R.id.instruction);
-		GIFView gif = (GIFView) v.findViewById(R.id.gif);
+		Button congratsButton = (Button) v.findViewById(R.id.congrats_button);
 
 		instruction.setText(mMainActivity
 				.getStringResourceByName("congrats_instruction"));
-		instruction.setVisibility(View.VISIBLE);
 		title.setText(mMainActivity.getStringResourceByName("congrats_title"));
-		title.setVisibility(View.VISIBLE);
-		gif.setVisibility(View.GONE);
-
+		congratsButton.setText(mMainActivity.getStringResourceByName("congrats_button"));
 		return v;
 	}
 

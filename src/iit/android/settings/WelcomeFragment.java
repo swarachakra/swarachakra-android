@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class WelcomeFragment extends Fragment {
@@ -16,15 +17,15 @@ public class WelcomeFragment extends Fragment {
 			Bundle savedInstanceState) {
 
 		mMainActivity = MainActivity.getMainApp();
-		View v = inflater.inflate(R.layout.fragment_layout, container, false);
+		View v = inflater.inflate(R.layout.welcome_fragment, container, false);
 		TextView title = (TextView) v.findViewById(R.id.title);
 		TextView instruction = (TextView) v.findViewById(R.id.instruction);
-		GIFView gif = (GIFView) v.findViewById(R.id.gif);
+		Button welcomeButton = (Button) v.findViewById(R.id.welcome_button);
 
 		instruction.setText(mMainActivity
 				.getStringResourceByName("welcome_instruction"));
 		title.setText(mMainActivity.getStringResourceByName("welcome_title"));
-		gif.setVisibility(View.GONE);
+		welcomeButton.setText(mMainActivity.getStringResourceByName("welcome_button"));
 		return v;
 	}
 }

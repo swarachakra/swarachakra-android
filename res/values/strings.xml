@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">"स्वरचक्र हिन्दी"</string>
+    <string name="language_name">hindi</string>
     
     <!-- Special characters -->
     <string name="backspace">400</string>
@@ -14,6 +15,7 @@
     <string name="tablet_layout_setting_title">Use small layout</string>
     <string name="tablet_layout_setting_summary">Reduces the height of the keyboard and the key sizes</string>
     <string name="first_run_tutorial">first_run_tutorial</string>
+    <string name="preview_your_settings">Preview Settings</string>
 
     <!-- Settings -->
     <!-- Fragments -->
@@ -22,6 +24,16 @@
     <!-- Welcome fragment -->
     <string name="welcome_instruction">"Welcome. If you are unable to see the following Hindi text then your device is not supported."</string>
     <string name="welcome_title">"स्वरचक्र"</string>
+    <!-- Enable Fragment -->
+    <string name="enable_instructions_head">स्वरचक्र हिंदी कीबोर्ड इनस्टॉल हो चुका है। लेकिन कीबोर्ड को अभी इनेबल करना बाकी है और उसे डिफ़ॉल्ट कीबोर्ड भी बनाना है।</string>
+    <string name="enable_steps_head">स्वरचक्र हिंदी कीबोर्ड को इनेबल  करने के लिए</string>
+    <string name="enable_step_1">१) अगले स्क्रीन पर स्वरचक्र हिंदी से सटे बॉक्स को चुन्हे ।</string>
+    <string name="enable_step_2">२) "OK"  बटन दबाएँ । </string>
+    <string name="enable_step_3">३) बैक बटन दबाएँ ।</string>
+    <!-- Default Fragment -->
+    <string name="default_instructions_head">स्वरचक्र हिंदी कीबोर्ड इनेबल हो चुका है। अब हमें कीबोर्ड को डिफ़ॉल्ट बनाना है। </string>
+    <string name="default_steps_head">स्वरचक्र हिंदी कीबोर्ड को डिफ़ॉल्ट  बनाने के लिए </string>
+    <string name="default_step_1">१) अगले स्क्रीन पर स्वरचक्र हिंदी चुन्हे। </string>
     <!-- Button Text -->
     <string name="welcome_button">"स्टार्ट"</string>
     <string name="enable_button">"स्वरचक्र को इनेबल करें"</string>
@@ -30,6 +42,8 @@
     <string name="congrats_instruction">"स्वरचक्र इस्तेमाल के लिए तैयार है।"</string>
     <string name="congrats_title">"बधाईयाँ"</string>
     <string name="congrats_button">"सेटिंग्स "</string>
+    <!-- Settings -->
+    <string name="settings_instruction">स्वरचक्र हिंदी कीबोर्ड के लिए अपने पसंदीदा लेआउट, इन विकल्पों से चुन्हे ।</string>
     
     <!-- Settings -->
     <!-- Fragments -->
