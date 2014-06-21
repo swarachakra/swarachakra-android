@@ -37,7 +37,6 @@ public class MainActivity extends FragmentActivity {
 		setContentView(R.layout.activity_main);
 
 		mainApp = this;
-		CustomFragment.mMainActivity = this;
 		settings = PreferenceManager.getDefaultSharedPreferences(this);
 		editor = settings.edit();
 		String key = this.getResources().getString(R.string.first_run_tutorial);
