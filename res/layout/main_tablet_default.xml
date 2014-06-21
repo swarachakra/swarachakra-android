@@ -150,14 +150,14 @@
         <Key android:codes="39" />
 
         <Key android:codes="40" />
-
-        <Key android:codes="52" />
-
-        <Key android:codes="53" />
         
         <Key android:codes="36" />
         
         <Key android:codes="37" />
+
+        <Key android:codes="52" />
+
+        <Key android:codes="53" />
 
         <Key
             android:codes="51"
