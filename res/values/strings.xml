@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">"स्वरचक्र हिंदी"</string>
+    <string name="app_name">स्वरचक्र हिन्दी Swarachakra Hindi</string>
     <string name="language_name">hindi</string>
     
     <!-- Special characters -->
@@ -46,22 +46,20 @@
     <!-- Fragments -->
     <!-- Telugu -->
     <!-- Welcome fragment -->
-    <string name="telugu_welcome_instruction">"Welcome. If you are unable to see the following Hindi text then your device is not supported."</string>
-    <string name="telugu_welcome_title">"స్వరచక్ర "</string>
+    <string name="telugu_welcome_instruction">"Welcome. If you are unable to see the following Telugu text then your device is not supported."</string>
+    <string name="telugu_welcome_title">"మీ ఫోన్ లో ఈ తెలుగు వాఖ్యం సరిగానే కనిపిస్తుందా?"</string>
     <!-- Enable Fragment -->
-    <string name="telugu_enable_instructions_head">స్వరచక్ర ని ప్రయోగించుటకు దానిని ఎనేబుల్ చేసి డిఫాల్ట్ గా మార్చాలి. </string>
-    <string name="telugu_enable_steps_head">స్వరచక్ర ని ఎనేబుల్ చేయుటకు : </string>
+    <string name="telugu_enable_instructions_head">స్వరచక్ర ని ప్రయోగించుటకు దానిని ఎనేబుల్ చేసి డిఫాల్ట్ గా మార్చాలి</string>
     <string name="telugu_enable_step_1">1) రానున్న స్క్రీన్ లో "స్వరచక్ర తెలుగు" పైన క్లిక్ చేయండి. </string>
     <string name="telugu_enable_step_2">2) ఆ తరువాత ఓకే బటన్ పైన క్లిక్ చేయండి. </string>
     <string name="telugu_enable_step_3">3) ఆ తరువాత బ్యాక్ బటన్ పైన క్లిక్ చేయండి. </string>
     <!-- Default Fragment -->
     <string name="telugu_default_instructions_head">స్వరచక్ర ఎనేబుల్ అయ్యింది. ఇప్పుడు దానిని డిఫాల్ట్ చేయాలి. </string>
-    <string name="telugu_default_steps_head">స్వరచక్ర ని డిఫాల్ట్ చేయుటకు :  </string>
-    <string name="telugu_default_step_1">1) రానున్న స్క్రీన్ పై "స్వరచక్ర తెలుగు" పైన క్లిక్ చేయండి. </string>
+    <string name="telugu_default_step_1">1) రానున్న స్క్రీన్ పై "స్వరచక్ర తెలుగు" పైన క్లిక్ చేయండి</string>
     <!-- Settings -->
-    <string name="telugu_settings_instruction">స్వరచక్ర సైజు మర్చుటకై ఈ క్రింది సెట్టింగ్ ను ఉపయోగించండి. </string>    
+    <string name="telugu_settings_instruction">స్వరచక్ర సైజు మర్చుటకై ఈ క్రింది సెట్టింగ్ ను ఉపయోగించండి</string>    
     <!-- Button Text -->
-    <string name="telugu_welcome_button">"స్టార్ట్ "</string>
+    <string name="telugu_welcome_button">"సరిగానే కనిపిస్తుంది"</string>
     <string name="telugu_enable_button">"స్వరచక్ర ని ఎనేబుల్ చేయండి "</string>
     <string name="telugu_default_button">"స్వరచక్ర ని డిఫాల్ట్ చేయండి "</string>
     <!-- Congrats fragment -->

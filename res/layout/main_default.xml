@@ -190,7 +190,7 @@
             android:keyWidth="28.57%p" />
     </Row>
 
-    <Row android:keyHeight="0.15%p" >
+    <Row android:keyHeight="1.25%p" >
     </Row>
 
 </Keyboard>

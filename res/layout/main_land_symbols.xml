@@ -167,7 +167,7 @@
             android:keyEdgeFlags="right"/>
     </Row>
 
-    <Row android:keyHeight="0.15%p" >
+    <Row android:keyHeight="2.315%p" >
     </Row>
 
 </Keyboard>
