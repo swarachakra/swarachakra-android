@@ -21,49 +21,72 @@
     <!-- Fragments -->
     <!-- Defaults -->
     <!-- Welcome fragment -->
-    <string name="welcome_instruction">"Welcome. If you are unable to see the following Hindi text then your device is not supported."</string>
-    <string name="welcome_title">"स्वरचक्र"</string>
+    <string name="welcome_instruction">Welcome. If you are unable to see the following Hindi text then your device is not supported.</string>
+    <string name="welcome_title">क्या आपका फोन यह वाक्य हिन्दी में ठीक से दिखा रहा है?</string>
     <!-- Enable Fragment -->
-    <string name="enable_instructions_head">स्वरचक्र हिंदी कीबोर्ड इनस्टॉल हो चुका है। लेकिन कीबोर्ड को अभी इनेबल करना बाकी है और उसे डिफ़ॉल्ट कीबोर्ड भी बनाना है।</string>
-    <string name="enable_step_1">१) अगले स्क्रीन पर स्वरचक्र हिंदी से सटे बॉक्स को चुन्हे ।</string>
-    <string name="enable_step_2">२) "OK"  बटन दबाएँ । </string>
-    <string name="enable_step_3">३) बैक बटन दबाएँ ।</string>
+    <string name="enable_instructions_head">स्वरचक्र इस्तमाल करनेसे पहले इसे एनेबल और डीफाल्ट बनाना पडेगा।</string>
+    <string name="enable_step_1">१) अगले स्क्रीन पर \"स्वरचक्र हिन्दी\" चुनिए</string>
+    <string name="enable_step_2">२) फिर \"ओके\" दबाइए </string>
+    <string name="enable_step_3">३) अंत में आपके फोनका \"बैक\" बटन दबाइए</string>
     <!-- Default Fragment -->
-    <string name="default_instructions_head">स्वरचक्र हिंदी कीबोर्ड इनेबल हो चुका है। अब हमें कीबोर्ड को डिफ़ॉल्ट बनाना है। </string>
-    <string name="default_step_1">१) अगले स्क्रीन पर स्वरचक्र हिंदी चुन्हे। </string>
+    <string name="default_instructions_head">स्वरचक्र हिन्दी एनेबल हो चुका है। अब इसे डीफॉल्ट बनाएं। </string>
+    <string name="default_step_1">१) अगले स्क्रीन पर स्वरचक्र हिन्दी चुनिए</string>
     <!-- Button Text -->
-    <string name="welcome_button">हाँ, ठीक हैं|</string>
-    <string name="enable_button">"स्वरचक्र को इनेबल करें"</string>
-    <string name="default_button">"स्वरचक्र को डिफॉल्ट बनायें"</string>
+    <string name="welcome_button">हाँ, ठीक है|</string>
+    <string name="enable_button">स्वरचक्र एनेबल करें</string>
+    <string name="default_button">स्वरचक्र को डिफॉल्ट बनायें</string>
     <!-- Congrats fragment -->
-    <string name="congrats_instruction">"स्वरचक्र इस्तेमाल के लिए तैयार है।"</string>
-    <string name="congrats_title">"बधाईयाँ"</string>
-    <string name="congrats_button">"सेटिंग्स "</string>
+    <string name="congrats_instruction">स्वरचक्र इस्तेमाल के लिए तैयार है।</string>
+    <string name="congrats_title">धन्यवाद</string>
+    <string name="congrats_button">सेटिंग्ज</string>
     <!-- Settings -->
-    <string name="settings_instruction">स्वरचक्र हिंदी कीबोर्ड के लिए अपने पसंदीदा लेआउट, इन विकल्पों से चुन्हे ।</string>
+    <string name="settings_instruction">स्वरचक्र हिन्दी कीबोर्ड आकार, इन विकल्पों से चुनें।</string>
     
     <!-- Settings -->
     <!-- Fragments -->
     <!-- Telugu -->
     <!-- Welcome fragment -->
     <string name="telugu_welcome_instruction">"Welcome. If you are unable to see the following Telugu text then your device is not supported."</string>
-    <string name="telugu_welcome_title">"మీ ఫోన్ లో ఈ తెలుగు వాఖ్యం సరిగానే కనిపిస్తుందా?"</string>
+    <string name="telugu_welcome_title">మీ ఫోన్ లో ఈ తెలుగు వాఖ్యం సరిగానే కనిపిస్తుందా?</string>
     <!-- Enable Fragment -->
     <string name="telugu_enable_instructions_head">స్వరచక్ర ని ప్రయోగించుటకు దానిని ఎనేబుల్ చేసి డిఫాల్ట్ గా మార్చాలి</string>
-    <string name="telugu_enable_step_1">1) రానున్న స్క్రీన్ లో "స్వరచక్ర తెలుగు" పైన క్లిక్ చేయండి. </string>
-    <string name="telugu_enable_step_2">2) ఆ తరువాత ఓకే బటన్ పైన క్లిక్ చేయండి. </string>
-    <string name="telugu_enable_step_3">3) ఆ తరువాత బ్యాక్ బటన్ పైన క్లిక్ చేయండి. </string>
+    <string name="telugu_enable_step_1">1) రానున్న స్క్రీన్ లో \"స్వరచక్ర తెలుగు\" పైన క్లిక్ చేయండి. </string>
+    <string name="telugu_enable_step_2">2) తరువాత \"ఓకే\" బటన్ పై క్లిక్ చేయండి. </string>
+    <string name="telugu_enable_step_3">3) తరువాత మీ ఫోను \"బ్యాక్\" బటన్ పై క్లిక్ చేయండి. </string>
     <!-- Default Fragment -->
     <string name="telugu_default_instructions_head">స్వరచక్ర ఎనేబుల్ అయ్యింది. ఇప్పుడు దానిని డిఫాల్ట్ చేయాలి. </string>
-    <string name="telugu_default_step_1">1) రానున్న స్క్రీన్ పై "స్వరచక్ర తెలుగు" పైన క్లిక్ చేయండి</string>
+    <string name="telugu_default_step_1">1) రానున్న స్క్రీన్ పై \"స్వరచక్ర తెలుగు\" పైన క్లిక్ చేయండి</string>
     <!-- Settings -->
     <string name="telugu_settings_instruction">స్వరచక్ర సైజు మర్చుటకై ఈ క్రింది సెట్టింగ్ ను ఉపయోగించండి</string>    
     <!-- Button Text -->
-    <string name="telugu_welcome_button">"సరిగానే కనిపిస్తుంది"</string>
-    <string name="telugu_enable_button">"స్వరచక్ర ని ఎనేబుల్ చేయండి "</string>
-    <string name="telugu_default_button">"స్వరచక్ర ని డిఫాల్ట్ చేయండి "</string>
+    <string name="telugu_welcome_button">సరిగానే కనిపిస్తుంది</string>
+    <string name="telugu_enable_button">స్వరచక్ర ని ఎనేబుల్ చేయండి</string>
+    <string name="telugu_default_button">స్వరచక్ర ని డిఫాల్ట్ చేయండి</string>
     <!-- Congrats fragment -->
-    <string name="telugu_congrats_instruction">"స్వరచక్ర సెట్ అప్ పూర్తి అయ్యింది "</string>
-    <string name="telugu_congrats_title">"ధన్యవాదాలు "</string>
-    <string name="telugu_congrats_button">"సెట్టింగ్స్ "</string>
+    <string name="telugu_congrats_instruction">స్వరచక్ర సెట్ అప్ పూర్తి అయ్యింది</string>
+    <string name="telugu_congrats_title">ధన్యవాదాలు</string>
+    <string name="telugu_congrats_button">సెట్టింగ్స్</string>
+
+	<!-- Welcome fragment -->
+    <string name="marathi_welcome_instruction">Welcome. If you are unable to see the following Hindi text then your device is not supported.</string>
+    <string name="marathi_welcome_title">आपला फोन हे वाक्य मराठीत व्यवस्थित दाखवत आहे काय?</string>
+    <!-- Enable Fragment -->
+    <string name="marathi_enable_instructions_head">स्वरचक्र वापरण्यास सुरवात करण्याआधी त्याला एनेबल व डीफॉल्ट बनवावे लागेल.</string>
+    <string name="marathi_enable_step_1">१) पुढील स्क्रीनवर \"स्वरचक्र मराठी\" निवडा</string>
+    <string name="marathi_enable_step_2">२) मग \"ओके\" दाबा </string>
+    <string name="marathi_enable_step_3">३) शेवटी आपल्या फोनवरील \"बॅक\" बटण दाबा</string>
+    <!-- Default Fragment -->
+    <string name="marathi_default_instructions_head">स्वरचक्र मराठी एनेबल झाला आहे. आता त्याला डीफॉल्ट बनवा.</string>
+    <string name="marathi_default_step_1">१) पुढील स्क्रीनवर स्वरचक्र मराठी निवडा</string>
+    <!-- Button Text -->
+    <string name="marathi_welcome_button">हो, ठीक आहे</string>
+    <string name="marathi_enable_button">स्वरचक्र एनेबल करा</string>
+    <string name="marathi_default_button">स्वरचक्रला डीफॉल्ट बनवा</string>
+    <!-- Congrats fragment -->
+    <string name="marathi_congrats_instruction">स्वरचक्र वापरासाठी सज्ज आहे</string>
+    <string name="marathi_congrats_title">धन्यवाद</string>
+    <string name="marathi_congrats_button">सेटिंग्ज</string>
+    <!-- Settings -->
+    <string name="marathi_settings_instruction">स्वरचक्र हिन्दी कीबोर्ड आकार, इन विकल्पों से चुनें।</string>
+    
 </resources>
