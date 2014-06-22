@@ -41,6 +41,8 @@
     <string name="congrats_button">सेटिंग्ज</string>
     <!-- Settings -->
     <string name="settings_instruction">स्वरचक्र हिन्दी कीबोर्ड आकार, इन विकल्पों से चुनें।</string>
+    <string name="settings_layout_big">Big</string>
+    <string name="settings_layout_small">Small</string>
     
     <!-- Settings -->
     <!-- Fragments -->

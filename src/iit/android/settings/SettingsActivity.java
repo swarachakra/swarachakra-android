@@ -7,12 +7,10 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -22,8 +20,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class SettingsActivity extends PreferenceActivity implements
-		OnSharedPreferenceChangeListener {
+public class SettingsActivity extends PreferenceActivity {
 	public static boolean isTablet;
 	private boolean isDefault = false;
 	private boolean isEnabled = false;
@@ -42,7 +39,16 @@ public class SettingsActivity extends PreferenceActivity implements
 		previewEditText = (EditText) layout
 				.findViewById(R.id.preview_edit_text);
 		instructionTextView = (TextView) layout.findViewById(R.id.instruction);
-		radioGroup = (RadioGroup) layout.findViewById(R.id.ratingRadioGroup);
+		radioGroup = (RadioGroup) layout.findViewById(R.id.layoutRadioGroup);
+		
+		RadioButton smallRadio = (RadioButton) layout.findViewById(R.id.smallRadioButton);
+		RadioButton bigRadio = (RadioButton) layout.findViewById(R.id.bigRadioButton);
+		
+		String smallRadioText = getStringResourceByName("settings_layout_small");
+		String bigRadioText = getStringResourceByName("settings_layout_big");
+		
+		smallRadio.setText(smallRadioText);
+		bigRadio.setText(bigRadioText);
 
 		String instruction = getStringResourceByName("settings_instruction");
 		instructionTextView.setText(instruction);
@@ -51,7 +57,17 @@ public class SettingsActivity extends PreferenceActivity implements
 		checkKeyboardStatus();
 
 		prefs = UserSettings.getPrefs();
-		prefs.registerOnSharedPreferenceChangeListener(this);
+		
+		String key = getString(R.string.tablet_layout_setting_key);		
+		Boolean isSmall = prefs.getBoolean(key, false);
+		if(isSmall){
+			smallRadio.setChecked(true);
+			bigRadio.setChecked(false);
+		}
+		else{
+			smallRadio.setChecked(false);
+			bigRadio.setChecked(true);
+		}
 
 		OnCheckedChangeListener radioGroupOnCheckedChangeListener = new OnCheckedChangeListener() {
 
@@ -60,18 +76,16 @@ public class SettingsActivity extends PreferenceActivity implements
 				editor = prefs.edit();
 				String key = getResources().getString(
 						R.string.tablet_layout_setting_key);
-				RadioButton checkedRadioButton = (RadioButton) radioGroup
-						.findViewById(checkedId);
-				int checkedIndex = radioGroup.indexOfChild(checkedRadioButton);
+	
 
-				if (checkedIndex == 0) {
-					Log.d("Rtag", "0 selected");
+				if (checkedId == R.id.smallRadioButton) {
 					editor.putBoolean(key, true);
 					editor.commit();
+					showPreview();
 				} else {
-					Log.d("Rtag", "1 selected");
 					editor.putBoolean(key, false);
 					editor.commit();
+					showPreview();
 				}
 			}
 		};
@@ -150,10 +164,5 @@ public class SettingsActivity extends PreferenceActivity implements
 				.getSystemService(Context.INPUT_METHOD_SERVICE);
 
 		imm.showSoftInput(previewEditText, 0);
-	}
-
-	@Override
-	public void onSharedPreferenceChanged(SharedPreferences arg0, String arg1) {
-		showPreview();
 	}
 }
