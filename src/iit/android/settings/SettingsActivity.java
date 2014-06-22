@@ -14,7 +14,6 @@ import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -34,44 +33,51 @@ public class SettingsActivity extends PreferenceActivity {
 	private SharedPreferences prefs;
 	private SharedPreferences.Editor editor;
 	private boolean inEnglish = false;
+	private RelativeLayout layout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if (getIntent().getExtras() != null) {
+			inEnglish = getIntent().getExtras().getBoolean("inEnglish", false);
+		}
 
-		RelativeLayout layout = (RelativeLayout) getLayoutInflater().inflate(
+		layout = (RelativeLayout) getLayoutInflater().inflate(
 				R.layout.settings_layout, null);
 		previewEditText = (EditText) layout
 				.findViewById(R.id.preview_edit_text);
 		instructionTextView = (TextView) layout.findViewById(R.id.instruction);
 		radioGroup = (RadioGroup) layout.findViewById(R.id.layoutRadioGroup);
-		
-		RadioButton smallRadio = (RadioButton) layout.findViewById(R.id.smallRadioButton);
-		RadioButton bigRadio = (RadioButton) layout.findViewById(R.id.bigRadioButton);
-		
+
+		RadioButton smallRadio = (RadioButton) layout
+				.findViewById(R.id.smallRadioButton);
+		RadioButton bigRadio = (RadioButton) layout
+				.findViewById(R.id.bigRadioButton);
+
 		String smallRadioText = getStringResourceByName("settings_layout_small");
 		String bigRadioText = getStringResourceByName("settings_layout_big");
-		
+
 		smallRadio.setText(smallRadioText);
 		bigRadio.setText(bigRadioText);
 
 		String instruction = getStringResourceByName("settings_instruction");
 		instructionTextView.setText(instruction);
+
 		setContentView(layout);
-		
-		overridePendingTransition(R.anim.activity_open_translate, R.anim.activity_close_scale);
+
+		overridePendingTransition(R.anim.activity_open_translate,
+				R.anim.activity_close_scale);
 
 		checkKeyboardStatus();
 
 		prefs = UserSettings.getPrefs();
-		
-		String key = getString(R.string.tablet_layout_setting_key);		
-		Boolean isSmall = prefs.getBoolean(key, false);
-		if(isSmall){
+
+		String key = getString(R.string.tablet_layout_setting_key);
+		Boolean isBig = prefs.getBoolean(key, false);
+		if (!isBig) {
 			smallRadio.setChecked(true);
 			bigRadio.setChecked(false);
-		}
-		else{
+		} else {
 			smallRadio.setChecked(false);
 			bigRadio.setChecked(true);
 		}
@@ -83,14 +89,13 @@ public class SettingsActivity extends PreferenceActivity {
 				editor = prefs.edit();
 				String key = getResources().getString(
 						R.string.tablet_layout_setting_key);
-	
 
 				if (checkedId == R.id.smallRadioButton) {
-					editor.putBoolean(key, true);
+					editor.putBoolean(key, false);
 					editor.commit();
 					showPreview();
 				} else {
-					editor.putBoolean(key, false);
+					editor.putBoolean(key, true);
 					editor.commit();
 					showPreview();
 				}
@@ -104,40 +109,43 @@ public class SettingsActivity extends PreferenceActivity {
 			isTablet = isTablet(this);
 			previewEditText.requestFocus();
 		} else {
-			Intent intent = new Intent(this, MainActivity.class);
-			startActivity(intent);
+			startMainActivity();
 		}
+		getActionBar().setTitle(getStringResourceByName("title"));
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    // Inflate the menu items for use in the action bar
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.main_activity_menu, menu);
-	    return super.onCreateOptionsMenu(menu);
+		// Inflate the menu items for use in the action bar
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main_activity_menu, menu);
+		return super.onCreateOptionsMenu(menu);
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
-	        case R.id.action_language:
-	        	if (!inEnglish) {
-	        		inEnglish = true;
-	        		String title = getStringResourceByName("menu_language");
-	        		item.setTitle(title);
-	        	}
-	        	else {
-	        		inEnglish = false;
-	        		String title = getResources().getString(R.string.menu_language);
-	        		item.setTitle(title);
-	        	}
-	        	View activityView = findViewById(R.layout.settings_layout);
-	        	activityView.invalidate();
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+		// Handle presses on the action bar items
+		switch (item.getItemId()) {
+		case R.id.action_language:
+			if (!inEnglish) {
+				inEnglish = true;
+				String languageName = getResources().getString(
+						R.string.language_name);
+				int resId = getResources().getIdentifier(
+						languageName + "_" + "menu_language", "string",
+						getPackageName());
+				String title = getResources().getString(resId);
+				item.setTitle(title);
+			} else {
+				inEnglish = false;
+				String title = getResources().getString(R.string.menu_language);
+				item.setTitle(title);
+			}
+			setCorrectText();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 
 	public String getStringResourceByName(String aString) {
@@ -145,7 +153,8 @@ public class SettingsActivity extends PreferenceActivity {
 		String languageName = getResources().getString(R.string.language_name);
 		int resId = getResources().getIdentifier(languageName + "_" + aString,
 				"string", packageName);
-		if(inEnglish) resId = 0;
+		if (inEnglish)
+			resId = 0;
 		if (resId == 0) {
 			resId = getResources()
 					.getIdentifier(aString, "string", packageName);
@@ -165,15 +174,37 @@ public class SettingsActivity extends PreferenceActivity {
 		if (isDefault && isEnabled) {
 
 		} else {
-			Intent intent = new Intent(this, MainActivity.class);
-			startActivity(intent);
+			startMainActivity();
 		}
 	}
-	
+
+	public void startMainActivity() {
+		Intent intent = new Intent(this, MainActivity.class);
+		intent.putExtra("inEnglish", inEnglish);
+		startActivity(intent);
+	}
+
+	public void setCorrectText() {
+		RadioButton smallRadio = (RadioButton) layout
+				.findViewById(R.id.smallRadioButton);
+		RadioButton bigRadio = (RadioButton) layout
+				.findViewById(R.id.bigRadioButton);
+
+		String smallRadioText = getStringResourceByName("settings_layout_small");
+		String bigRadioText = getStringResourceByName("settings_layout_big");
+
+		smallRadio.setText(smallRadioText);
+		bigRadio.setText(bigRadioText);
+
+		String instruction = getStringResourceByName("settings_instruction");
+		instructionTextView.setText(instruction);
+	}
+
 	@Override
 	public void onPause() {
 		super.onPause();
-		overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
+		overridePendingTransition(R.anim.activity_open_scale,
+				R.anim.activity_close_translate);
 	}
 
 	public void checkKeyboardStatus() {
@@ -210,4 +241,5 @@ public class SettingsActivity extends PreferenceActivity {
 
 		imm.showSoftInput(previewEditText, 0);
 	}
+
 }

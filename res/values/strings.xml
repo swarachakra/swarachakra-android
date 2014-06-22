@@ -75,9 +75,6 @@
     <string name="hindi_congrats_title">धन्यवाद</string>
     <string name="hindi_congrats_button">सेटिंग्ज</string>
     <!-- Settings -->
-    <string name="settings_instruction">स्वरचक्र हिन्दी कीबोर्ड आकार, इन विकल्पों से चुनें।</string>
-    <string name="settings_layout_big">Big</string>
-    <string name="settings_layout_small">Small</string>
     <string name="hindi_menu_language">HIN</string>
     <string name="hindi_settings_instruction">स्वरचक्र कीबोर्ड का आकार</string>
     <string name="hindi_settings_layout_big">छोटा</string>
@@ -133,7 +130,6 @@
     <string name="marathi_congrats_title">धन्यवाद</string>
     <string name="marathi_congrats_button">सेटिंग्ज</string>
     <!-- Settings -->
-    <string name="marathi_settings_instruction">स्वरचक्र हिन्दी कीबोर्ड आकार, इन विकल्पों से चुनें।</string>
     <string name="marathi_menu_language">MAR</string>
     <string name="marathi_settings_instruction">स्वरचक्र हिन्दी कीबोर्ड आकार</string>
     <string name="marathi_settings_layout_big">छोटा</string>

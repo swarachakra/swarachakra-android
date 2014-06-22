@@ -38,9 +38,14 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if (getIntent().getExtras() != null) {
+			inEnglish = getIntent().getExtras().getBoolean("inEnglish", false);
+		}
+
 		setContentView(R.layout.activity_main);
-		overridePendingTransition(R.anim.activity_open_translate, R.anim.activity_close_scale);
-		
+		overridePendingTransition(R.anim.activity_open_translate,
+				R.anim.activity_close_scale);
+
 		mainApp = this;
 		settings = PreferenceManager.getDefaultSharedPreferences(this);
 		editor = settings.edit();
@@ -53,45 +58,50 @@ public class MainActivity extends FragmentActivity {
 		pager = (CustomViewPager) findViewById(R.id.viewpager);
 		pager.setPagingEnabled(false);
 		pager.setAdapter(pageAdapter);
+		getActionBar().setTitle(getStringResourceByName("title"));
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    // Inflate the menu items for use in the action bar
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.main_activity_menu, menu);
-	    return super.onCreateOptionsMenu(menu);
+		// Inflate the menu items for use in the action bar
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main_activity_menu, menu);
+		return super.onCreateOptionsMenu(menu);
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
-	        case R.id.action_language:
-	        	if (!inEnglish) {
-	        		inEnglish = true;
-	        		String title = getStringResourceByName("menu_language");
-	        		item.setTitle(title);
-	        	}
-	        	else {
-	        		inEnglish = false;
-	        		String title = getResources().getString(R.string.menu_language);
-	        		item.setTitle(title);
-	        	}
-	        	View activityView = findViewById(R.layout.activity_main);
-	        	activityView.invalidate();
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+		// Handle presses on the action bar items
+		switch (item.getItemId()) {
+		case R.id.action_language:
+			if (!inEnglish) {
+				inEnglish = true;
+				String languageName = getResources().getString(
+						R.string.language_name);
+				int resId = getResources().getIdentifier(
+						languageName + "_" + "menu_language", "string",
+						getPackageName());
+				String title = getResources().getString(resId);
+				item.setTitle(title);
+			} else {
+				inEnglish = false;
+				String title = getResources().getString(R.string.menu_language);
+				item.setTitle(title);
+			}
+			refreshActivity();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
-	
+
 	public String getStringResourceByName(String aString) {
 		String packageName = getPackageName();
 		String languageName = getResources().getString(R.string.language_name);
 		int resId = getResources().getIdentifier(languageName + "_" + aString,
 				"string", packageName);
-		if (inEnglish) resId = 0;
+		if (inEnglish)
+			resId = 0;
 		if (resId == 0) {
 			resId = getResources()
 					.getIdentifier(aString, "string", packageName);
@@ -112,14 +122,16 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
+		overridePendingTransition(R.anim.activity_open_scale,
+				R.anim.activity_close_translate);
 	}
 
 	@Override
 	public void onWindowFocusChanged(final boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
-		boolean isWelcomeFragment = isFirstRun && (pager.getCurrentItem()==0);
-		boolean isCongratsFragment = isFirstRun && (pager.getCurrentItem()==3);
+		boolean isWelcomeFragment = isFirstRun && (pager.getCurrentItem() == 0);
+		boolean isCongratsFragment = isFirstRun
+				&& (pager.getCurrentItem() == 3);
 		if (hasFocus && !isWelcomeFragment && !isCongratsFragment) {
 			final Handler handler = new Handler();
 			handler.postDelayed(new Runnable() {
@@ -146,7 +158,7 @@ public class MainActivity extends FragmentActivity {
 			fList.add(new WelcomeFragment());
 		fList.add(new EnableFragment());
 		fList.add(new DefaultFragment());
-		if(isFirstRun)
+		if (isFirstRun)
 			fList.add(new CongratsFragment());
 		return fList;
 	}
@@ -191,7 +203,8 @@ public class MainActivity extends FragmentActivity {
 
 	public void buttonClick(View v) {
 		int fragmentNo = pager.getCurrentItem();
-		if(!isFirstRun)fragmentNo += 1;
+		if (!isFirstRun)
+			fragmentNo += 1;
 		switch (fragmentNo) {
 		case 0:
 			setCorrectView();
@@ -267,8 +280,15 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	public void openSettingsApp() {
-		Intent intent = new Intent(this, iit.android.settings.SettingsActivity.class);
+		Intent intent = new Intent(this,
+				iit.android.settings.SettingsActivity.class);
+		intent.putExtra("inEnglish", inEnglish);
 		startActivity(intent);
+	}
+
+	public void refreshActivity() {
+		pager.setAdapter(pageAdapter);
+		setCorrectView();
 	}
 
 }
