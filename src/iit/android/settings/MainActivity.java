@@ -35,7 +35,8 @@ public class MainActivity extends FragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		overridePendingTransition(R.anim.activity_open_translate, R.anim.activity_close_scale);
+		
 		mainApp = this;
 		settings = PreferenceManager.getDefaultSharedPreferences(this);
 		editor = settings.edit();
@@ -75,6 +76,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onPause() {
 		super.onPause();
+		overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
 	}
 
 	@Override

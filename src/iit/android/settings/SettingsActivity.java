@@ -53,6 +53,8 @@ public class SettingsActivity extends PreferenceActivity {
 		String instruction = getStringResourceByName("settings_instruction");
 		instructionTextView.setText(instruction);
 		setContentView(layout);
+		
+		overridePendingTransition(R.anim.activity_open_translate, R.anim.activity_close_scale);
 
 		checkKeyboardStatus();
 
@@ -129,6 +131,12 @@ public class SettingsActivity extends PreferenceActivity {
 			Intent intent = new Intent(this, MainActivity.class);
 			startActivity(intent);
 		}
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
 	}
 
 	public void checkKeyboardStatus() {
