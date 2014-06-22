@@ -12,34 +12,74 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener{
+public class SettingsActivity extends PreferenceActivity implements
+		OnSharedPreferenceChangeListener {
 	public static boolean isTablet;
 	private boolean isDefault = false;
 	private boolean isEnabled = false;
 	private EditText previewEditText;
 	private TextView instructionTextView;
+	private RadioGroup radioGroup;
+	private SharedPreferences prefs;
+	private SharedPreferences.Editor editor;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		RelativeLayout layout = (RelativeLayout) getLayoutInflater().inflate(R.layout.settings_layout, null);
-		previewEditText = (EditText) layout.findViewById(R.id.preview_edit_text);
+
+		RelativeLayout layout = (RelativeLayout) getLayoutInflater().inflate(
+				R.layout.settings_layout, null);
+		previewEditText = (EditText) layout
+				.findViewById(R.id.preview_edit_text);
 		instructionTextView = (TextView) layout.findViewById(R.id.instruction);
+		radioGroup = (RadioGroup) layout.findViewById(R.id.ratingRadioGroup);
+
 		String instruction = getStringResourceByName("settings_instruction");
 		instructionTextView.setText(instruction);
 		setContentView(layout);
+
 		checkKeyboardStatus();
-		
-		SharedPreferences prefs = UserSettings.getPrefs();
+
+		prefs = UserSettings.getPrefs();
 		prefs.registerOnSharedPreferenceChangeListener(this);
+
+		OnCheckedChangeListener radioGroupOnCheckedChangeListener = new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				editor = prefs.edit();
+				String key = getResources().getString(
+						R.string.tablet_layout_setting_key);
+				RadioButton checkedRadioButton = (RadioButton) radioGroup
+						.findViewById(checkedId);
+				int checkedIndex = radioGroup.indexOfChild(checkedRadioButton);
+
+				if (checkedIndex == 0) {
+					Log.d("Rtag", "0 selected");
+					editor.putBoolean(key, true);
+					editor.commit();
+				} else {
+					Log.d("Rtag", "1 selected");
+					editor.putBoolean(key, false);
+					editor.commit();
+				}
+			}
+		};
+
+		radioGroup
+				.setOnCheckedChangeListener(radioGroupOnCheckedChangeListener);
+
 		if (isDefault && isEnabled) {
-			// Display the fragment as the main content.
 			isTablet = isTablet(this);
 			previewEditText.requestFocus();
 		} else {
@@ -47,7 +87,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 			startActivity(intent);
 		}
 	}
-	
+
 	public String getStringResourceByName(String aString) {
 		String packageName = getPackageName();
 		String languageName = getResources().getString(R.string.language_name);
@@ -59,18 +99,18 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 		}
 		return getString(resId);
 	}
-	
+
 	@Override
 	public void onBackPressed() {
-	    moveTaskToBack(true);
+		moveTaskToBack(true);
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();
 		checkKeyboardStatus();
-		if(isDefault && isEnabled) {
-			
+		if (isDefault && isEnabled) {
+
 		} else {
 			Intent intent = new Intent(this, MainActivity.class);
 			startActivity(intent);
@@ -101,18 +141,19 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 	public static boolean isTablet(Context context) {
 		return (context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
 	}
-	
+
 	private void showPreview() {
 		previewEditText.requestFocus();
 		previewEditText.setText(null);
-		
-		InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-	      
-	    imm.showSoftInput(previewEditText, 0);
+
+		InputMethodManager imm = (InputMethodManager) getApplicationContext()
+				.getSystemService(Context.INPUT_METHOD_SERVICE);
+
+		imm.showSoftInput(previewEditText, 0);
 	}
 
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences arg0, String arg1) {
-		showPreview();		
+		showPreview();
 	}
 }

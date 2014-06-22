@@ -7,6 +7,7 @@ import android.preference.PreferenceFragment;
 
 public class UserSettings extends PreferenceFragment {
 	private static SharedPreferences prefs;
+	SharedPreferences.Editor editor;
 	
 	public static SharedPreferences getPrefs() {
 		return prefs;
@@ -23,7 +24,7 @@ public class UserSettings extends PreferenceFragment {
         addPreferencesFromResource(R.xml.settings);
         SharedPreferences settings = getPreferenceManager().getSharedPreferences();
         prefs = settings;
-		SharedPreferences.Editor editor = settings.edit();
+        editor = settings.edit();
 		String key = this.getResources().getString(
 				R.string.tablet_layout_setting_key);
 		boolean isFirstRun = settings.getBoolean("is_first_run", true);
@@ -33,4 +34,9 @@ public class UserSettings extends PreferenceFragment {
 			editor.commit();
 		}
     }
+	
+	public void setPreferenceValue(String boolName, boolean boolValue) {
+		editor.putBoolean(boolName, boolValue);
+		editor.commit();
+	}
 }
