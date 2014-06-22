@@ -17,6 +17,8 @@
     <string name="first_run_tutorial">first_run_tutorial</string>
     <string name="preview_your_settings">Preview</string>
 
+    <string name="menu_language">ENG</string>
+    
     <!-- Settings -->
     <!-- Fragments -->
     <!-- Defaults -->
@@ -43,6 +45,7 @@
     <string name="settings_instruction">स्वरचक्र हिन्दी कीबोर्ड आकार, इन विकल्पों से चुनें।</string>
     <string name="settings_layout_big">Big</string>
     <string name="settings_layout_small">Small</string>
+    <string name="hindi_menu_language">HIN</string>
     
     <!-- Settings -->
     <!-- Fragments -->
@@ -68,6 +71,7 @@
     <string name="telugu_congrats_instruction">స్వరచక్ర సెట్ అప్ పూర్తి అయ్యింది</string>
     <string name="telugu_congrats_title">ధన్యవాదాలు</string>
     <string name="telugu_congrats_button">సెట్టింగ్స్</string>
+    <string name="telugu_menu_language">TEL</string>
 
 	<!-- Welcome fragment -->
     <string name="marathi_welcome_instruction">Welcome. If you are unable to see the following Hindi text then your device is not supported.</string>
@@ -90,5 +94,6 @@
     <string name="marathi_congrats_button">सेटिंग्ज</string>
     <!-- Settings -->
     <string name="marathi_settings_instruction">स्वरचक्र हिन्दी कीबोर्ड आकार, इन विकल्पों से चुनें।</string>
+    <string name="marathi_menu_language">MAR</string>
     
 </resources>

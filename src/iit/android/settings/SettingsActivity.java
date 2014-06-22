@@ -11,6 +11,10 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.provider.Settings;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -29,6 +33,7 @@ public class SettingsActivity extends PreferenceActivity {
 	private RadioGroup radioGroup;
 	private SharedPreferences prefs;
 	private SharedPreferences.Editor editor;
+	private boolean inEnglish = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -103,12 +108,44 @@ public class SettingsActivity extends PreferenceActivity {
 			startActivity(intent);
 		}
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    // Inflate the menu items for use in the action bar
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.main_activity_menu, menu);
+	    return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_language:
+	        	if (!inEnglish) {
+	        		inEnglish = true;
+	        		String title = getStringResourceByName("menu_language");
+	        		item.setTitle(title);
+	        	}
+	        	else {
+	        		inEnglish = false;
+	        		String title = getResources().getString(R.string.menu_language);
+	        		item.setTitle(title);
+	        	}
+	        	View activityView = findViewById(R.layout.settings_layout);
+	        	activityView.invalidate();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
 
 	public String getStringResourceByName(String aString) {
 		String packageName = getPackageName();
 		String languageName = getResources().getString(R.string.language_name);
 		int resId = getResources().getIdentifier(languageName + "_" + aString,
 				"string", packageName);
+		if(inEnglish) resId = 0;
 		if (resId == 0) {
 			resId = getResources()
 					.getIdentifier(aString, "string", packageName);
