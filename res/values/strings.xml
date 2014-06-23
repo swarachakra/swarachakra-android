@@ -32,7 +32,7 @@
     <string name="welcome_title">क्या आपका फोन यह वाक्य हिन्दी में ठीक से दिखा रहा है?</string>
     <!-- Enable Fragment -->
     <string name="enable_instructions_head">To start using swarachakra it needs to be enabled and made default.</string>
-    <string name="enable_step_1">1) In the next screen, select \"Swarachakra (language)\"</string>
+    <string name="enable_step_1">1) In the next screen, select \"Swarachakra Hindi\"</string>
     <string name="enable_step_2">2) Then, click \"OK\" </string>
     <string name="enable_step_3">3) Finally, press the \"Back\" button on your phone</string>
     <!-- Default Fragment -->
