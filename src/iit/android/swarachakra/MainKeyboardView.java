@@ -22,6 +22,7 @@ public class MainKeyboardView extends CustomKeyboardView {
 	public SwaraChakra mSwaraChakra;
 	private KeyLogger mKeyLogger;
 	private MainKeyboardActionListener mActionListener;
+	private boolean isPassword;
 
 	public MainKeyboardView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -79,6 +80,7 @@ public class MainKeyboardView extends CustomKeyboardView {
 		mActionListener.setKeyLogger(sk.getKeyLogger());
 
 		mKeyLogger = sk.getKeyLogger();
+		isPassword = sk.isPassword();
 
 		String[] swaras = lang.defaultChakra;
 		boolean halantExists = lang.halantExists;
@@ -94,7 +96,9 @@ public class MainKeyboardView extends CustomKeyboardView {
 	@Override
 	public void resetInputConnection(InputConnection ic) {
 		mActionListener.setInputConnection(ic);
-		mKeyLogger.writeToLocalStorage();
+		if (!isPassword) {
+			mKeyLogger.writeToLocalStorage();
+		}
 		mKeyLogger.extractedText="";
 	}
 

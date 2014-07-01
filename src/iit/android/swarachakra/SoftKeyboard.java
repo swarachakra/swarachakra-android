@@ -43,9 +43,7 @@ public class SoftKeyboard extends InputMethodService {
 	private Key mEnterKey;
 	private KeyLogger mKeyLogger;
 	private static Context appContext = null;
-	String PACKAGE_NAME = "iit.android.swarachakra";
-	String PREFERENCE_NAME = "GlobalPrefs";
-	Context myContext;
+	private boolean isPassword;
 
 	@Override
 	public void onCreate() {
@@ -113,8 +111,9 @@ public class SoftKeyboard extends InputMethodService {
 	@Override
 	public void onFinishInputView(boolean finishingInput) {
 		super.onFinishInputView(finishingInput);
-		
-		mKeyLogger.writeToLocalStorage();
+		if(!isPassword) {
+			mKeyLogger.writeToLocalStorage();
+		}
 		mKeyLogger.extractedText="";
 	}
 	
@@ -307,6 +306,7 @@ public class SoftKeyboard extends InputMethodService {
 	void setImeOptions() {
 		Resources res = getResources();
 		EditorInfo ei = getCurrentInputEditorInfo();
+		int textOptions = ei.inputType;
 		int options = ei.imeOptions;
 		for(Key k: mKeyboard.getKeys()) {
 			if(k.codes[0]==mKeyboardView.getEnterKeyCode()){
@@ -354,6 +354,24 @@ public class SoftKeyboard extends InputMethodService {
 			mEnterKey.label = null;
 			break;
 		}
+		
+		switch (textOptions) {
+		case EditorInfo.TYPE_NUMBER_VARIATION_PASSWORD:
+			this.setPassword(true);
+			break;
+		case EditorInfo.TYPE_TEXT_VARIATION_PASSWORD:
+			this.setPassword(true);
+			break;
+		case EditorInfo.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD:
+			this.setPassword(true);
+			break;
+		case EditorInfo.TYPE_TEXT_VARIATION_WEB_PASSWORD:
+			this.setPassword(true);
+			break;
+		default:
+			this.setPassword(false);
+			break;
+		}
 		mKeyboardView.invalidateAllKeys();
 	}
 	
@@ -363,5 +381,13 @@ public class SoftKeyboard extends InputMethodService {
 	 */
 	public KeyLogger getKeyLogger() {
 		return mKeyLogger;
+	}
+
+	public boolean isPassword() {
+		return isPassword;
+	}
+
+	public void setPassword(boolean isPassword) {
+		this.isPassword = isPassword;
 	}
 }
