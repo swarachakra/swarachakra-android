@@ -10,6 +10,8 @@ SoftKeyboard for Indic languages
 *On choosing a consonant+halant, the preview shows C+h+C for all keys including conjuncts, but not for the conjuncts in the last row.
 *Same goes while applying rafar,trakar and eyelash(Marathi and Konkani)
 *The 'Next' button doesnt work in SMS window.
+
+
 <b>Done</b>
 * halant should be in the top slice of the pie (currently empty).
 * Add \u0945 to the extras chakra in Hindi / Konkani / Marathi.
