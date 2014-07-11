@@ -5,6 +5,7 @@ SoftKeyboard for Indic languages
 
 
 <b>ToDos</b>
+<br/>
 *In nukta layout, tap on non-nukta keys also causes input
 *In nukta layout, the last row is should be hidden
 *On choosing a consonant+halant, the preview shows C+h+C for all keys including conjuncts, but not for the conjuncts in the last row.
