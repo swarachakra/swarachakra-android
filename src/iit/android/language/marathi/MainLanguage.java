@@ -10,8 +10,8 @@ import android.annotation.SuppressLint;
 public class MainLanguage extends Language{
 	
 	public MainLanguage() {
-		name = "Marati";
-		symbol = "Ma";
+		name = "Marathi";
+		symbol = "\u092E";
 		nKeys = 106;
 		myKey = new ArrayList<KeyAttr>(nKeys);
 		defaultChakra = new String[] {"\u094D", "\u093E", "\u093F", "\u0940", "\u0941", "\u0942", "\u0947", "\u0948", "\u094B", "\u094C"};
@@ -484,7 +484,7 @@ public class MainLanguage extends Language{
 		myKey38.label = "\u093D" ;
 		myKey38.showChakra = true ;
 		myKey38.showCustomChakra = true ;
-		myKey38.customChakraLayout = new String[] {"\u0945", "\u0943", "\u090B", "\u0944", "\u0960", "\u0946", "\u094A", "\u0949", "\u0906", "\u0901"} ;
+		myKey38.customChakraLayout = new String[] {"\u090b","\u0944", "\u0960", "\u093d", "\u0946", "\u094a", "\u0949", "\u0911", "\u0945","\u0972"} ;
 		myKey38.showIcon = false ;
 		myKey38.icon = "";
 		myKey38.changeLayout = false ;
@@ -553,7 +553,7 @@ public class MainLanguage extends Language{
 
 		KeyAttr myKey44 = new KeyAttr();
 		myKey44.code = 45;
-		myKey44.label = "\u007C" ;
+		myKey44.label = "\u0964" ;
 		myKey44.showChakra = false ;
 		myKey44.showCustomChakra = false ;
 		myKey44.customChakraLayout = new String[] {} ;

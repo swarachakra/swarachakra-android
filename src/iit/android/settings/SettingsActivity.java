@@ -8,19 +8,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class SettingsActivity extends PreferenceActivity {
@@ -33,7 +38,9 @@ public class SettingsActivity extends PreferenceActivity {
 	private SharedPreferences prefs;
 	private SharedPreferences.Editor editor;
 	private boolean inEnglish = false;
-	private RelativeLayout layout;
+	private ScrollView layout;
+	private Button rateus; 
+	private TextView doYouLikeTextView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +49,14 @@ public class SettingsActivity extends PreferenceActivity {
 			inEnglish = getIntent().getExtras().getBoolean("inEnglish", false);
 		}
 
-		layout = (RelativeLayout) getLayoutInflater().inflate(
+		layout = (ScrollView) getLayoutInflater().inflate(
 				R.layout.settings_layout, null);
 		previewEditText = (EditText) layout
 				.findViewById(R.id.preview_edit_text);
 		instructionTextView = (TextView) layout.findViewById(R.id.instruction);
 		radioGroup = (RadioGroup) layout.findViewById(R.id.layoutRadioGroup);
+		rateus = (Button) layout.findViewById(R.id.rateus);
+		doYouLikeTextView = (TextView) layout.findViewById(R.id.likeus);
 
 		RadioButton smallRadio = (RadioButton) layout
 				.findViewById(R.id.smallRadioButton);
@@ -62,6 +71,12 @@ public class SettingsActivity extends PreferenceActivity {
 
 		String instruction = getStringResourceByName("settings_instruction");
 		instructionTextView.setText(instruction);
+		
+		String doyoulikeustext=getStringResourceByName("do_you_like");
+		String rateustext=getStringResourceByName("rate_us");
+		
+		doYouLikeTextView.setText(doyoulikeustext);
+		rateus.setText(rateustext);
 
 		setContentView(layout);
 
@@ -81,6 +96,17 @@ public class SettingsActivity extends PreferenceActivity {
 			smallRadio.setChecked(false);
 			bigRadio.setChecked(true);
 		}
+		
+		rateus.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent rate = new Intent(Intent.ACTION_VIEW);
+				rate.setData(Uri.parse("https://play.google.com/store/apps/details?id=iit.android.swarachakra") );
+				startActivity(rate);
+			}
+		});
 
 		OnCheckedChangeListener radioGroupOnCheckedChangeListener = new OnCheckedChangeListener() {
 
@@ -198,6 +224,11 @@ public class SettingsActivity extends PreferenceActivity {
 
 		String instruction = getStringResourceByName("settings_instruction");
 		instructionTextView.setText(instruction);
+		
+		String doyoulikeustext=getStringResourceByName("do_you_like");
+		String rateustext=getStringResourceByName("rate_us");
+		doYouLikeTextView.setText(doyoulikeustext);
+		rateus.setText(rateustext);
 	}
 
 	@Override

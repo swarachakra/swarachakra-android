@@ -1,4 +1,4 @@
-package iit.android.language.hindi;
+package iit.android.language.konkani;
 import iit.android.language.Language;
 import iit.android.swarachakra.KeyAttr;
 
@@ -10,8 +10,8 @@ import android.annotation.SuppressLint;
 public class MainLanguage extends Language{
 	
 	public MainLanguage() {
-		name = "hindi";
-		symbol ="\u0939\u093f\u0902"; //Hn
+		name = "Konkani";
+		symbol = "\u0915";
 		nKeys = 106;
 		myKey = new ArrayList<KeyAttr>(nKeys);
 		defaultChakra = new String[] {"\u094D", "\u093E", "\u093F", "\u0940", "\u0941", "\u0942", "\u0947", "\u0948", "\u094B", "\u094C"};
@@ -421,7 +421,7 @@ public class MainLanguage extends Language{
 
 		KeyAttr myKey33 = new KeyAttr();
 		myKey33.code = 34;
-		myKey33.label = "\u0924\u094D\u0930" ;
+		myKey33.label = "\u0933" ;
 		myKey33.showChakra = true ;
 		myKey33.showCustomChakra = false ;
 		myKey33.customChakraLayout = new String[] {} ;
@@ -625,12 +625,12 @@ public class MainLanguage extends Language{
 
 		KeyAttr myKey50 = new KeyAttr();
 		myKey50.code = 51;
-		myKey50.label = "\u093C" ;
+		myKey50.label = "\u0931" ;
 		myKey50.showChakra = false ;
 		myKey50.showCustomChakra = false ;
 		myKey50.customChakraLayout = new String[] {} ;
 		myKey50.showIcon = true ;
-		myKey50.icon = "nukta";
+		myKey50.icon = "eyelashra";
 		myKey50.changeLayout = false ;
 		myKey50.layout = "";
 		myKey50.isException = true;

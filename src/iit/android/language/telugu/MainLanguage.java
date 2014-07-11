@@ -12,7 +12,7 @@ public class MainLanguage extends Language {
 
 	public MainLanguage() {
 		name = "telugu";
-		symbol = "Te";
+		symbol = "\u0c24";
 		nKeys = 106;
 		myKey = new ArrayList<KeyAttr>(nKeys);
 		defaultChakra = new String[] { "\u0c4d", "\u0c3e", "\u0c3f", "\u0c40",
@@ -476,9 +476,9 @@ public class MainLanguage extends Language {
 		KeyAttr myKey37 = new KeyAttr();
 		myKey37.code = 38;
 		myKey37.label = "\u0c0b";
-		myKey37.showChakra = false;
-		myKey37.showCustomChakra = false;
-		myKey37.customChakraLayout = new String[] {};
+		myKey37.showChakra = true;
+		myKey37.showCustomChakra = true;
+		myKey37.customChakraLayout = new String[]{"\u0c31", "\u0c60", "\u0c0c", "\u0c61", "\u0c62", "\u0c63", "\u0c55", "\u0c56", "\u0c01", "\u0c3d"};
 		myKey37.showIcon = false;
 		myKey37.icon = "";
 		myKey37.changeLayout = false;

@@ -1,12 +1,13 @@
 <resources>
 
-    <string name="app_name">स्वरचक्र हिन्दी Swarachakra Hindi</string>
+    <string name="app_name">स्वरचक्र हिन्दी (Swarachakra Hindi)</string>
     <string name="language_name">hindi</string>
     
     <string name="title">Swarachakra</string>
     <string name="hindi_title">स्वरचक्र हिन्दी</string>
     <string name="telugu_title">స్వరచక్ర తెలుగు</string>
     <string name="marathi_title">स्वरचक्र मराठी</string>
+    <string name="konkani_title">स्वरचक्र कोंकणी</string>
     
     <!-- Special characters -->
     <string name="backspace">400</string>
@@ -50,6 +51,8 @@
     <string name="settings_instruction">Swarachakra keyboard size</string>
     <string name="settings_layout_big">SMALL</string>
     <string name="settings_layout_small">BIG</string>
+    <string name="do_you_like">Liked Swarachakra?</string>
+    <string name="rate_us">Rate us on Google Play Store.</string>
     
     
     <!-- Settings -->
@@ -79,6 +82,8 @@
     <string name="hindi_settings_instruction">स्वरचक्र कीबोर्ड का आकार</string>
     <string name="hindi_settings_layout_big">छोटा</string>
     <string name="hindi_settings_layout_small">बडा</string>
+    <string name="hindi_do_you_like">क्या स्वरचक्र आपको पसंद है?</string>
+    <string name="hindi_rate_us">हमें गूगल प्ले स्टोर पर रेट करके आपकी राय भेजें.</string>
     
     <!-- Settings -->
     <!-- Fragments -->
@@ -108,6 +113,8 @@
     <string name="telugu_settings_instruction">స్వరచక్ర కీబోర్డు యొక్క సైజు</string>
     <string name="telugu_settings_layout_big">చిన్న</string>
     <string name="telugu_settings_layout_small">పెద్ద</string>
+    <string name="telugu_do_you_like">స్వరచక్ర మీకు నచిండా?</string>
+    <string name="telugu_rate_us">గూగుల్ ప్లే స్టోర్ లో రేటింగ్ ద్వారా మీ అభిప్రాయాన్ని పంపండి.</string>
 
     <!-- Marathi -->
 	<!-- Welcome fragment -->
@@ -134,5 +141,7 @@
     <string name="marathi_settings_instruction">स्वरचक्र हिन्दी कीबोर्ड आकार</string>
     <string name="marathi_settings_layout_big">छोटा</string>
     <string name="marathi_settings_layout_small">मोठा</string>
+    <string name="marathi_do_you_like">स्वरचक्र आवडलं का?</string>
+    <string name="marathi_rate_us">गूगल प्ले स्टोर वर रेटिंग देऊन आपला अभिप्राय कळवा.</string>
     
 </resources>

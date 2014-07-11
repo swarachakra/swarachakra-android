@@ -1,4 +1,4 @@
-package iit.android.language.hindi;
+package iit.android.language.konkani;
 
 import iit.android.language.ExceptionHandler;
 import iit.android.language.Language;
@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.annotation.SuppressLint;
-import android.support.v4.util.SimpleArrayMap;
 
 public class MainLanguageExceptionHandler implements ExceptionHandler {
 	
@@ -18,12 +17,11 @@ public class MainLanguageExceptionHandler implements ExceptionHandler {
 	
 	private static final String RA = "\u0930";	
 	private static final String HALANT = "\u094D";
-	//private static final String NUKTA = "\u093C";
-	private static final String [] nuktaCharacters = {"\u0958","\u0959","\u095a","\u095b","\u095c","\u095d","\u0929","\u095e","\u095f","\u0931","\u0934"};
+	private static final String EYELASHRA = "\u0931";
 	
 	private static final int RAFARCODE = 53;
 	private static final int TRAKARCODE = 52;
-	private static final int NUKTACODE = 51;
+	private static final int EYELASHRACODE = 51;
 	
 	public MainLanguageExceptionHandler(Language lang){
 		main = lang;
@@ -34,8 +32,8 @@ public class MainLanguageExceptionHandler implements ExceptionHandler {
 	public HashMap<Integer, KeyAttr> handleException(int keyCode){
 		HashMap<Integer, KeyAttr> sKeys = new HashMap<Integer, KeyAttr>();
 		switch(keyCode){
-		case NUKTACODE:
-			handleNukta(sKeys);
+		case EYELASHRACODE:
+			handleEyelashRa(sKeys);
 			break;
 		case TRAKARCODE:
 			handleTrakar(sKeys);
@@ -77,24 +75,11 @@ public class MainLanguageExceptionHandler implements ExceptionHandler {
 		}
 	}
 
-	private void handleNukta(HashMap<Integer, KeyAttr> sKeys) {
-		int[] temp = {1,2,3,8,13,14,20,22,26,27,28};
-		//ArrayList<Integer> nuktaKeys = new ArrayList<Integer>();
-		SimpleArrayMap<Integer, String> nuktaKeyValues= new SimpleArrayMap<Integer, String>();
-		
-		for(int i = 0; i < temp.length; i++){
-			//nuktaKeys.add(temp[i]);
-			nuktaKeyValues.put(temp[i], nuktaCharacters[i]);
-			
-		}
-		
+	private void handleEyelashRa(HashMap<Integer, KeyAttr> sKeys) {
 		for(KeyAttr key : keyArray){
-			if(nuktaKeyValues.containsKey(key.code)){
-				//String newLabel = mKeys.get(key.code).label + NUKTA;
-				String newLabel = nuktaKeyValues.get(key.code);
-				key.label = newLabel;
-				key.showChakra = true;
-			}
+			String newLabel = EYELASHRA + HALANT + mKeys.get(key.code).label;
+			key.label = newLabel;
+			key.showChakra = true;
 			sKeys.put(key.code, key);
 		}
 	}
