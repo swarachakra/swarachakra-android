@@ -2,7 +2,7 @@ package iit.android.swarachakra;
 
 import iit.android.language.Language;
 import iit.android.language.english.English;
-import iit.android.language.hindi.MainLanguage;
+import iit.android.language.gujarati.MainLanguage;
 
 import java.util.HashMap;
 import java.util.List;
