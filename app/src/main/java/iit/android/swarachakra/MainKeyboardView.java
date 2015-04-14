@@ -1,11 +1,5 @@
 package iit.android.swarachakra;
 
-import iit.android.language.ExceptionHandler;
-import iit.android.language.Language;
-import iit.android.language.gujarati.MainLanguageExceptionHandler;
-
-import java.util.HashMap;
-
 import android.content.Context;
 import android.content.res.Configuration;
 import android.inputmethodservice.Keyboard.Key;
@@ -15,6 +9,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
 import android.widget.PopupWindow;
+
+import java.util.HashMap;
+
+import iit.android.language.ExceptionHandler;
+import iit.android.language.Language;
+import iit.android.language.MainLanguageExceptionHandler;
 
 public class MainKeyboardView extends CustomKeyboardView {
 	public PopupWindow mChakraPopup;

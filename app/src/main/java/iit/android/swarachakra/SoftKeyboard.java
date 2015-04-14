@@ -1,12 +1,5 @@
 package iit.android.swarachakra;
 
-import iit.android.language.Language;
-import iit.android.language.english.English;
-import iit.android.language.gujarati.MainLanguage;
-
-import java.util.HashMap;
-import java.util.List;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -20,6 +13,13 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.RelativeLayout;
+
+import java.util.HashMap;
+import java.util.List;
+
+import iit.android.language.Language;
+import iit.android.language.english.English;
+import iit.android.language.MainLanguage;
 /**
  * Input Method Service that runs when the keyboard is up and manages the whole life cycle of the keyboard 
  * @author Manideep Polireddi, Madhu Kiran

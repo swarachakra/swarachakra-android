@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 20
+    compileSdkVersion 21
     buildToolsVersion "21.1.2"
 
     defaultConfig {
         applicationId "iit.android.swarachakra"
         minSdkVersion 14
-        targetSdkVersion 19
+        targetSdkVersion 21
     }
 
     buildTypes {
@@ -16,8 +16,42 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+
+    productFlavors {
+        bengali {
+
+        }
+
+        gujarati {
+
+        }
+
+        hindi {
+
+        }
+
+        kannada {
+
+        }
+
+        konkani {
+
+        }
+
+        malayalam {
+
+        }
+
+        marathi {
+
+        }
+
+        telugu {
+
+        }
+    }
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:20.0.0'
+    compile 'com.android.support:appcompat-v7:22.0.0'
 }
