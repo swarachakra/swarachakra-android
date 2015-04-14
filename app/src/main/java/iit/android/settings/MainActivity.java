@@ -1,10 +1,5 @@
 package iit.android.settings;
 
-import iit.android.swarachakra.R;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,6 +16,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import iit.android.swarachakra.R;
 
 public class MainActivity extends FragmentActivity {
 	private boolean isDefault = false;
@@ -58,7 +58,9 @@ public class MainActivity extends FragmentActivity {
 		pager = (CustomViewPager) findViewById(R.id.viewpager);
 		pager.setPagingEnabled(false);
 		pager.setAdapter(pageAdapter);
-		getActionBar().setTitle(getStringResourceByName("title"));
+        if(getActionBar() != null) {
+            getActionBar().setTitle(getString(R.string.title));
+        }
 	}
 
 	@Override

@@ -1,9 +1,5 @@
 package iit.android.settings;
 
-import iit.android.swarachakra.R;
-
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,9 +20,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import java.util.List;
+
+import iit.android.swarachakra.R;
 
 public class SettingsActivity extends PreferenceActivity {
 	public static boolean isTablet;

@@ -19,35 +19,35 @@ android {
 
     productFlavors {
         bengali {
-
+            applicationId "iit.android.swarachakraBengali"
         }
 
         gujarati {
-
+            applicationId "iit.android.swarachakraGujarati"
         }
 
         hindi {
-
+            applicationId "iit.android.swarachakra"
         }
 
         kannada {
-
+            applicationId "iit.android.swarachakraKannada"
         }
 
         konkani {
-
+            applicationId "iit.android.swarachakraKonkani"
         }
 
         malayalam {
-
+            applicationId "iit.android.swarachakraMalayalam"
         }
 
         marathi {
-
+            applicationId "iit.android.swarachakraMarathi"
         }
 
         telugu {
-
+            applicationId "iit.android.swarachakraTelugu"
         }
     }
 }
