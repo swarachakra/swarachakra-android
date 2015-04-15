@@ -4,6 +4,10 @@
     <string name="title">स्वरचक्र हिन्दी</string>
     <string name="language_name">hindi</string>
 
+    <!-- Logger Strings -->
+    <string name="logger_map">muppetymaptelugu.dat</string>
+    <string name="logger_language">teelugu</string>
+
     <!-- Settings -->
     <!-- Fragments -->
     <!-- Hindi -->

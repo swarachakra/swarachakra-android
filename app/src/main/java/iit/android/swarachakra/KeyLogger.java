@@ -1,5 +1,11 @@
 package iit.android.swarachakra;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.util.Log;
+
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,24 +19,25 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Set;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
-import android.util.Log;
-
 public class KeyLogger {
 	private static long uploadFreq = 7 * 24 * 60; // every 6 days
 	private static long uploadtimestamp = 0;
 	private static final String stringUrl = "http://idid.in/android/logsdebug.php";
-	private static final String map = "muppetymaphindi.dat";
-	private static final String language = "heendey";
+	private static String map;
+	private static String language;
 	public final String TAG = "logger";
 	private HashMap<String,Integer> ht;
 	public String extractedText;
 	private SoftKeyboard mSoftKeyboard;
+    private Context mContext;
 	String draft_msg="";
-	
+
+    public KeyLogger(Context context) {
+        mContext = context;
+        map = mContext.getString(R.string.logger_map);
+        language = mContext.getString(R.string.logger_language);
+    }
+
 	public void setSoftKeyboard(SoftKeyboard softKeyboard) {
 		mSoftKeyboard = softKeyboard;
 	}
@@ -113,7 +120,7 @@ public class KeyLogger {
 
 			// File file = new File(getExternalFilesDir(null), map);
 
-			FileInputStream myIn = mSoftKeyboard.openFileInput(map);
+			FileInputStream myIn = mSoftKeyboard.openFileInput(filename);
 			ObjectInputStream IS = new ObjectInputStream(myIn);
 
 			try {

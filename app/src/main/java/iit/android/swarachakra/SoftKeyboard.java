@@ -20,6 +20,7 @@ import java.util.List;
 import iit.android.language.Language;
 import iit.android.language.english.English;
 import iit.android.language.MainLanguage;
+
 /**
  * Input Method Service that runs when the keyboard is up and manages the whole life cycle of the keyboard 
  * @author Manideep Polireddi, Madhu Kiran
@@ -51,7 +52,7 @@ public class SoftKeyboard extends InputMethodService {
 		Log.d("settings","onCreate Called");
 		appContext = getApplicationContext();
 		Installation.id(getApplicationContext());
-		mKeyLogger = new KeyLogger();
+		mKeyLogger = new KeyLogger(this);
 		mKeyLogger.setSoftKeyboard(this);
         mKeyLogger.extractedText="";
 	}

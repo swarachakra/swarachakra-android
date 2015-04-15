@@ -23,6 +23,7 @@ public class MainKeyboardView extends CustomKeyboardView {
 	private KeyLogger mKeyLogger;
 	private MainKeyboardActionListener mActionListener;
 	private boolean isPassword;
+    private Context mContext;
 
 	public MainKeyboardView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -38,6 +39,7 @@ public class MainKeyboardView extends CustomKeyboardView {
 
 	private void initialize(Context context) {
 		super.setPreviewEnabled(false);
+        mContext = context;
 
 		setLayerType(View.LAYER_TYPE_HARDWARE, null);
 
