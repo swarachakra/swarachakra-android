@@ -5,8 +5,8 @@
     <string name="language_name">hindi</string>
 
     <!-- Logger Strings -->
-    <string name="logger_map">muppetymaphindi.dat</string>
-    <string name="logger_language">heendey</string>
+    <string name="logger_map">muppetymaptelugu.dat</string>
+    <string name="logger_language">teelugu</string>
 
     <!-- Settings -->
     <!-- Fragments -->

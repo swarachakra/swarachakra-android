@@ -46,6 +46,10 @@ android {
             applicationId "iit.android.swarachakraMarathi"
         }
 
+        oriya {
+            applicationId "iit.android.swarachakraOriya"
+        }
+
         telugu {
             applicationId "iit.android.swarachakraTelugu"
         }
