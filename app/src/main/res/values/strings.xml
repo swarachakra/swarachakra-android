@@ -1,6 +1,10 @@
 <resources>
     <string name="marathi_title">स्वरचक्र मराठी</string>
     <string name="konkani_title">स्वरचक्र कोंकणी</string>
+
+    <!-- Logger urls -->
+    <string name="logger_url_beta">http://idid.in/android/logsdebug.php</string>
+    <string name="logger_url_production">http://idid.in/android/logsdebug.php</string>
     
     <!-- Special characters -->
     <string name="backspace">400</string>

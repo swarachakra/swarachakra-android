@@ -22,7 +22,7 @@ import java.util.Set;
 public class KeyLogger {
 	private static long uploadFreq = 7 * 24 * 60; // every 6 days
 	private static long uploadtimestamp = 0;
-	private static final String stringUrl = "http://idid.in/android/logsdebug.php";
+	private static String stringUrl;
 	private static String map;
 	private static String language;
 	public final String TAG = "logger";
@@ -36,6 +36,11 @@ public class KeyLogger {
         mContext = context;
         map = mContext.getString(R.string.logger_map);
         language = mContext.getString(R.string.logger_language);
+        if(BuildConfig.DEBUG) {
+            stringUrl = context.getString(R.string.logger_url_beta);
+        } else {
+            stringUrl = context.getString(R.string.logger_url_production);
+        }
     }
 
 	public void setSoftKeyboard(SoftKeyboard softKeyboard) {
