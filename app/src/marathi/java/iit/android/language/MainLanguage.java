@@ -1,4 +1,4 @@
-package iit.android.language.marathi;
+package iit.android.language;
 import iit.android.language.Language;
 import iit.android.swarachakra.KeyAttr;
 

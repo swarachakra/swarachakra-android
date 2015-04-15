@@ -1,13 +1,11 @@
-package iit.android.language.marathi;
+package iit.android.language;
 
-import iit.android.language.ExceptionHandler;
-import iit.android.language.Language;
-import iit.android.swarachakra.KeyAttr;
+import android.annotation.SuppressLint;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.annotation.SuppressLint;
+import iit.android.swarachakra.KeyAttr;
 
 public class MainLanguageExceptionHandler implements ExceptionHandler {
 	
