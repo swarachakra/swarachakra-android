@@ -28,6 +28,10 @@ android {
 
         gujarati {
             applicationId "iit.android.swarachakraGujarati"
+            defaultConfig {
+                versionCode 14
+                versionName "2.0"
+            }
         }
 
         hindi {
@@ -48,6 +52,7 @@ android {
 
         marathi {
             applicationId "iit.android.swarachakraMarathi"
+
         }
 
         oriya {
