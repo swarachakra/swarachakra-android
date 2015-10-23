@@ -52,6 +52,10 @@ android {
 
         oriya {
             applicationId "iit.android.swarachakraOriya"
+            defaultConfig {
+                versionCode 1
+                versionName "2.0"
+            }
         }
 
         telugu {
