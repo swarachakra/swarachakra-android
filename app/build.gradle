@@ -52,6 +52,10 @@ android {
 
         konkani {
             applicationId "iit.android.swarachakraKonkani"
+            defaultConfig {
+                versionCode 7
+                versionName "2.01"
+            }
         }
 
         malayalam {
