@@ -60,6 +60,10 @@ android {
 
         malayalam {
             applicationId "iit.android.swarachakraMalayalam"
+            defaultConfig {
+                versionCode 15
+                versionName "2.01"
+            }
         }
 
         marathi {
