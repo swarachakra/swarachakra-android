@@ -1,4 +1,4 @@
-package iit.android.language.kannada;
+package iit.android.language;
 
 import iit.android.language.Language;
 import iit.android.swarachakra.KeyAttr;
@@ -16,7 +16,7 @@ public class MainLanguage extends Language {
 		nKeys = 106;
 		myKey = new ArrayList<KeyAttr>(nKeys);
 		defaultChakra = new String[] { "\u0CCD", "\u0CBE", "\u0CBF", "\u0CC0",
-				"\u0CC1", "\u0CC2", "\u0CC5", "\u0CC6", "\u0CCA", "\u0CCB" };
+				"\u0CC1", "\u0CC2", "\u0CC6", "\u0CC7", "\u0CCA", "\u0CCB" };
 		halantExists = true;
 		halantEnd = 37;
 

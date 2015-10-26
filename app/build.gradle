@@ -44,6 +44,10 @@ android {
 
         kannada {
             applicationId "iit.android.swarachakraKannada"
+            defaultConfig {
+                versionCode 17
+                versionName "2.01"
+            }
         }
 
         konkani {
