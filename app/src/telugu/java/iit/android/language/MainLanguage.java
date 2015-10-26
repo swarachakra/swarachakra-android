@@ -1,11 +1,12 @@
 package iit.android.language;
 
-import android.annotation.SuppressLint;
+import iit.android.language.Language;
+import iit.android.swarachakra.KeyAttr;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import iit.android.swarachakra.KeyAttr;
+import android.annotation.SuppressLint;
 
 public class MainLanguage extends Language {
 
@@ -1158,7 +1159,7 @@ public class MainLanguage extends Language {
 
         KeyAttr myKey94 = new KeyAttr();
         myKey94.code = 95;
-        myKey94.label = "";
+        myKey94.label = "\u0C58";
         myKey94.showChakra = false;
         myKey94.showCustomChakra = false;
         myKey94.customChakraLayout = new String[] {};
@@ -1170,7 +1171,7 @@ public class MainLanguage extends Language {
 
         KeyAttr myKey95 = new KeyAttr();
         myKey95.code = 96;
-        myKey95.label = "";
+        myKey95.label = "\u0C59";
         myKey95.showChakra = false;
         myKey95.showCustomChakra = false;
         myKey95.customChakraLayout = new String[] {};
