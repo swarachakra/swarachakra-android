@@ -66,6 +66,9 @@ android {
         telugu {
             applicationId "iit.android.swarachakraTelugu"
         }
+        asomiya {
+            applicationId "iit.android.swarachakraAsomiya"
+        }
     }
 }
 
