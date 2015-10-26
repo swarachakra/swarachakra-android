@@ -34,7 +34,7 @@
     <string name="enable_step_3">3) Finally, press the \"Back\" button on your phone</string>
     <!-- Default Fragment -->
     <string name="default_instructions_head">Swarachakra keyboard has been successfully enabled. Now make it your default keyboard.</string>
-    <string name="default_step_1">1)In the next screen, select \"Swarachakra\"</string>
+    <string name="default_step_1">1)In the next screen, select \"Swarachakra Hindi\"</string>
     <!-- Button Text -->
     <string name="welcome_button">Yes, its alright</string>
     <string name="enable_button">Enable Swarachakra</string>

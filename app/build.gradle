@@ -36,6 +36,10 @@ android {
 
         hindi {
             applicationId "iit.android.swarachakra"
+            defaultConfig {
+                versionCode 19
+                versionName "2.0"
+            }
         }
 
         kannada {
