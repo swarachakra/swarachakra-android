@@ -52,7 +52,10 @@ android {
 
         marathi {
             applicationId "iit.android.swarachakraMarathi"
-
+            defaultConfig {
+                versionCode 25
+                versionName "2.01"
+            }
         }
 
         oriya {
