@@ -29,7 +29,7 @@ android {
         gujarati {
             applicationId "iit.android.swarachakraGujarati"
             defaultConfig {
-                versionCode 14
+                versionCode 15
                 versionName "2.0"
             }
         }

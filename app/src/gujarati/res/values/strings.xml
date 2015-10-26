@@ -2,6 +2,8 @@
     <string name="app_name">સ્વરચક્ર ગુજરાતી (Swarachakra Gujarati)</string>
     <string name="language_name">gujarati</string>
     <string name="title">સ્વરચક્ર ગુજરાતી</string>
+    <string name="logger_map">muppetymapguj.dat</string>
+    <string name="logger_language">gujarati</string>
 
     <!-- Settings -->
     <!-- Fragments -->
