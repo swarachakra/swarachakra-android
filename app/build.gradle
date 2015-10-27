@@ -98,6 +98,10 @@ android {
         }
         asomiya {
             applicationId "iit.android.swarachakraAsomiya"
+            defaultConfig {
+                versionCode 21
+                versionName "2.01"
+            }
         }
     }
 }

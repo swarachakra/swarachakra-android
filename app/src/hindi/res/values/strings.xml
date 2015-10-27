@@ -11,6 +11,10 @@
     <!-- Settings -->
     <!-- Fragments -->
     <!-- Hindi -->
+    <!-- English Language specific changes fragment -->
+    <string name="welcome_instruction">Welcome. If you are unable to see the following Hindi text then your device is not supported.</string>
+    <string name="enable_step_1">1) In the next screen, select \"Swarachakra Hindi\"</string>
+    <string name="default_step_1">1) In the next screen, select \"Swarachakra Hindi\"</string>
     <!-- Welcome fragment -->
     <string name="hindi_welcome_instruction">Welcome. If you are unable to see the following Hindi text then your device is not supported.</string>
     <string name="hindi_welcome_title">क्या आपका फोन यह वाक्य हिन्दी में ठीक से दिखा रहा है?</string>
