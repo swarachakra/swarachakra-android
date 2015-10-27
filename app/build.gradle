@@ -103,6 +103,13 @@ android {
                 versionName "2.01"
             }
         }
+        punjabi {
+            applicationId "iit.android.swarachakraPunjabi"
+            defaultConfig {
+                versionCode 13
+                versionName "2.0"
+            }
+        }
     }
 }
 

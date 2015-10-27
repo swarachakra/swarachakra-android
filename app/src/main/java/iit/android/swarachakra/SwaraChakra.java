@@ -239,8 +239,14 @@ public class SwaraChakra extends View {
 			chakra = currentKey.customChakraLayout;
 			return chakra[region];
 		}
-		String text = keyLabel + chakra[region];
-		return text;
+		if(chakra[region]!="") {
+			String text = keyLabel + chakra[region];
+			return text;
+		}else{
+			String text = chakra[region];
+			return text;
+		}
+
 	}
 	
 }
