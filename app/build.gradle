@@ -89,6 +89,13 @@ android {
                 versionName "2.01"
             }
         }
+        tamil {
+            applicationId "iit.android.swarachakraTamil"
+            defaultConfig {
+                versionCode 20
+                versionName "2.01"
+            }
+        }
         asomiya {
             applicationId "iit.android.swarachakraAsomiya"
         }

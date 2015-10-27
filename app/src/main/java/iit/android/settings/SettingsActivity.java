@@ -38,7 +38,7 @@ public class SettingsActivity extends PreferenceActivity {
 	private SharedPreferences.Editor editor;
 	private boolean inEnglish = false;
 	private ScrollView layout;
-	private Button rateus; 
+	private Button rateus;
 	private TextView doYouLikeTextView;
 
 	@Override
@@ -70,10 +70,10 @@ public class SettingsActivity extends PreferenceActivity {
 
 		String instruction = getStringResourceByName("settings_instruction");
 		instructionTextView.setText(instruction);
-		
+
 		String doyoulikeustext=getStringResourceByName("do_you_like");
 		String rateustext=getStringResourceByName("rate_us");
-		
+
 		doYouLikeTextView.setText(doyoulikeustext);
 		rateus.setText(rateustext);
 
@@ -95,9 +95,9 @@ public class SettingsActivity extends PreferenceActivity {
 			smallRadio.setChecked(false);
 			bigRadio.setChecked(true);
 		}
-		
+
 		rateus.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -223,7 +223,7 @@ public class SettingsActivity extends PreferenceActivity {
 
 		String instruction = getStringResourceByName("settings_instruction");
 		instructionTextView.setText(instruction);
-		
+
 		String doyoulikeustext=getStringResourceByName("do_you_like");
 		String rateustext=getStringResourceByName("rate_us");
 		doYouLikeTextView.setText(doyoulikeustext);
