@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "iit.android.swarachakra"
         minSdkVersion 14
-        targetSdkVersion 21
+        targetSdkVersion 23
     }
 
     buildTypes {
@@ -20,99 +20,75 @@ android {
     productFlavors {
         bengali {
             applicationId "iit.android.swarachakraBengali"
-            defaultConfig {
-                versionCode 18
-                versionName "2.01"
-            }
+            versionCode 18
+            versionName "2.01"
         }
 
         gujarati {
             applicationId "iit.android.swarachakraGujarati"
-            defaultConfig {
-                versionCode 15
-                versionName "2.0"
-            }
+            versionCode 15
+            versionName "2.0"
         }
 
         hindi {
             applicationId "iit.android.swarachakra"
-            defaultConfig {
-                versionCode 19
-                versionName "2.0"
-            }
+            versionCode 19
+            versionName "2.0"
         }
 
         kannada {
             applicationId "iit.android.swarachakraKannada"
-            defaultConfig {
-                versionCode 17
-                versionName "2.01"
-            }
+            versionCode 17
+            versionName "2.01"
         }
 
         konkani {
             applicationId "iit.android.swarachakraKonkani"
-            defaultConfig {
-                versionCode 7
-                versionName "2.01"
-            }
+            versionCode 7
+            versionName "2.01"
         }
 
         malayalam {
             applicationId "iit.android.swarachakraMalayalam"
-            defaultConfig {
-                versionCode 15
-                versionName "2.01"
-            }
+            versionCode 15
+            versionName "2.01"
         }
 
         marathi {
             applicationId "iit.android.swarachakraMarathi"
-            defaultConfig {
-                versionCode 25
-                versionName "2.01"
-            }
+            versionCode 25
+            versionName "2.01"
         }
 
         oriya {
             applicationId "iit.android.swarachakraOriya"
-            defaultConfig {
-                versionCode 2
-                versionName "2.0"
-            }
+            versionCode 2
+            versionName "2.0"
         }
 
         telugu {
             applicationId "iit.android.swarachakraTelugu"
-            defaultConfig {
-                versionCode 17
-                versionName "2.01"
-            }
+            versionCode 17
+            versionName "2.01"
         }
         tamil {
             applicationId "iit.android.swarachakraTamil"
-            defaultConfig {
-                versionCode 20
-                versionName "2.01"
-            }
+            versionCode 20
+            versionName "2.01"
         }
         asomiya {
             applicationId "iit.android.swarachakraAsomiya"
-            defaultConfig {
-                versionCode 21
-                versionName "2.01"
-            }
+            versionCode 21
+            versionName "2.01"
         }
         punjabi {
             applicationId "iit.android.swarachakraPunjabi"
-            defaultConfig {
-                versionCode 13
-                versionName "2.0"
-            }
+            versionCode 13
+            versionName "2.0"
         }
     }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.android.support:appcompat-v7:23.1.0'
 }
