@@ -1,7 +1,7 @@
 # Swarachakra
- Swarachakra is an Android keyboard for Indic languages. It is available in 12 languages on google playstore. To know more visit the (Wikipedia page)[https://en.wikipedia.org/wiki/Swarachakra]
+ Swarachakra is an Android keyboard for Indic languages. It is available in 12 languages on google playstore. To know more visit the [Wikipedia page](https://en.wikipedia.org/wiki/Swarachakra)
 
- (**Get it on Google Play**)[https://play.google.com/store/apps/developer?id=Swarachakra+Team,+IDC,+IIT+Bombay]
+ [**Get it on Google Play**](https://play.google.com/store/apps/developer?id=Swarachakra+Team,+IDC,+IIT+Bombay)
 
  License
  -------
